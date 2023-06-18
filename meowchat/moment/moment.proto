@@ -1,0 +1,104 @@
+syntax = "proto3";
+
+package meowchat.moment;
+
+option go_package = "meowchat/moment";
+
+import "basic/basic.proto";
+
+import "meowchat/basic.proto";
+
+message Moment {
+  string id = 1;
+  int64 createAt = 2;
+  string catId = 3;
+  repeated string photos = 4; // 图片url
+  string title = 5;
+  string text = 6;
+  string communityId = 7;
+  string userId = 8;
+}
+
+message SearchField {
+  optional string text = 1;
+  optional string title = 2;
+}
+
+message SearchOptions {
+  oneof Type {
+    string allFieldsKey = 1;
+    SearchField multiFieldsKey = 2;
+  }
+}
+
+message FilterOptions {
+  optional string onlyUserId = 1;
+  optional string onlyCommunityId = 2;
+  repeated string onlyCommunityIds = 3;
+}
+
+message ListMomentReq {
+  optional SearchOptions searchOptions = 1;
+  optional FilterOptions filterOptions = 2;
+  optional PaginationOptions paginationOptions = 3;
+}
+
+message ListMomentResp {
+  repeated Moment moments = 1;
+  int64 total = 2;
+  string token = 3;
+  basic.Status status = 255;
+}
+
+message CountMomentReq {
+  optional SearchOptions searchOptions = 1;
+  optional FilterOptions filterOptions = 2;
+}
+
+message CountMomentResp {
+  int64 total = 1;
+  basic.Status status = 255;
+}
+
+message RetrieveMomentReq {
+  string momentId = 1;
+}
+
+message RetrieveMomentResp {
+  Moment moment = 1;
+  basic.Status status = 255;
+}
+
+message CreateMomentReq {
+  Moment moment = 1;
+}
+
+message CreateMomentResp {
+  string momentId = 1;
+  basic.Status status = 255;
+}
+
+message UpdateMomentReq {
+  Moment moment = 1;
+}
+
+message UpdateMomentResp {
+  basic.Status status = 255;
+}
+
+message DeleteMomentReq {
+  string momentId = 1;
+}
+
+message DeleteMomentResp {
+  basic.Status status = 255;
+}
+
+service moment_rpc {
+  rpc ListMoment(ListMomentReq) returns (ListMomentResp);
+  rpc CountMoment(CountMomentReq) returns (CountMomentResp);
+  rpc RetrieveMoment(RetrieveMomentReq) returns (RetrieveMomentResp);
+  rpc CreateMoment(CreateMomentReq) returns (CreateMomentResp);
+  rpc UpdateMoment(UpdateMomentReq) returns (UpdateMomentResp);
+  rpc DeleteMoment(DeleteMomentReq) returns (DeleteMomentResp);
+}

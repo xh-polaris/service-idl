@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "basic/basic.proto";
+import "http/http.proto";
+
+import "meowchat/basic.proto";
+
+message Moment {
+  string id = 1;
+  int64 createAt = 2;
+  string catId = 3;
+  repeated string photos = 4; // 图片url
+  string title = 5;
+  string text = 6;
+  string communityId = 7;
+  UserPreview userId = 8;
+}
+
+message GetMomentPreviewsReq {
+  optional string communityId = 1;
+  optional bool isParent = 2;
+  optional string onlyUserId = 3;
+  PaginationOptions paginationOption = 4[(http.body) = ",inline"];
+}
+
+message GetMomentPreviewsResp {
+  repeated Moment moments = 1;
+  int64 total = 2;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message GetMomentDetailReq {
+  string momentId = 1;
+}
+
+message GetMomentDetailResp {
+  Moment moment = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message DeleteMomentReq {
+  string momentId = 1;
+}
+
+message DeleteMomentResp {
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message NewMomentReq {
+  optional string id = 1;
+  optional string title = 2;
+  optional string catId = 3;
+  optional string text = 4;
+  repeated string photos = 5;
+  optional string communityId = 6;
+}
+
+message NewMomentResp {
+  string momentId = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message SearchMomentReq {
+  optional string communityId = 1;
+  optional bool isParent = 2;
+  optional string onlyUserId = 3;
+  optional string keyword = 4;
+  PaginationOptions paginationOption = 5[(http.body) = ",inline"];
+}
+
+message SearchMomentResp {
+  repeated Moment moments = 1;
+  int64 total = 2;
+  basic.Status status = 255[(http.body) = ",inline"];
+}

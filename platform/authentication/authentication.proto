@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package platform.authentication;
+
+option go_package = 'platform/authentication';
+
+import "basic/basic.proto";
+
+message User {
+  string userId = 1;
+  string openId = 2;
+  string unionId = 3;
+  string appId = 4;
+}
+
+message SignInReq {
+  string authType = 1;
+  string authId = 2;
+  string password = 3;
+  repeated string params = 4;
+}
+
+message SignInResp {
+  User user = 1;
+  basic.Status status = 255;
+}
+
+message SetPasswordReq {
+  string userId = 1;
+  string password = 2;
+}
+
+message SetPasswordResp {
+  basic.Status status = 255;
+}
+
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2;
+}
+
+message SendVerifyCodeResp {
+  basic.Status status = 255;
+}
+
+service Auth {
+  rpc signIn(SignInReq) returns (SignInResp);
+  rpc setPassword(SetPasswordReq) returns (SetPasswordResp);
+  rpc sendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp);
+}

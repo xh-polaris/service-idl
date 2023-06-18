@@ -1,0 +1,128 @@
+syntax = "proto3";
+
+package meowchat.post;
+
+option go_package = "meowchat/post";
+
+import "basic/basic.proto";
+
+import "meowchat/basic.proto";
+
+message Post {
+  string id = 1;
+  int64 createAt = 2;
+  int64 updateAt = 3;
+  string title = 5;
+  string text = 6;
+  string coverUrl = 7;
+  repeated string tags = 8;
+  string userId = 9;
+  bool isOfficial = 10;
+}
+
+// create a post
+message CreatePostReq {
+  string title = 2;
+  string text = 3;
+  string coverUrl = 4;
+  repeated string tags = 5;
+  string userId = 6;
+}
+
+message CreatePostResp {
+  string postId = 1;
+  basic.Status status = 255;
+}
+
+// retrieve a post
+message RetrievePostReq {
+  string postId = 1;
+}
+
+message RetrievePostResp {
+  Post post = 1;
+  basic.Status status = 255;
+}
+
+//update a post
+message UpdatePostReq {
+  string id = 1;
+  string title = 3;
+  string text = 4;
+  string coverUrl = 5;
+  repeated string tags = 6;
+}
+
+message UpdatePostResp {
+  basic.Status status = 255;
+}
+
+// delete a post
+message DeletePostReq {
+  string id = 1;
+}
+
+message DeletePostResp {
+  basic.Status status = 255;
+}
+
+message SearchField {
+  optional string text = 1;
+  optional string title = 2;
+  optional string tag = 3;
+}
+
+message SearchOptions {
+  oneof Query {
+    string allFieldsKey = 1;
+    SearchField multiFieldsKey = 2;
+  }
+}
+
+message FilterOptions {
+  optional bool onlyOfficial = 1;
+  optional string onlyUserId = 2;
+}
+
+// list posts
+message ListPostReq {
+  optional SearchOptions searchOptions = 1;
+  optional FilterOptions filterOptions = 2;
+  optional PaginationOptions paginationOptions = 3;
+}
+
+message ListPostResp {
+  repeated Post posts = 1;
+  int64 total = 2;
+  string token = 3;
+  basic.Status status = 255;
+}
+
+message CountPostReq {
+  optional SearchOptions searchOptions = 1;
+  optional FilterOptions filterOptions = 2;
+}
+
+message CountPostResp {
+  int64 total = 1;
+  basic.Status status = 255;
+}
+
+message SetOfficialReq {
+  string postId = 1;
+  bool isRemove = 2;
+}
+
+message SetOfficialResp {
+  basic.Status status = 255;
+}
+
+service post_rpc {
+  rpc CreatePost(CreatePostReq) returns(CreatePostResp);
+  rpc RetrievePost(RetrievePostReq) returns(RetrievePostResp);
+  rpc UpdatePost(UpdatePostReq) returns(UpdatePostResp);
+  rpc DeletePost(DeletePostReq) returns(DeletePostResp);
+  rpc ListPost(ListPostReq) returns(ListPostResp);
+  rpc CountPost(CountPostReq) returns(CountPostResp);
+  rpc SetOfficial(SetOfficialReq) returns(SetOfficialResp);
+}

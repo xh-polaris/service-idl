@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "basic/basic.proto";
+import "http/http.proto";
+
+import "meowchat/basic.proto";
+import "meowchat/like/common.proto";
+
+message DoLikeReq {
+  string targetId = 1;
+  int64 targetType = 2;
+}
+
+message DoLikeResp {
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message GetUserLikedReq {
+  string targetId = 1;
+  int64 targetType = 2;
+}
+
+message GetUserLikedResp {
+  bool liked = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message GetLikedCountReq {
+  string targetId = 1;
+  int64 targetType = 2;
+}
+
+message GetLikedCountResp {
+  int64 count = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message GetUserLikesReq {
+  string userId = 1;
+  int64 targetType = 2;
+}
+
+message GetUserLikesResp {
+  repeated like.Like likes = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message GetLikedUsersReq {
+  string targetId = 1;
+  int64 targetType = 2;
+}
+
+message GetLikedUsersResp {
+  repeated UserPreview users = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}

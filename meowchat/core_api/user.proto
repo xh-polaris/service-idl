@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "basic/basic.proto";
+import "http/http.proto";
+import "meowchat/basic.proto";
+
+message User {
+  string id = 1;
+  string nickname = 2;
+  string avatarUrl = 3;
+  string motto = 4;
+  int64 follower = 5;
+  int64 following = 6;
+  int64 article = 7;
+  int64 like = 8;
+}
+
+message UserPreviewWithRole {
+  UserPreview user = 1[(http.body) = ",inline"];
+  repeated Role roles = 2;
+}
+
+message GetUserInfoReq {
+  optional string userId = 1;
+}
+
+message GetUserInfoResp {
+  User user = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message UpdateUserInfoReq {
+  optional string avatarUrl = 1;
+  optional string nickname = 2;
+  optional string motto = 3;
+}
+
+message UpdateUserInfoResp {
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message SearchUserReq {
+  string keyword = 1;
+  PaginationOptions paginationOption = 2[(http.body) = ",inline"];
+}
+
+message SearchUserResp {
+  repeated UserPreview users = 1;
+  int64 total = 2;
+  string token = 3;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message SearchUserForAdminReq {
+  SearchOptions searchOption = 1[(http.body) = ",inline"];
+}
+
+message SearchUserForAdminResp {
+  repeated UserPreviewWithRole users = 1;
+  int64 total = 2;
+  string token = 3;
+  basic.Status status = 255[(http.body) = ",inline"];
+}

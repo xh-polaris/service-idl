@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "basic/basic.proto";
+import "http/http.proto";
+
+import "meowchat/collection/common.proto";
+import "meowchat/basic.proto";
+
+message CatPreview {
+  string id = 1;
+  string name = 2;
+  string area = 3;
+  string color = 4;
+  string avatarUrl = 5;
+  bool isCollected = 6;
+}
+
+message GetCatPreviewsReq {
+  string communityId = 1;
+  int64 page = 2;
+}
+
+message GetCatPreviewsResp {
+  repeated CatPreview cats = 1;
+  int64 total = 2;
+  basic.Status status = 255;
+}
+
+message  GetCatDetailReq {
+  string catId = 1;
+}
+
+message GetCatDetailResp {
+  collection.Cat cat = 1;
+  basic.Status status = 255;
+}
+
+message DeleteCatReq {
+  string catId = 1;
+}
+
+message DeleteCatResp {
+  basic.Status status = 255;
+}
+
+message NewCatReq {
+  optional string id = 1;
+  string age = 2;
+  string communityId = 3;
+  string color = 4;
+  string details = 5;
+  string name = 6;
+  string sex = 7;
+  string area = 8;
+  bool isSnipped = 9;
+  bool isSterilized = 10;
+  repeated string avatars = 11;
+}
+
+message NewCatResp {
+  string catId = 1;
+  basic.Status status = 255;
+}
+
+message SearchCatReq {
+  string keyword = 1;
+  PaginationOptions paginationOption = 2[(http.body) = ",inline"];
+  string communityId = 3;
+}
+
+message SearchCatResp {
+  repeated CatPreview cats = 1;
+  int64 total = 2;
+  basic.Status status = 255;
+}
+
+
+message CreateImageReq {
+  repeated collection.CreateImageElement images = 1;
+}
+
+message CreateImageResp {
+  repeated string imageIds = 1;
+  basic.Status status = 255;
+}
+
+message DeleteImageReq {
+  string imageId = 1;
+}
+
+message DeleteImageResp {
+  basic.Status status = 255;
+}
+
+message GetImageByCatReq {
+  string catId = 1;
+  optional string prevId = 2;
+  int64 limit = 3;
+  int64 offset = 4;
+  bool backward = 5;
+}
+
+message GetImageByCatResp {
+  repeated collection.Image images = 1;
+  int64 total = 2;
+  basic.Status status = 255;
+}

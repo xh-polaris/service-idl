@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+package meowchat.comment;
+
+option go_package = "meowchat/comment";
+
+import "basic/basic.proto";
+
+message Comment {
+  string id = 1;
+  string text = 2;
+  string authorId = 3;
+  string replyTo = 4;
+  string type = 5;
+  string parentId = 6;
+  int64 updateAt = 7;
+  int64 createAt = 8;
+}
+
+// 创建评论
+
+message CreateCommentRequest {
+  string text = 1;
+  string authorId = 2;
+  string replyTo = 3;
+  string type = 4;
+  string parentId = 5;
+}
+
+message CreateCommentResponse {
+  string id = 1;
+  basic.Status status = 255;
+}
+
+// 更新评论
+
+message UpdateCommentRequest {
+  string id = 1;
+  string text = 2;
+}
+
+message UpdateCommentResponse {
+  basic.Status status = 255;
+}
+
+//根据 Id 删除评论
+message DeleteCommentByIdRequest {
+  string id = 1;
+}
+
+message DeleteCommentByIdResponse {
+  basic.Status status = 255;
+}
+
+// 根据 parentId 查找所有评论
+
+
+message ListCommentByParentRequest {
+  string type = 1;
+  string parentId = 2;
+  int64 skip = 3;
+  int64 limit = 4;
+}
+
+message ListCommentByParentResponse {
+  repeated Comment comments = 1;
+  int64 total = 2;
+  basic.Status status = 255;
+}
+
+// 根据 parentId 查找所有评论
+
+
+message CountCommentByParentRequest {
+  string type = 1;
+  string parentId = 2;
+}
+
+message CountCommentByParentResponse {
+  int64 total = 1;
+  basic.Status status = 255;
+}
+
+// 根据 id 查找 comment
+
+
+
+message RetrieveCommentByIdRequest {
+  string id = 1;
+}
+
+message RetrieveCommentByIdResponse {
+  Comment comment = 1;
+  basic.Status status = 255;
+}
+
+
+// 根据 authorId & type 查找
+
+
+message ListCommentByAuthorIdAndTypeRequest {
+  string authorId = 1;
+  string type = 2;
+  int64 skip = 3;
+  int64 limit = 4;
+}
+
+message ListCommentByAuthorIdAndTypeResponse {
+  repeated Comment comments = 1;
+  int64 total = 2;
+  basic.Status status = 255;
+}
+
+// 根据 replyTo & type 查找
+
+message ListCommentByReplyToAndTypeRequest {
+  string replyTo = 1;
+  string type = 2;
+  int64 skip = 3;
+  int64 limit = 4;
+}
+
+message ListCommentByReplyToAndTypeResponse {
+  repeated Comment comments = 1;
+  int64 total = 2;
+  basic.Status status = 255;
+}
+
+service comment_rpc {
+  // 创建
+  rpc createComment(CreateCommentRequest) returns(CreateCommentResponse);
+  // 修改
+  rpc updateComment(UpdateCommentRequest) returns(UpdateCommentResponse);
+  // 删除
+  rpc deleteComment(DeleteCommentByIdRequest) returns(DeleteCommentByIdResponse);
+  // 根据 parentId 查找
+  rpc listCommentByParent(ListCommentByParentRequest) returns(ListCommentByParentResponse);
+  // 根据 parentId 统计
+  rpc countCommentByParent(CountCommentByParentRequest) returns(CountCommentByParentResponse);
+  // 根据 id 查找
+  rpc retrieveCommentById(RetrieveCommentByIdRequest) returns(RetrieveCommentByIdResponse);
+  // 根据 authorId & type 查找
+  rpc listCommentByAuthorIdAndType(ListCommentByAuthorIdAndTypeRequest) returns(ListCommentByAuthorIdAndTypeResponse);
+  // 根据 replyTo & type 查找
+  rpc listCommentByReplyToAndType(ListCommentByReplyToAndTypeRequest) returns(ListCommentByReplyToAndTypeResponse);
+
+}

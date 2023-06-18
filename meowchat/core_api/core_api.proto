@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "http/http.proto";
+
+import "meowchat/core_api/sts.proto";
+import "meowchat/core_api/user.proto";
+import "meowchat/core_api/auth.proto";
+import "meowchat/core_api/collection.proto";
+import "meowchat/core_api/comment.proto";
+import "meowchat/core_api/like.proto";
+import "meowchat/core_api/moment.proto";
+import "meowchat/core_api/post.proto";
+
+service sts {
+  rpc ApplySignedUrl(ApplySignedUrlReq) returns (ApplySignedUrlResp){
+    option (http.post) = "/sts/apply_signed_url";
+  }
+  rpc ApplySignedUrlAsCommunity(ApplySignedUrlAsCommunityReq) returns (ApplySignedUrlAsCommunityResp) {
+    option (http.post) = "/sts/apply_signed_url_as_community";
+  }
+}
+
+service user {
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp){
+    option (http.get) = "/user/get_user_info";
+  }
+  rpc UpdateUserInfo(UpdateUserInfoReq) returns (UpdateUserInfoResp){
+    option(http.post) = "/user/update_user_info";
+  }
+  rpc SearchUser(SearchUserReq) returns (SearchUserResp){
+    option(http.get) = "/user/search_user";
+  }
+  rpc SearchUserForAdmin(SearchUserForAdminReq) returns (SearchUserForAdminResp){
+    option(http.get) = "/user/search_user_for_admin";
+  }
+}
+
+service auth {
+  rpc SignIn (SignInReq) returns (SignInResp){
+    option (http.post) = "/auth/sign_in";
+  }
+  rpc SendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp){
+    option (http.post) = "/auth/send_verify_code";
+  }
+  rpc SetPassword(SetPasswordReq) returns (SetPasswordResp){
+    option(http.post) = "/auth/set_password";
+  }
+}
+
+service collection {
+  rpc GetCatPreviews (GetCatPreviewsReq) returns (GetCatPreviewsResp){
+    option (http.get) = "/collection/get_cat_previews";
+  }
+  rpc GetCatDetail(GetCatDetailReq) returns (GetCatDetailResp){
+    option(http.get) = "/collection/get_cat_detail";
+  }
+  rpc NewCat(NewCatReq) returns (NewCatResp){
+    option(http.post) = "/collection/new_cat";
+  }
+  rpc DeleteCat(DeleteCatReq) returns (DeleteCatResp){
+    option(http.post) = "/collection/delete_cat";
+  }
+  rpc SearchCat(SearchCatReq) returns (SearchCatResp){
+    option(http.get) = "/collection/search_cat";
+  }
+  rpc CreateImage(CreateImageReq) returns (CreateImageResp){
+    option(http.post) = "/collection/create_image";
+  }
+  rpc DeleteImage(DeleteImageReq) returns (DeleteImageResp){
+    option(http.post) = "/collection/delete_image";
+  }
+  rpc GetImageByCat(GetImageByCatReq) returns (GetImageByCatResp){
+    option(http.get) = "/collection/get_image_by_cat";
+  }
+}
+
+service comment {
+  rpc GetComments(GetCommentsReq) returns (GetCommentsResp){
+    option(http.get) = "/comment/get_comments";
+  }
+  rpc NewComment(NewCommentReq) returns (NewCommentResp){
+    option(http.post) = "/comment/new_comment";
+  }
+  rpc DeleteComment(DeleteCommentReq) returns (DeleteCommentResp){
+    option(http.post) = "/comment/delete_comment";
+  }
+}
+
+service like {
+  rpc DoLike(DoLikeReq) returns (DoLikeResp){
+    option(http.post) = "/like/do_like";
+  }
+  rpc GetUserLiked(GetUserLikedReq) returns (GetUserLikedResp){
+    option(http.get) = "/like/get_user_liked";
+  }
+  rpc GetLikedCount(GetLikedCountReq) returns (GetLikedCountResp){
+    option(http.get) = "/like/get_count";
+  }
+  rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp){
+    option(http.get) = "/like/get_liked_users";
+  }
+  rpc GetUserLikes(GetUserLikesReq) returns (GetUserLikesResp){
+    option(http.get) = "/like/get_user_likes";
+  }
+}
+
+service moment {
+  rpc GetMomentPreviews(GetMomentPreviewsReq) returns (GetMomentPreviewsResp){
+    option(http.get) = "/moment/get_moment_previews";
+  }
+  rpc GetMomentDetail(GetMomentDetailReq) returns (GetMomentDetailResp){
+    option(http.get) = "/moment/get_moment_detail";
+  }
+  rpc NewMoment(NewMomentReq) returns (NewMomentResp){
+    option(http.post) = "/moment/new_moment";
+  }
+  rpc DeleteMoment(DeleteMomentReq) returns (DeleteMomentResp){
+    option(http.post) = "/moment/delete_moment";
+  }
+  rpc SearchMoment(SearchMomentReq) returns (SearchMomentResp){
+    option(http.get) = "/moment/search_moment";
+  }
+}
+
+service post {
+  rpc GetPostPreviews(GetPostPreviewsReq) returns (GetPostPreviewsResp){
+    option(http.post) = "/post/get_post_previews";
+  }
+  rpc GetPostDetail(GetPostDetailReq) returns (GetPostDetailResp){
+    option(http.get) = "/post/get_post_detail";
+  }
+  rpc NewPost(NewPostReq) returns (NewPostResp){
+    option(http.post) = "/post/new_post";
+  }
+  rpc DeletePost(DeletePostReq) returns (DeletePostResp){
+    option(http.post) = "/post/delete_post";
+  }
+  rpc SetOfficial(SetOfficialReq) returns (SetOfficialResp){
+    option(http.post) = "/post/set_official";
+  }
+}

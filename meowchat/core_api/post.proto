@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "basic/basic.proto";
+import "http/http.proto";
+
+import "meowchat/basic.proto";
+
+message Post {
+  string id = 1;
+  int64 createAt = 2;
+  int64 updateAt = 3;
+  string title = 5;
+  string text = 6;
+  string coverUrl = 7;
+  repeated string tags = 8;
+  UserPreview user = 9;
+  bool isOfficial = 10;
+}
+
+// 多选一
+message SearchOptions {
+  // 查询全部字段
+  optional string key = 1;
+  // 各自匹配对应字段
+  optional string title = 2;
+  optional string text = 3;
+  optional string tag = 4;
+}
+
+message GetPostPreviewsReq {
+  PaginationOptions paginationOption = 1[(http.body) = ",inline"];
+  optional bool onlyOfficial = 2;
+  optional string onlyUserId = 3;
+  optional SearchOptions searchOptions = 4;
+}
+
+message GetPostPreviewsResp {
+  repeated Post posts = 1;
+  int64 total = 2;
+  string token = 3;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message GetPostDetailReq {
+  string postId = 1;
+}
+
+message GetPostDetailResp {
+  Post post = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message NewPostReq {
+  optional string id = 1;
+  string title = 2;
+  string text = 3;
+  string coverUrl = 4;
+  repeated string tags = 5;
+}
+
+message NewPostResp {
+  string postId = 1;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message DeletePostReq {
+  string id = 1;
+}
+
+message DeletePostResp {
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message SetOfficialReq {
+  string postId = 1;
+  optional bool isRemove = 2;
+}
+
+message SetOfficialResp {
+  basic.Status status = 255[(http.body) = ",inline"];
+}

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "http/http.proto";
+import "basic/basic.proto";
+
+message ApplySignedUrlReq {
+  optional string prefix = 1[(http.body) = "prefix"];
+  optional string suffix = 2[(http.body) = "suffix"];
+}
+
+message ApplySignedUrlResp {
+  string url = 1;
+  string sessionToken = 2;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message ApplySignedUrlAsCommunityReq {
+  string communityId = 1;
+  string prefix = 2;
+  string suffix = 3;
+}
+
+message ApplySignedUrlAsCommunityResp {
+  string url = 1;
+  string sessionToken = 2;
+  basic.Status status = 255[(http.body) = ",inline"];
+}

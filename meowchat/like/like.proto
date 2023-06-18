@@ -1,0 +1,158 @@
+syntax = "proto3";
+
+package meowchat.like;
+
+option go_package = "meowchat/like";
+
+import "basic/basic.proto";
+
+import "meowchat/like/common.proto";
+
+message DoLikeReq {
+  string userId = 1;
+
+  // 点赞的目标ID，可以是评论ID，文章ID等
+  string targetId = 2;
+
+  // 点赞的类型，点赞评论、点赞文章等都可以视为点赞的不同类型（类型常量定义在like/types.go）
+  int64 type = 3;
+
+  // 对象所关联的ID，比如评论点赞对应文章ID等
+  string associatedId = 4;
+}
+
+message DoLikeResp {
+  basic.Status status = 255;
+}
+
+message GetUserLikedReq {
+  string userId = 1;
+  string targetId = 2;
+  int64 type = 3;
+}
+
+message GetUserLikedResp {
+  bool liked = 1;
+  basic.Status status = 255;
+}
+
+message GetTargetLikesReq {
+  string targetId = 1;
+  int64 type = 2;
+}
+
+message GetTargetLikesResp {
+  int64 count = 1;
+  basic.Status status = 255;
+}
+
+message GetUserLikesReq {
+  string userId = 1;
+  int64 targetType = 2;
+}
+
+message GetUserLikesResp {
+  repeated Like likes = 1;
+  basic.Status status = 255;
+}
+
+message GetLikedUsersReq {
+  string targetId = 1;
+  int64 targetType = 2;
+}
+
+message GetLikedUsersResp {
+  repeated string userIds = 1;
+  basic.Status status = 255;
+}
+
+// 获取 top k
+message GetTopKReq {
+  int64 k = 1;
+  string type = 2;
+  int64 range = 3;
+}
+message ItemScore {
+  string id = 1;
+  int64 score = 2;
+}
+message GetTopKResp {
+  repeated ItemScore item = 1;
+  basic.Status status = 255;
+}
+
+// 增加分数
+message AddScoreReq {
+  string type = 1;
+  string id = 2;
+  int64 val = 3;
+}
+message AddScoreResp {
+  int64 val = 1;
+  basic.Status status = 255;
+}
+
+message DailyUpdateReq {
+
+}
+
+message DailyUpdateResp {
+  basic.Status status = 255;
+}
+
+// 获取猫咪人气
+message ListCatPopularityReq {
+  repeated string catId = 1;
+}
+
+message CatPop {
+  string catId = 1;
+  int64 popularity = 2;
+}
+
+message ListCatPopularityResp {
+  repeated CatPop cats = 1;
+  basic.Status status = 255;
+}
+
+// 操作猫咪人气
+message AddCatPopularityReq {
+  string catId = 1;
+  int64 val = 2;
+}
+message AddCatPopularityResp {
+  basic.Status status = 255;
+}
+// 查看 topk 猫咪
+message ListTopCatReq {
+  int64 k = 1;
+}
+message ListTopCatResp {
+  repeated CatPop cats = 1;
+  basic.Status status = 255;
+}
+
+service likerpc {
+  // 点赞/取消赞
+  rpc DoLike(DoLikeReq) returns (DoLikeResp);
+  // 获取用户是否点赞
+  rpc GetUserLike(GetUserLikedReq) returns (GetUserLikedResp);
+  // 获取目标点赞数
+  rpc GetTargetLikes(GetTargetLikesReq) returns (GetTargetLikesResp);
+  // 查看用户点赞列表
+  rpc GetUserLikes(GetUserLikesReq) returns (GetUserLikesResp);
+  // 查看喜欢某个东西的用户
+  rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp);
+
+
+  // rankings
+
+  rpc GetTopK(GetTopKReq) returns (GetTopKResp);
+  rpc AddScore(AddScoreReq) returns (AddScoreResp);
+  rpc DailyUpdate(DailyUpdateReq) returns (DailyUpdateResp);
+
+  // popularity
+  rpc ListCatPopularity(ListCatPopularityReq) returns (ListCatPopularityResp);
+  rpc AddCatPopularity(AddCatPopularityReq) returns (AddCatPopularityResp);
+  rpc ListTopCat(ListTopCatReq) returns (ListTopCatResp);
+}

@@ -1,0 +1,65 @@
+syntax = "proto3";
+
+package meowchat.user;
+
+option go_package = "meowchat/user";
+
+import "basic/basic.proto";
+
+import "meowchat/basic.proto";
+
+message UserDetail {
+  string id = 1;
+  string avatarUrl = 2;
+  string nickname = 3;
+  string motto = 4;
+}
+
+message GetUserReq {
+  string userId = 1;
+}
+
+message GetUserResp {
+  UserPreview user = 1;
+  basic.Status status = 255;
+}
+
+message GetUserDetailReq {
+  string userId = 1;
+}
+
+message GetUserDetailResp {
+  UserDetail user = 1;
+  basic.Status status = 255;
+}
+
+message UpdateUserReq {
+  // 如果不更新头像或昵称或其他东西，对应字段留空
+  UserDetail user = 1;
+}
+
+message UpdateUserResp {
+  basic.Status status = 255;
+}
+
+message SearchUserReq {
+  string nickname = 1;
+  optional int64 offset = 2;
+  optional int64 limit = 3;
+  optional bool backward = 4;
+  optional string lastToken = 5;
+}
+
+message SearchUserResp {
+  repeated UserPreview users = 1;
+  int64 total = 2;
+  string token = 3;
+  basic.Status status = 255;
+}
+
+service userRpc {
+  rpc GetUser(GetUserReq) returns (GetUserResp);
+  rpc GetUserDetail(GetUserDetailReq) returns (GetUserDetailResp);
+  rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
+  rpc SearchUser(SearchUserReq) returns (SearchUserResp);
+}

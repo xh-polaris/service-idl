@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "basic/basic.proto";
+import "http/http.proto";
+
+enum AuthType {
+  Wechat = 0;
+  Email = 1;
+  Phone = 2;
+}
+
+message SignInReq {
+  string authType = 1;
+  string authId = 2;
+  optional string password = 3;
+  repeated string params = 4;
+}
+
+message SignInResp {
+  string userId = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message SetPasswordReq {
+  string password = 1;
+}
+
+message SetPasswordResp {
+  basic.Status status = 255[(http.body) = ",inline"];
+}
+
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2;
+}
+
+message SendVerifyCodeResp {
+  basic.Status status = 255[(http.body) = ",inline"];
+}

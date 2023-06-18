@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package meowchat.like;
+
+option go_package = "meowchat/like";
+
+message Like {
+  string targetId = 1;
+  string associatedId = 2;
+}

@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+package basic;
+
+message Status {
+  string msg = 1;
+  int64 code = 2;
+}
