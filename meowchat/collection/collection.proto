@@ -97,7 +97,7 @@ message ListImageResp {
   basic.Status status = 255;
 }
 
-service collection_rpc {
+service collection {
   rpc SearchCat(SearchCatReq) returns (SearchCatResp);
   rpc ListCat(ListCatReq) returns (ListCatResp);
   rpc RetrieveCat(RetrieveCatReq) returns (RetrieveCatResp);

@@ -6,6 +6,7 @@ option go_package = "meowchat/core_api";
 
 import "basic/basic.proto";
 import "http/http.proto";
+import "meowchat/basic.proto";
 
 enum AuthType {
   Wechat = 0;
@@ -29,6 +30,7 @@ message SignInResp {
 
 message SetPasswordReq {
   string password = 1;
+  UserMeta user = 255[(http.header) = "Authorization"];
 }
 
 message SetPasswordResp {

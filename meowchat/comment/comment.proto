@@ -126,7 +126,7 @@ message ListCommentByReplyToAndTypeResponse {
   basic.Status status = 255;
 }
 
-service comment_rpc {
+service comment {
   // 创建
   rpc createComment(CreateCommentRequest) returns(CreateCommentResponse);
   // 修改
