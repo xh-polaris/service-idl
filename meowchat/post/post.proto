@@ -4,9 +4,9 @@ package meowchat.post;
 
 option go_package = "meowchat/post";
 
-import "basic/basic.proto";
+import "base/status.proto";
 
-import "meowchat/basic.proto";
+import "meowchat/basic/basic.proto";
 
 message Post {
   string id = 1;
@@ -31,7 +31,7 @@ message CreatePostReq {
 
 message CreatePostResp {
   string postId = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // retrieve a post
@@ -41,7 +41,7 @@ message RetrievePostReq {
 
 message RetrievePostResp {
   Post post = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 //update a post
@@ -54,7 +54,7 @@ message UpdatePostReq {
 }
 
 message UpdatePostResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // delete a post
@@ -63,7 +63,7 @@ message DeletePostReq {
 }
 
 message DeletePostResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message SearchField {
@@ -88,14 +88,14 @@ message FilterOptions {
 message ListPostReq {
   optional SearchOptions searchOptions = 1;
   optional FilterOptions filterOptions = 2;
-  optional PaginationOptions paginationOptions = 3;
+  optional  basic.PaginationOptions paginationOptions = 3;
 }
 
 message ListPostResp {
   repeated Post posts = 1;
   int64 total = 2;
   string token = 3;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message CountPostReq {
@@ -105,7 +105,7 @@ message CountPostReq {
 
 message CountPostResp {
   int64 total = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message SetOfficialReq {
@@ -114,7 +114,7 @@ message SetOfficialReq {
 }
 
 message SetOfficialResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 service post_rpc {

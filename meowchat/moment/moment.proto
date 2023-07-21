@@ -4,9 +4,9 @@ package meowchat.moment;
 
 option go_package = "meowchat/moment";
 
-import "basic/basic.proto";
+import "base/status.proto";
 
-import "meowchat/basic.proto";
+import "meowchat/basic/basic.proto";
 
 message Moment {
   string id = 1;
@@ -40,14 +40,14 @@ message FilterOptions {
 message ListMomentReq {
   optional SearchOptions searchOptions = 1;
   optional FilterOptions filterOptions = 2;
-  optional PaginationOptions paginationOptions = 3;
+  optional  basic.PaginationOptions paginationOptions = 3;
 }
 
 message ListMomentResp {
   repeated Moment moments = 1;
   int64 total = 2;
   string token = 3;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message CountMomentReq {
@@ -57,7 +57,7 @@ message CountMomentReq {
 
 message CountMomentResp {
   int64 total = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message RetrieveMomentReq {
@@ -66,7 +66,7 @@ message RetrieveMomentReq {
 
 message RetrieveMomentResp {
   Moment moment = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message CreateMomentReq {
@@ -75,7 +75,7 @@ message CreateMomentReq {
 
 message CreateMomentResp {
   string momentId = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message UpdateMomentReq {
@@ -83,7 +83,7 @@ message UpdateMomentReq {
 }
 
 message UpdateMomentResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message DeleteMomentReq {
@@ -91,7 +91,7 @@ message DeleteMomentReq {
 }
 
 message DeleteMomentResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 service moment_rpc {

@@ -5,7 +5,7 @@ package meowchat.core_api;
 option go_package = "meowchat/core_api";
 
 import "http/http.proto";
-import "basic/basic.proto";
+import "base/status.proto";
 
 message ApplySignedUrlReq {
   optional string prefix = 1[(http.body) = "prefix"];
@@ -15,7 +15,7 @@ message ApplySignedUrlReq {
 message ApplySignedUrlResp {
   string url = 1;
   string sessionToken = 2;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message ApplySignedUrlAsCommunityReq {
@@ -27,5 +27,5 @@ message ApplySignedUrlAsCommunityReq {
 message ApplySignedUrlAsCommunityResp {
   string url = 1;
   string sessionToken = 2;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }

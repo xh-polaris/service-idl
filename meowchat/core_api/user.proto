@@ -4,9 +4,9 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "basic/basic.proto";
+import "base/status.proto";
 import "http/http.proto";
-import "meowchat/basic.proto";
+import "meowchat/basic/basic.proto";
 
 message User {
   string id = 1;
@@ -20,8 +20,8 @@ message User {
 }
 
 message UserPreviewWithRole {
-  UserPreview user = 1[(http.body) = ",inline"];
-  repeated Role roles = 2;
+  basic.UserPreview user = 1[(http.body) = ",inline"];
+  repeated basic.Role roles = 2;
 }
 
 message GetUserInfoReq {
@@ -30,7 +30,7 @@ message GetUserInfoReq {
 
 message GetUserInfoResp {
   User user = 1;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message UpdateUserInfoReq {
@@ -40,28 +40,29 @@ message UpdateUserInfoReq {
 }
 
 message UpdateUserInfoResp {
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message SearchUserReq {
   string keyword = 1;
-  PaginationOptions paginationOption = 2[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 2[(http.body) = ",inline"];
 }
 
 message SearchUserResp {
-  repeated UserPreview users = 1;
+  repeated basic.UserPreview users = 1;
   int64 total = 2;
   string token = 3;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message SearchUserForAdminReq {
-  SearchOptions searchOption = 1[(http.body) = ",inline"];
+  string keyword = 1;
+  basic.PaginationOptions paginationOption = 2[(http.body) = ",inline"];
 }
 
 message SearchUserForAdminResp {
   repeated UserPreviewWithRole users = 1;
   int64 total = 2;
   string token = 3;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }

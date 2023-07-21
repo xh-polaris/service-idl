@@ -4,7 +4,7 @@ package meowchat.like;
 
 option go_package = "meowchat/like";
 
-import "basic/basic.proto";
+import "base/status.proto";
 
 import "meowchat/like/common.proto";
 
@@ -22,7 +22,7 @@ message DoLikeReq {
 }
 
 message DoLikeResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message GetUserLikedReq {
@@ -33,7 +33,7 @@ message GetUserLikedReq {
 
 message GetUserLikedResp {
   bool liked = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message GetTargetLikesReq {
@@ -43,7 +43,7 @@ message GetTargetLikesReq {
 
 message GetTargetLikesResp {
   int64 count = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message GetUserLikesReq {
@@ -53,7 +53,7 @@ message GetUserLikesReq {
 
 message GetUserLikesResp {
   repeated Like likes = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message GetLikedUsersReq {
@@ -63,7 +63,7 @@ message GetLikedUsersReq {
 
 message GetLikedUsersResp {
   repeated string userIds = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 获取 top k
@@ -78,7 +78,7 @@ message ItemScore {
 }
 message GetTopKResp {
   repeated ItemScore item = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 增加分数
@@ -89,7 +89,7 @@ message AddScoreReq {
 }
 message AddScoreResp {
   int64 val = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message DailyUpdateReq {
@@ -97,7 +97,7 @@ message DailyUpdateReq {
 }
 
 message DailyUpdateResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 获取猫咪人气
@@ -112,7 +112,7 @@ message CatPop {
 
 message ListCatPopularityResp {
   repeated CatPop cats = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 操作猫咪人气
@@ -121,7 +121,7 @@ message AddCatPopularityReq {
   int64 val = 2;
 }
 message AddCatPopularityResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 // 查看 topk 猫咪
 message ListTopCatReq {
@@ -129,7 +129,7 @@ message ListTopCatReq {
 }
 message ListTopCatResp {
   repeated CatPop cats = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 service likerpc {
