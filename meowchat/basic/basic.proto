@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package meowchat;
+package meowchat.basic;
 
-option go_package = "meowchat";
+option go_package = "meowchat/basic";
 
 message UserMeta {
   string userID = 1;
@@ -12,6 +12,7 @@ message UserMeta {
   int64 sessionAppID = 5;
   string sessionDeviceID = 6;
   bool isLogin = 7;
+  optional WechatUserMeta wechatUserMeta = 8;
 }
 
 enum DevicePlatform {
@@ -33,10 +34,11 @@ message Extra {
   string operateSystem = 7;
 }
 
-message WechatInfo {
+message WechatUserMeta {
   string appID = 1;
   string openID = 2;
-  string unionID = 3;
+  string platformID = 3;
+  string unionID = 4;
 }
 
 message UserPreview {
@@ -56,11 +58,4 @@ message PaginationOptions {
   optional string lastToken = 3;
   optional bool backward = 4;
   optional int64 offset = 5;
-}
-
-message SearchOptions {
-  string keyword = 1;
-  int64 page = 2;
-  optional int64 limit = 3;
-  optional string lastToken = 4;
 }

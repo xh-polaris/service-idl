@@ -5,7 +5,7 @@ package http;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "http";
+option go_package = "base";
 
 extend google.protobuf.FieldOptions {
   optional string raw_body = 50101;

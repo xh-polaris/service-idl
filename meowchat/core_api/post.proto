@@ -4,10 +4,10 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "basic/basic.proto";
+import "base/status.proto";
 import "http/http.proto";
 
-import "meowchat/basic.proto";
+import "meowchat/basic/basic.proto";
 
 message Post {
   string id = 1;
@@ -17,7 +17,7 @@ message Post {
   string text = 6;
   string coverUrl = 7;
   repeated string tags = 8;
-  UserPreview user = 9;
+  basic.UserPreview user = 9;
   bool isOfficial = 10;
 }
 
@@ -32,7 +32,7 @@ message SearchOptions {
 }
 
 message GetPostPreviewsReq {
-  PaginationOptions paginationOption = 1[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 1[(http.body) = ",inline"];
   optional bool onlyOfficial = 2;
   optional string onlyUserId = 3;
   optional SearchOptions searchOptions = 4;
@@ -42,7 +42,7 @@ message GetPostPreviewsResp {
   repeated Post posts = 1;
   int64 total = 2;
   string token = 3;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message GetPostDetailReq {
@@ -51,7 +51,7 @@ message GetPostDetailReq {
 
 message GetPostDetailResp {
   Post post = 1;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message NewPostReq {
@@ -64,7 +64,7 @@ message NewPostReq {
 
 message NewPostResp {
   string postId = 1;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message DeletePostReq {
@@ -72,7 +72,7 @@ message DeletePostReq {
 }
 
 message DeletePostResp {
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message SetOfficialReq {
@@ -81,5 +81,5 @@ message SetOfficialReq {
 }
 
 message SetOfficialResp {
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }

@@ -1,8 +1,10 @@
 syntax = "proto3";
 
-package system;
+package meowchat.system;
 
-option go_package = './pb';
+option go_package = 'meowchat/system';
+
+import "meowchat/basic/basic.proto";
 
 // ////////////////////////
 // /         公告         /
@@ -208,13 +210,13 @@ message RetrieveUserRoleReq {
 }
 
 message RetrieveUserRoleResp {
-  repeated Role roles = 1;
+  repeated basic.Role roles = 1;
 }
 
 message UpdateUserRoleReq {
   string userId = 1;
   // roles为用户增加/删除角色后所拥有的所有的角色
-  repeated Role roles = 2;
+  repeated basic.Role roles = 2;
 }
 
 message UpdateUserRoleResp {
@@ -227,7 +229,7 @@ message UpdateUserRoleResp {
  */
 message ContainsRoleReq {
   string userId = 1;
-  Role role = 2;
+  basic.Role role = 2;
   // 是否允许超级管理员，如果为true并且用户为超级管理员则不校验role
   bool allowSuperAdmin = 3;
 }

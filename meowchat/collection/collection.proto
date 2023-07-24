@@ -4,12 +4,12 @@ package meowchat.collection;
 
 option go_package = "meowchat/collection";
 
-import "basic/basic.proto";
+import "base/status.proto";
 import "meowchat/collection/common.proto";
 
 message SearchCatReq {
   int64 count = 1; // 获取的数量
-  int64 skip = 2;//跳过前skip个
+  int64 skip = 2; //跳过前skip个
   string communityId = 3;
   string keyword = 4;
 }
@@ -17,7 +17,7 @@ message SearchCatReq {
 message SearchCatResp {
   repeated Cat cats = 1;
   int64 total = 2;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message ListCatReq {
@@ -29,7 +29,7 @@ message ListCatReq {
 message ListCatResp {
   repeated Cat cats = 1;
   int64 total = 2;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message RetrieveCatReq {
@@ -38,7 +38,7 @@ message RetrieveCatReq {
 
 message RetrieveCatResp {
   Cat cat = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message CreateCatReq {
@@ -47,7 +47,7 @@ message CreateCatReq {
 
 message CreateCatResp {
   string catId = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message UpdateCatReq {
@@ -55,7 +55,7 @@ message UpdateCatReq {
 }
 
 message UpdateCatResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message DeleteCatReq {
@@ -63,7 +63,7 @@ message DeleteCatReq {
 }
 
 message DeleteCatResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message CreateImageReq {
@@ -72,7 +72,7 @@ message CreateImageReq {
 
 message CreateImageResp {
   repeated string imageIds = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message DeleteImageReq {
@@ -80,7 +80,7 @@ message DeleteImageReq {
 }
 
 message DeleteImageResp {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 message ListImageReq {
@@ -94,10 +94,10 @@ message ListImageReq {
 message ListImageResp {
   repeated Image images = 1;
   int64 total = 2;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
-service collection_rpc {
+service collection {
   rpc SearchCat(SearchCatReq) returns (SearchCatResp);
   rpc ListCat(ListCatReq) returns (ListCatResp);
   rpc RetrieveCat(RetrieveCatReq) returns (RetrieveCatResp);

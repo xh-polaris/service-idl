@@ -4,13 +4,16 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "basic/basic.proto";
+import "base/status.proto";
 import "http/http.proto";
+
+import "meowchat/basic/basic.proto";
 
 enum AuthType {
   Wechat = 0;
   Email = 1;
   Phone = 2;
+  E=3;
 }
 
 message SignInReq {
@@ -24,15 +27,16 @@ message SignInResp {
   string userId = 1;
   string accessToken = 2;
   int64 accessExpire = 3;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message SetPasswordReq {
   string password = 1;
+  basic.UserMeta user = 255[(http.header) = "Authorization"];
 }
 
 message SetPasswordResp {
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message SendVerifyCodeReq {
@@ -41,5 +45,5 @@ message SendVerifyCodeReq {
 }
 
 message SendVerifyCodeResp {
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }

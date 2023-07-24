@@ -4,10 +4,10 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "basic/basic.proto";
+import "base/status.proto";
 import "http/http.proto";
 
-import "meowchat/basic.proto";
+import "meowchat/basic/basic.proto";
 
 message Moment {
   string id = 1;
@@ -17,20 +17,20 @@ message Moment {
   string title = 5;
   string text = 6;
   string communityId = 7;
-  UserPreview userId = 8;
+  basic.UserPreview userId = 8;
 }
 
 message GetMomentPreviewsReq {
   optional string communityId = 1;
   optional bool isParent = 2;
   optional string onlyUserId = 3;
-  PaginationOptions paginationOption = 4[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 4[(http.body) = ",inline"];
 }
 
 message GetMomentPreviewsResp {
   repeated Moment moments = 1;
   int64 total = 2;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message GetMomentDetailReq {
@@ -39,7 +39,7 @@ message GetMomentDetailReq {
 
 message GetMomentDetailResp {
   Moment moment = 1;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message DeleteMomentReq {
@@ -47,7 +47,7 @@ message DeleteMomentReq {
 }
 
 message DeleteMomentResp {
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message NewMomentReq {
@@ -61,7 +61,7 @@ message NewMomentReq {
 
 message NewMomentResp {
   string momentId = 1;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message SearchMomentReq {
@@ -69,11 +69,11 @@ message SearchMomentReq {
   optional bool isParent = 2;
   optional string onlyUserId = 3;
   optional string keyword = 4;
-  PaginationOptions paginationOption = 5[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 5[(http.body) = ",inline"];
 }
 
 message SearchMomentResp {
   repeated Moment moments = 1;
   int64 total = 2;
-  basic.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255[(http.body) = ",inline"];
 }

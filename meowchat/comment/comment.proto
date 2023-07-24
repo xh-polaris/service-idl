@@ -4,7 +4,7 @@ package meowchat.comment;
 
 option go_package = "meowchat/comment";
 
-import "basic/basic.proto";
+import "base/status.proto";
 
 message Comment {
   string id = 1;
@@ -29,7 +29,7 @@ message CreateCommentRequest {
 
 message CreateCommentResponse {
   string id = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 更新评论
@@ -40,7 +40,7 @@ message UpdateCommentRequest {
 }
 
 message UpdateCommentResponse {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 //根据 Id 删除评论
@@ -49,7 +49,7 @@ message DeleteCommentByIdRequest {
 }
 
 message DeleteCommentByIdResponse {
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 根据 parentId 查找所有评论
@@ -65,7 +65,7 @@ message ListCommentByParentRequest {
 message ListCommentByParentResponse {
   repeated Comment comments = 1;
   int64 total = 2;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 根据 parentId 查找所有评论
@@ -78,7 +78,7 @@ message CountCommentByParentRequest {
 
 message CountCommentByParentResponse {
   int64 total = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 根据 id 查找 comment
@@ -91,7 +91,7 @@ message RetrieveCommentByIdRequest {
 
 message RetrieveCommentByIdResponse {
   Comment comment = 1;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 
@@ -108,7 +108,7 @@ message ListCommentByAuthorIdAndTypeRequest {
 message ListCommentByAuthorIdAndTypeResponse {
   repeated Comment comments = 1;
   int64 total = 2;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
 // 根据 replyTo & type 查找
@@ -123,10 +123,10 @@ message ListCommentByReplyToAndTypeRequest {
 message ListCommentByReplyToAndTypeResponse {
   repeated Comment comments = 1;
   int64 total = 2;
-  basic.Status status = 255;
+  base.Status status = 255;
 }
 
-service comment_rpc {
+service comment {
   // 创建
   rpc createComment(CreateCommentRequest) returns(CreateCommentResponse);
   // 修改
