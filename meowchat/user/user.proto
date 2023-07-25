@@ -57,7 +57,7 @@ message SearchUserResp {
   base.Status status = 255;
 }
 
-service userRpc {
+service UserService {
   rpc GetUser(GetUserReq) returns (GetUserResp);
   rpc GetUserDetail(GetUserDetailReq) returns (GetUserDetailResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
