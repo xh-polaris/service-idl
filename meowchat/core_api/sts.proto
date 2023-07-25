@@ -15,7 +15,7 @@ message ApplySignedUrlReq {
 message ApplySignedUrlResp {
   string url = 1;
   string sessionToken = 2;
-  base.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255;
 }
 
 message ApplySignedUrlAsCommunityReq {
@@ -27,5 +27,5 @@ message ApplySignedUrlAsCommunityReq {
 message ApplySignedUrlAsCommunityResp {
   string url = 1;
   string sessionToken = 2;
-  base.Status status = 255[(http.body) = ",inline"];
+  base.Status status = 255;
 }
