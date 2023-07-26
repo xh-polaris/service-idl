@@ -4,7 +4,6 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "base/status.proto";
 import "http/http.proto";
 
 import "meowchat/basic/basic.proto";
@@ -42,7 +41,6 @@ message GetPostPreviewsResp {
   repeated Post posts = 1;
   int64 total = 2;
   string token = 3;
-  base.Status status = 255;
 }
 
 message GetPostDetailReq {
@@ -51,7 +49,6 @@ message GetPostDetailReq {
 
 message GetPostDetailResp {
   Post post = 1;
-  base.Status status = 255;
 }
 
 message NewPostReq {
@@ -64,7 +61,6 @@ message NewPostReq {
 
 message NewPostResp {
   string postId = 1;
-  base.Status status = 255;
 }
 
 message DeletePostReq {
@@ -72,7 +68,6 @@ message DeletePostReq {
 }
 
 message DeletePostResp {
-  base.Status status = 255;
 }
 
 message SetOfficialReq {
@@ -81,5 +76,4 @@ message SetOfficialReq {
 }
 
 message SetOfficialResp {
-  base.Status status = 255;
 }

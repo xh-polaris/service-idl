@@ -5,12 +5,12 @@ package meowchat.basic;
 option go_package = "meowchat/basic";
 
 message UserMeta {
-  string userID = 1;
-  int64 appID = 2;
-  string deviceID = 3;
-  string sessionUserID = 4;
-  int64 sessionAppID = 5;
-  string sessionDeviceID = 6;
+  string userId = 1;
+  int64 appId = 2;
+  string deviceId = 3;
+  string sessionUserId = 4;
+  int64 sessionAppId = 5;
+  string sessionDeviceId = 6;
   bool isLogin = 7;
   optional WechatUserMeta wechatUserMeta = 8;
 }
@@ -30,15 +30,15 @@ message Extra {
   string resolution = 3; // 像素比
   string devicePlatform = 4; // 设备平台
   string deviceBrand = 5; // 设备品牌
-  string deviceID = 6;
+  string deviceId = 6;
   string operateSystem = 7;
 }
 
 message WechatUserMeta {
-  string appID = 1;
-  string openID = 2;
-  string platformID = 3;
-  string unionID = 4;
+  string appId = 1;
+  string openId = 2;
+  string platformId = 3;
+  string unionId = 4;
 }
 
 message UserPreview {

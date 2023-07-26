@@ -4,7 +4,6 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "base/status.proto";
 import "http/http.proto";
 
 import "meowchat/basic/basic.proto";
@@ -26,7 +25,6 @@ message NewCommentReq {
 }
 
 message NewCommentResp {
-  base.Status status = 255;
 }
 
 message GetCommentsReq {
@@ -39,7 +37,6 @@ message GetCommentsReq {
 message GetCommentsResp {
   repeated Comment comments = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
 
 message DeleteCommentReq {
@@ -47,5 +44,4 @@ message DeleteCommentReq {
 }
 
 message DeleteCommentResp {
-  base.Status status = 255;
 }

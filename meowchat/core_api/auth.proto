@@ -4,7 +4,6 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "base/status.proto";
 import "http/http.proto";
 
 import "meowchat/basic/basic.proto";
@@ -26,7 +25,6 @@ message SignInResp {
   string userId = 1;
   string accessToken = 2;
   int64 accessExpire = 3;
-  base.Status status = 255;
 }
 
 message SetPasswordReq {
@@ -35,7 +33,6 @@ message SetPasswordReq {
 }
 
 message SetPasswordResp {
-  base.Status status = 255;
 }
 
 message SendVerifyCodeReq {
@@ -44,5 +41,4 @@ message SendVerifyCodeReq {
 }
 
 message SendVerifyCodeResp {
-  base.Status status = 255;
 }

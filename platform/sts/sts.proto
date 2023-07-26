@@ -4,7 +4,6 @@ package platform.sts;
 
 option go_package = 'platform/sts';
 
-import "base/status.proto";
 
 message GenCosStsReq {
   string path = 1;
@@ -16,7 +15,6 @@ message GenCosStsResp {
   string sessionToken = 3;
   int64 expiredTime = 4;
   int64 startTime = 5;
-  base.Status status = 255;
 }
 
 message GenSignedUrlReq {
@@ -28,7 +26,6 @@ message GenSignedUrlReq {
 
 message GenSignedUrlResp {
   string signedUrl = 1;
-  base.Status status = 255;
 }
 
 message DeleteObjectReq {
@@ -36,7 +33,6 @@ message DeleteObjectReq {
 }
 
 message DeleteObjectResp {
-  base.Status status = 255;
 }
 
 //app值为meowchat,old,manager
@@ -47,7 +43,6 @@ message GetAccessTokenReq {
 message GetAccessTokenResp {
   string accessToken = 1 ;
   int64 expiresIn = 2;
-  base.Status status = 255;
 }
 
 

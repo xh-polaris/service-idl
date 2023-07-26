@@ -4,7 +4,6 @@ package meowchat.user;
 
 option go_package = "meowchat/user";
 
-import "base/status.proto";
 
 import "meowchat/basic/basic.proto";
 
@@ -21,7 +20,6 @@ message GetUserReq {
 
 message GetUserResp {
   basic.UserPreview user = 1;
-  base.Status status = 255;
 }
 
 message GetUserDetailReq {
@@ -30,7 +28,6 @@ message GetUserDetailReq {
 
 message GetUserDetailResp {
   UserDetail user = 1;
-  base.Status status = 255;
 }
 
 message UpdateUserReq {
@@ -39,7 +36,6 @@ message UpdateUserReq {
 }
 
 message UpdateUserResp {
-  base.Status status = 255;
 }
 
 message SearchUserReq {
@@ -54,7 +50,6 @@ message SearchUserResp {
   repeated basic.UserPreview users = 1;
   int64 total = 2;
   string token = 3;
-  base.Status status = 255;
 }
 
 service UserService {

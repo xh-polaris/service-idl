@@ -4,7 +4,6 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "base/status.proto";
 import "http/http.proto";
 
 import "meowchat/collection/common.proto";
@@ -27,7 +26,6 @@ message GetCatPreviewsReq {
 message GetCatPreviewsResp {
   repeated CatPreview cats = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
 
 message  GetCatDetailReq {
@@ -36,7 +34,6 @@ message  GetCatDetailReq {
 
 message GetCatDetailResp {
   collection.Cat cat = 1;
-  base.Status status = 255;
 }
 
 message DeleteCatReq {
@@ -44,7 +41,6 @@ message DeleteCatReq {
 }
 
 message DeleteCatResp {
-  base.Status status = 255;
 }
 
 message NewCatReq {
@@ -63,7 +59,6 @@ message NewCatReq {
 
 message NewCatResp {
   string catId = 1;
-  base.Status status = 255;
 }
 
 message SearchCatReq {
@@ -75,7 +70,6 @@ message SearchCatReq {
 message SearchCatResp {
   repeated CatPreview cats = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
 
 
@@ -85,7 +79,6 @@ message CreateImageReq {
 
 message CreateImageResp {
   repeated string imageIds = 1;
-  base.Status status = 255;
 }
 
 message DeleteImageReq {
@@ -93,7 +86,6 @@ message DeleteImageReq {
 }
 
 message DeleteImageResp {
-  base.Status status = 255;
 }
 
 message GetImageByCatReq {
@@ -107,5 +99,4 @@ message GetImageByCatReq {
 message GetImageByCatResp {
   repeated collection.Image images = 1;
   int64 total = 2;
-  base.Status status = 255;
 }

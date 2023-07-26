@@ -4,7 +4,6 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "base/status.proto";
 import "http/http.proto";
 
 import "meowchat/basic/basic.proto";
@@ -30,7 +29,6 @@ message GetMomentPreviewsReq {
 message GetMomentPreviewsResp {
   repeated Moment moments = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
 
 message GetMomentDetailReq {
@@ -39,7 +37,6 @@ message GetMomentDetailReq {
 
 message GetMomentDetailResp {
   Moment moment = 1;
-  base.Status status = 255;
 }
 
 message DeleteMomentReq {
@@ -47,7 +44,6 @@ message DeleteMomentReq {
 }
 
 message DeleteMomentResp {
-  base.Status status = 255;
 }
 
 message NewMomentReq {
@@ -61,7 +57,6 @@ message NewMomentReq {
 
 message NewMomentResp {
   string momentId = 1;
-  base.Status status = 255;
 }
 
 message SearchMomentReq {
@@ -75,5 +70,4 @@ message SearchMomentReq {
 message SearchMomentResp {
   repeated Moment moments = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
