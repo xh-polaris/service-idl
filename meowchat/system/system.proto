@@ -6,12 +6,6 @@ option go_package = 'meowchat/system';
 
 import "meowchat/system/common.proto";
 
-// ////////////////////////
-// /         公告         /
-// ////////////////////////
-
-
-
 message RetrieveNoticeReq {
   string id = 1;
 }
@@ -87,6 +81,7 @@ message CreateNewsReq {
   string imageUrl = 2;
   string linkUrl = 3;
   string type = 4;
+  int64 isPublic = 5;
 }
 
 message CreateNewsResp {
@@ -98,6 +93,7 @@ message UpdateNewsReq {
   string imageUrl = 2;
   string linkUrl = 3;
   string type = 4;
+  int64 isPublic =5 ;
 }
 
 message UpdateNewsResp {
@@ -123,7 +119,19 @@ message RetrieveAdminReq {
 message RetrieveAdminResp {
   Admin admin = 1;
 }
+message HandleApplyReq{
+  string applyId=1;
+  bool isRejected=3;
+}
+message HandleApplyResp{
 
+}
+message ListApplyReq{
+  string communityId=1;
+}
+message ListApplyResp{
+  repeated Apply apply=1;
+}
 message ListAdminReq {
   string communityId = 1;
   int64 page = 2; // 分页的当前页，从1开始
@@ -182,7 +190,13 @@ message RetrieveUserRoleReq {
 message RetrieveUserRoleResp {
   repeated Role roles = 1;
 }
+message CreateApplyReq{
+  string applicantId=1;
+  string communityId=2;
+}
+message CreateApplyResp{
 
+}
 message UpdateUserRoleReq {
   string userId = 1;
   // roles为用户增加/删除角色后所拥有的所有的角色
@@ -259,9 +273,18 @@ message DeleteCommunityResp {
 
 }
 
-service SystemService {
-  // 公告
+message ListUserIdByRoleReq {
+  string roleType = 1;
+  string communityId =2;
+  //如果为roleType为superAdmin则为空值
+}
 
+message ListUserIdByRoleResp {
+  repeated string userId = 1;
+}
+
+service system_rpc {
+  // 公告
   rpc RetrieveNotice(RetrieveNoticeReq) returns (RetrieveNoticeResp);
   rpc ListNotice(ListNoticeReq) returns (ListNoticeResp);
   rpc CreateNotice(CreateNoticeReq) returns (CreateNoticeResp);
@@ -269,15 +292,13 @@ service SystemService {
   rpc DeleteNotice(DeleteNoticeReq) returns (DeleteNoticeResp);
 
   // 轮播图
-
   rpc RetrieveNews(RetrieveNewsReq) returns (RetrieveNewsResp);
   rpc ListNews(ListNewsReq) returns (ListNewsResp);
   rpc CreateNews(CreateNewsReq) returns (CreateNewsResp);
   rpc UpdateNews(UpdateNewsReq) returns (UpdateNewsResp);
   rpc DeleteNews(DeleteNewsReq) returns (DeleteNewsResp);
 
-  // 管理员
-
+  // 社区联系人
   rpc RetrieveAdmin(RetrieveAdminReq) returns (RetrieveAdminResp);
   rpc ListAdmin(ListAdminReq) returns (ListAdminResp);
   rpc CreateAdmin(CreateAdminReq) returns (CreateAdminResp);
@@ -285,19 +306,18 @@ service SystemService {
   rpc DeleteAdmin(DeleteAdminReq) returns (DeleteAdminResp);
 
   // 用户角色
-
-  // 获取用户的所有角色
   rpc RetrieveUserRole(RetrieveUserRoleReq) returns (RetrieveUserRoleResp);
-  // 更新用户的角色
+  rpc ListUserIdByRole(ListUserIdByRoleReq) returns (ListUserIdByRoleResp);
   rpc UpdateUserRole(UpdateUserRoleReq) returns (UpdateUserRoleResp);
   rpc ContainsRole(ContainsRoleReq) returns (ContainsRoleResp);
+  rpc CreateApply(CreateApplyReq) returns (CreateApplyResp);
+  rpc HandleApply(HandleApplyReq) returns (HandleApplyResp);
+  rpc ListApply(ListApplyReq) returns (ListApplyResp);
 
   // 社区
-
   rpc RetrieveCommunity(RetrieveCommunityReq) returns (RetrieveCommunityResp);
   rpc ListCommunity(ListCommunityReq) returns (ListCommunityResp);
   rpc CreateCommunity(CreateCommunityReq) returns (CreateCommunityResp);
   rpc UpdateCommunity(UpdateCommunityReq) returns (UpdateCommunityResp);
   rpc DeleteCommunity(DeleteCommunityReq) returns (DeleteCommunityResp);
-
 }

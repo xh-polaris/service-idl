@@ -120,31 +120,37 @@ message DeleteNewsReq {
 message DeleteNewsResp {
 
 }
-message ApplyInfo{
+
+message ApplyInfo {
   string applyId = 1;
   user.UserPreview user = 2;
-
 }
-message CreateApplyReq{
+
+message CreateApplyReq {
   string communityId = 1;
 }
-message CreateApplyResp{
+
+message CreateApplyResp {
 
 }
-message ListApplyReq{
+
+message ListApplyReq {
   string communityId = 1;
 }
-message ListApplyResp{
 
+message ListApplyResp {
   repeated ApplyInfo applyInfo = 1;
 }
-message HandleApplyReq{
+
+message HandleApplyReq {
   string applyId = 1;
   bool isRejected = 2;
 }
-message HandleApplyResp{
+
+message HandleApplyResp {
 
 }
+
 // Community
 
 message Community {
@@ -212,5 +218,14 @@ message RetrieveUserPreviewReq {
 }
 
 message RetrieveUserPreviewResp {
+  repeated user.UserPreview users = 1;
+}
+
+message GetUserByRoleReq {
+  string roleType = 1;
+  string communityId = 2;
+}
+
+message GetUserByRoleResp {
   repeated user.UserPreview users = 1;
 }

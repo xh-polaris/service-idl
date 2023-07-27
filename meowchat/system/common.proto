@@ -40,3 +40,9 @@ message Role {
   string roleType = 1;
   optional string communityId = 2;
 }
+
+message Apply {
+  string applyId = 1;
+  string applicantId = 2;
+  string communityId = 4;
+}

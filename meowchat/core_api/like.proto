@@ -6,7 +6,6 @@ option go_package = "meowchat/core_api";
 
 import "http/http.proto";
 
-import "meowchat/like/common.proto";
 import "meowchat/user/common.proto";
 
 message DoLikeReq {
@@ -41,7 +40,7 @@ message GetUserLikesReq {
 }
 
 message GetUserLikesResp {
-  repeated like.Like likes = 1;
+  repeated user.Like likes = 1;
 }
 
 message GetLikedUsersReq {

@@ -6,7 +6,7 @@ option go_package = "meowchat/core_api";
 
 import "http/http.proto";
 
-import "meowchat/collection/common.proto";
+import "meowchat/content/common.proto";
 import "basic/pagination.proto";
 
 message CatPreview {
@@ -33,7 +33,7 @@ message  GetCatDetailReq {
 }
 
 message GetCatDetailResp {
-  collection.Cat cat = 1;
+  content.Cat cat = 1;
 }
 
 message DeleteCatReq {
@@ -74,7 +74,7 @@ message SearchCatResp {
 
 
 message CreateImageReq {
-  repeated collection.CreateImageElement images = 1;
+  repeated content.CreateImageElement images = 1;
 }
 
 message CreateImageResp {
@@ -97,6 +97,6 @@ message GetImageByCatReq {
 }
 
 message GetImageByCatResp {
-  repeated collection.Image images = 1;
+  repeated content.Image images = 1;
   int64 total = 2;
 }
