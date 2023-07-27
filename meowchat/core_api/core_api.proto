@@ -5,6 +5,7 @@ package meowchat.core_api;
 option go_package = "meowchat/core_api";
 
 import "http/http.proto";
+import "basic/user.proto";
 
 import "meowchat/core_api/sts.proto";
 import "meowchat/core_api/user.proto";

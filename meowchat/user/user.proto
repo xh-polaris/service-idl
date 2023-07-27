@@ -8,13 +8,6 @@ import "basic/user.proto";
 
 import "meowchat/user/common.proto";
 
-message UserDetail {
-  string id = 1;
-  string avatarUrl = 2;
-  string nickname = 3;
-  string motto = 4;
-}
-
 message GetUserReq {
   string userId = 1;
 }

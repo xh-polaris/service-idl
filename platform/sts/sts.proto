@@ -6,6 +6,8 @@ option go_package = 'platform/sts';
 
 import "basic/user.proto";
 
+import "platform/sts/common.proto";
+
 message GenCosStsReq {
   string path = 1;
 }
@@ -39,6 +41,8 @@ message DeleteObjectResp {
 message TextCheckReq {
   string text = 1;
   basic.UserMeta user = 2;
+  Scene scene = 3;
+  optional string title = 4;
 }
 
 message TextCheckResp {

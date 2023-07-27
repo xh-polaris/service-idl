@@ -4,21 +4,11 @@ package meowchat.comment;
 
 option go_package = "meowchat/comment";
 
-
-message Comment {
-  string id = 1;
-  string text = 2;
-  string authorId = 3;
-  string replyTo = 4;
-  string type = 5;
-  string parentId = 6;
-  int64 updateAt = 7;
-  int64 createAt = 8;
-}
+import "meowchat/comment/common.proto";
 
 // 创建评论
 
-message CreateCommentRequest {
+message CreateCommentReq {
   string text = 1;
   string authorId = 2;
   string replyTo = 3;
@@ -26,39 +16,39 @@ message CreateCommentRequest {
   string parentId = 5;
 }
 
-message CreateCommentResponse {
+message CreateCommentResp {
   string id = 1;
 }
 
 // 更新评论
 
-message UpdateCommentRequest {
+message UpdateCommentReq {
   string id = 1;
   string text = 2;
 }
 
-message UpdateCommentResponse {
+message UpdateCommentResp {
 }
 
 //根据 Id 删除评论
-message DeleteCommentByIdRequest {
+message DeleteCommentByIdReq {
   string id = 1;
 }
 
-message DeleteCommentByIdResponse {
+message DeleteCommentByIdResp {
 }
 
 // 根据 parentId 查找所有评论
 
 
-message ListCommentByParentRequest {
+message ListCommentByParentReq {
   string type = 1;
   string parentId = 2;
   int64 skip = 3;
   int64 limit = 4;
 }
 
-message ListCommentByParentResponse {
+message ListCommentByParentResp {
   repeated Comment comments = 1;
   int64 total = 2;
 }
@@ -66,12 +56,12 @@ message ListCommentByParentResponse {
 // 根据 parentId 查找所有评论
 
 
-message CountCommentByParentRequest {
+message CountCommentByParentReq {
   string type = 1;
   string parentId = 2;
 }
 
-message CountCommentByParentResponse {
+message CountCommentByParentResp {
   int64 total = 1;
 }
 
@@ -79,11 +69,11 @@ message CountCommentByParentResponse {
 
 
 
-message RetrieveCommentByIdRequest {
+message RetrieveCommentByIdReq {
   string id = 1;
 }
 
-message RetrieveCommentByIdResponse {
+message RetrieveCommentByIdResp {
   Comment comment = 1;
 }
 
@@ -91,48 +81,48 @@ message RetrieveCommentByIdResponse {
 // 根据 authorId & type 查找
 
 
-message ListCommentByAuthorIdAndTypeRequest {
+message ListCommentByAuthorIdAndTypeReq {
   string authorId = 1;
   string type = 2;
   int64 skip = 3;
   int64 limit = 4;
 }
 
-message ListCommentByAuthorIdAndTypeResponse {
+message ListCommentByAuthorIdAndTypeResp {
   repeated Comment comments = 1;
   int64 total = 2;
 }
 
 // 根据 replyTo & type 查找
 
-message ListCommentByReplyToAndTypeRequest {
+message ListCommentByReplyToAndTypeReq {
   string replyTo = 1;
   string type = 2;
   int64 skip = 3;
   int64 limit = 4;
 }
 
-message ListCommentByReplyToAndTypeResponse {
+message ListCommentByReplyToAndTypeResp {
   repeated Comment comments = 1;
   int64 total = 2;
 }
 
 service comment {
   // 创建
-  rpc createComment(CreateCommentRequest) returns(CreateCommentResponse);
+  rpc createComment(CreateCommentReq) returns(CreateCommentResp);
   // 修改
-  rpc updateComment(UpdateCommentRequest) returns(UpdateCommentResponse);
+  rpc updateComment(UpdateCommentReq) returns(UpdateCommentResp);
   // 删除
-  rpc deleteComment(DeleteCommentByIdRequest) returns(DeleteCommentByIdResponse);
+  rpc deleteComment(DeleteCommentByIdReq) returns(DeleteCommentByIdResp);
   // 根据 parentId 查找
-  rpc listCommentByParent(ListCommentByParentRequest) returns(ListCommentByParentResponse);
+  rpc listCommentByParent(ListCommentByParentReq) returns(ListCommentByParentResp);
   // 根据 parentId 统计
-  rpc countCommentByParent(CountCommentByParentRequest) returns(CountCommentByParentResponse);
+  rpc countCommentByParent(CountCommentByParentReq) returns(CountCommentByParentResp);
   // 根据 id 查找
-  rpc retrieveCommentById(RetrieveCommentByIdRequest) returns(RetrieveCommentByIdResponse);
+  rpc retrieveCommentById(RetrieveCommentByIdReq) returns(RetrieveCommentByIdResp);
   // 根据 authorId & type 查找
-  rpc listCommentByAuthorIdAndType(ListCommentByAuthorIdAndTypeRequest) returns(ListCommentByAuthorIdAndTypeResponse);
+  rpc listCommentByAuthorIdAndType(ListCommentByAuthorIdAndTypeReq) returns(ListCommentByAuthorIdAndTypeResp);
   // 根据 replyTo & type 查找
-  rpc listCommentByReplyToAndType(ListCommentByReplyToAndTypeRequest) returns(ListCommentByReplyToAndTypeResponse);
+  rpc listCommentByReplyToAndType(ListCommentByReplyToAndTypeReq) returns(ListCommentByReplyToAndTypeResp);
 
 }

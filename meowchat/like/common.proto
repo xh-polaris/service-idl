@@ -8,3 +8,13 @@ message Like {
   string targetId = 1;
   string associatedId = 2;
 }
+
+message ItemScore {
+  string id = 1;
+  int64 score = 2;
+}
+
+message CatPop {
+  string catId = 1;
+  int64 popularity = 2;
+}

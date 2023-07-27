@@ -10,13 +10,7 @@ import "meowchat/system/common.proto";
 // /         公告         /
 // ////////////////////////
 
-message Notice {
-  string id = 1;
-  string communityId = 2;
-  string text = 3;
-  int64 createAt = 4;
-  int64 updateAt = 5;
-}
+
 
 message RetrieveNoticeReq {
   string id = 1;
@@ -67,14 +61,6 @@ message DeleteNoticeResp {
 // ////////////////////////
 // /        轮播图         /
 // ////////////////////////
-
-message News {
-  string id = 1;
-  string communityId = 2;
-  string imageUrl = 3;
-  string linkUrl = 4;
-  string type = 5;
-}
 
 message RetrieveNewsReq {
   string id = 1;
@@ -129,16 +115,6 @@ message DeleteNewsResp {
 // ////////////////////////
 // /        管理员         /
 // ////////////////////////
-
-message Admin {
-  string id = 1;
-  string communityId = 2;
-  string name = 3;
-  string title = 4;
-  string phone = 5;
-  string wechat = 6;
-  string avatarUrl = 7;
-}
 
 message RetrieveAdminReq {
   string id = 1;
@@ -235,12 +211,6 @@ message ContainsRoleResp {
 // ////////////////////////
 // /         社区          /
 // ////////////////////////
-
-message Community {
-  string id = 1;
-  string name = 2;
-  string parentId = 3;
-}
 
 message RetrieveCommunityReq {
   string id = 1;

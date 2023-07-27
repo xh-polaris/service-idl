@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package meowchat.post;
+
+option go_package = "meowchat/post";
+
+message Post {
+  string id = 1;
+  int64 createAt = 2;
+  int64 updateAt = 3;
+  string title = 5;
+  string text = 6;
+  string coverUrl = 7;
+  repeated string tags = 8;
+  string userId = 9;
+  bool isOfficial = 10;
+}
+
+message SearchField {
+  optional string text = 1;
+  optional string title = 2;
+  optional string tag = 3;
+}
+
+message FilterOptions {
+  optional bool onlyOfficial = 1;
+  optional string onlyUserId = 2;
+}
+
+message SearchOptions {
+  oneof Query {
+    string allFieldsKey = 1;
+    SearchField multiFieldsKey = 2;
+  }
+}

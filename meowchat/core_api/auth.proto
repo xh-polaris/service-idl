@@ -29,7 +29,6 @@ message SignInResp {
 
 message SetPasswordReq {
   string password = 1;
-  basic.UserMeta user = 255[(http.header) = "Authorization"];
 }
 
 message SetPasswordResp {

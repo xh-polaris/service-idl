@@ -9,3 +9,10 @@ message UserPreview {
   string nickname = 2;
   string avatarUrl = 3;
 }
+
+message UserDetail {
+  string id = 1;
+  string avatarUrl = 2;
+  string nickname = 3;
+  string motto = 4;
+}
