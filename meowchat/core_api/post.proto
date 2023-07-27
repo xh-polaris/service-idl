@@ -20,6 +20,7 @@ message Post {
   user.UserPreview user = 9;
   bool isOfficial = 10;
   int64 likes = 11;
+  int64 comments = 12;
 }
 
 // 多选一
