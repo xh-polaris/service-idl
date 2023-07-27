@@ -7,18 +7,15 @@ option go_package = "meowchat/core_api";
 import "http/http.proto";
 
 import "basic/user.proto";
-
-enum AuthType {
-  Wechat = 0;
-  Email = 1;
-  Phone = 2;
-}
+import "basic/app.proto";
 
 message SignInReq {
   string authType = 1;
-  string authId = 2;
+  string authId = 2; // authType为邮件时填邮箱，为电话时填电话号，为微信时填APP_ID
   optional string password = 3;
-  repeated string params = 4;
+  optional string verifyCode = 4;
+  basic.APP appId = 5;
+  string deviceId = 6;
 }
 
 message SignInResp {
@@ -36,7 +33,7 @@ message SetPasswordResp {
 
 message SendVerifyCodeReq {
   string authType = 1;
-  string authId = 2;
+  string authId = 2; // authType为邮件时填邮箱，为电话时填电话号
 }
 
 message SendVerifyCodeResp {

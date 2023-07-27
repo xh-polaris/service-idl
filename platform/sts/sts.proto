@@ -58,11 +58,44 @@ message PhotoCheckResp {
   bool pass = 1;
 }
 
+message SignInReq {
+  string authType = 1;
+  string authId = 2;
+  optional string password = 3;
+  optional string verifyCode = 4;
+}
+
+message SignInResp {
+  string userId = 1;
+  string openId = 2;
+  string unionId = 3;
+  string appId = 4;
+}
+
+message SetPasswordReq {
+  string userId = 1;
+  string password = 2;
+}
+
+message SetPasswordResp {
+}
+
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2; // 邮箱号或手机号
+}
+
+message SendVerifyCodeResp {
+}
+
 service StsService {
   rpc genCosSts(GenCosStsReq) returns (GenCosStsResp);
   rpc genSignedUrl(GenSignedUrlReq) returns (GenSignedUrlResp);
   rpc deleteObject(DeleteObjectReq) returns (DeleteObjectResp);
   rpc textCheck(TextCheckReq) returns (TextCheckResp);
   rpc photoCheck(PhotoCheckReq) returns (PhotoCheckResp);
+  rpc signIn(SignInReq) returns (SignInResp);
+  rpc setPassword(SetPasswordReq) returns (SetPasswordResp);
+  rpc sendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp);
 }
 
