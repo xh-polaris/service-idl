@@ -4,23 +4,17 @@ package basic;
 
 option go_package = "basic";
 
+import "basic/app.proto";
+
 message UserMeta {
   string userId = 1;
-  int64 appId = 2;
+  APP appId = 2;
   string deviceId = 3;
   string sessionUserId = 4;
-  int64 sessionAppId = 5;
+  APP sessionAppId = 5;
   string sessionDeviceId = 6;
   bool isLogin = 7;
   optional WechatUserMeta wechatUserMeta = 8;
-}
-
-enum DevicePlatform {
-  Android = 0;
-  IOS = 1;
-  Windows = 2;
-  Mac = 3;
-  WechatDevtools = 4;
 }
 
 // 客户端透传
