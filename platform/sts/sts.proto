@@ -46,7 +46,7 @@ message GetAccessTokenResp {
 }
 
 
-service sts_rpc {
+service StsService {
   rpc genCosSts(GenCosStsReq) returns (GenCosStsResp);
   rpc genSignedUrl(GenSignedUrlReq) returns (GenSignedUrlResp);
   rpc deleteObject(DeleteObjectReq) returns (DeleteObjectResp);

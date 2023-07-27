@@ -87,7 +87,7 @@ message ListImageResp {
   int64 total = 2;
 }
 
-service collection {
+service CollectionService {
   rpc SearchCat(SearchCatReq) returns (SearchCatResp);
   rpc ListCat(ListCatReq) returns (ListCatResp);
   rpc RetrieveCat(RetrieveCatReq) returns (RetrieveCatResp);

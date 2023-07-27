@@ -120,7 +120,7 @@ message ListTopCatResp {
   repeated CatPop cats = 1;
 }
 
-service likerpc {
+service LikeService {
   // 点赞/取消赞
   rpc DoLike(DoLikeReq) returns (DoLikeResp);
   // 获取用户是否点赞

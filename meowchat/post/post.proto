@@ -109,7 +109,7 @@ message SetOfficialReq {
 message SetOfficialResp {
 }
 
-service post_rpc {
+service PostService {
   rpc CreatePost(CreatePostReq) returns(CreatePostResp);
   rpc RetrievePost(RetrievePostReq) returns(RetrievePostResp);
   rpc UpdatePost(UpdatePostReq) returns(UpdatePostResp);

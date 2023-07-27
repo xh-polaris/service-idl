@@ -87,7 +87,7 @@ message DeleteMomentReq {
 message DeleteMomentResp {
 }
 
-service moment_rpc {
+service MomentService {
   rpc ListMoment(ListMomentReq) returns (ListMomentResp);
   rpc CountMoment(CountMomentReq) returns (CountMomentResp);
   rpc RetrieveMoment(RetrieveMomentReq) returns (RetrieveMomentResp);

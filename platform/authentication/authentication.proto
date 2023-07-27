@@ -39,7 +39,7 @@ message SendVerifyCodeReq {
 message SendVerifyCodeResp {
 }
 
-service Auth {
+service AuthService {
   rpc signIn(SignInReq) returns (SignInResp);
   rpc setPassword(SetPasswordReq) returns (SetPasswordResp);
   rpc sendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp);

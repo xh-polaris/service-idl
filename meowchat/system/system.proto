@@ -295,7 +295,7 @@ message DeleteCommunityResp {
 
 }
 
-service system_rpc {
+service SystemService {
   // 公告
 
   rpc RetrieveNotice(RetrieveNoticeReq) returns (RetrieveNoticeResp);
