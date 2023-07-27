@@ -4,7 +4,7 @@ package meowchat.system;
 
 option go_package = 'meowchat/system';
 
-import "meowchat/basic/basic.proto";
+import "meowchat/system/common.proto";
 
 // ////////////////////////
 // /         公告         /
@@ -199,24 +199,18 @@ message DeleteAdminResp {
 // /       用户角色        /
 // ////////////////////////
 
-message Role {
-  string type = 1;
-  // 如果是管理员则为非空值
-  string communityId = 2;
-}
-
 message RetrieveUserRoleReq {
   string userId = 1;
 }
 
 message RetrieveUserRoleResp {
-  repeated basic.Role roles = 1;
+  repeated Role roles = 1;
 }
 
 message UpdateUserRoleReq {
   string userId = 1;
   // roles为用户增加/删除角色后所拥有的所有的角色
-  repeated basic.Role roles = 2;
+  repeated Role roles = 2;
 }
 
 message UpdateUserRoleResp {
@@ -229,7 +223,7 @@ message UpdateUserRoleResp {
  */
 message ContainsRoleReq {
   string userId = 1;
-  basic.Role role = 2;
+  Role role = 2;
   // 是否允许超级管理员，如果为true并且用户为超级管理员则不校验role
   bool allowSuperAdmin = 3;
 }

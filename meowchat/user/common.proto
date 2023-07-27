@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package meowchat.user;
+
+option go_package = "meowchat/user";
+
+message UserPreview {
+  string id = 1;
+  string nickname = 2;
+  string avatarUrl = 3;
+}

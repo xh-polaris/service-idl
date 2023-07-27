@@ -4,8 +4,9 @@ package meowchat.user;
 
 option go_package = "meowchat/user";
 
+import "basic/user.proto";
 
-import "meowchat/basic/basic.proto";
+import "meowchat/user/common.proto";
 
 message UserDetail {
   string id = 1;
@@ -19,7 +20,7 @@ message GetUserReq {
 }
 
 message GetUserResp {
-  basic.UserPreview user = 1;
+  UserPreview user = 1;
 }
 
 message GetUserDetailReq {
@@ -47,7 +48,7 @@ message SearchUserReq {
 }
 
 message SearchUserResp {
-  repeated basic.UserPreview users = 1;
+  repeated UserPreview users = 1;
   int64 total = 2;
   string token = 3;
 }

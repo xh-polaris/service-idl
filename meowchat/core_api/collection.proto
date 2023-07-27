@@ -7,7 +7,7 @@ option go_package = "meowchat/core_api";
 import "http/http.proto";
 
 import "meowchat/collection/common.proto";
-import "meowchat/basic/basic.proto";
+import "basic/pagination.proto";
 
 message CatPreview {
   string id = 1;

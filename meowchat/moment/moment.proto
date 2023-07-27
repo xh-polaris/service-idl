@@ -4,8 +4,7 @@ package meowchat.moment;
 
 option go_package = "meowchat/moment";
 
-
-import "meowchat/basic/basic.proto";
+import "basic/pagination.proto";
 
 message Moment {
   string id = 1;

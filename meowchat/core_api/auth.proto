@@ -6,7 +6,7 @@ option go_package = "meowchat/core_api";
 
 import "http/http.proto";
 
-import "meowchat/basic/basic.proto";
+import "basic/user.proto";
 
 enum AuthType {
   Wechat = 0;

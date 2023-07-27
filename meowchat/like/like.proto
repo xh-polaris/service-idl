@@ -132,7 +132,6 @@ service LikeService {
   // 查看喜欢某个东西的用户
   rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp);
 
-
   // rankings
 
   rpc GetTopK(GetTopKReq) returns (GetTopKResp);

@@ -4,8 +4,7 @@ package meowchat.post;
 
 option go_package = "meowchat/post";
 
-
-import "meowchat/basic/basic.proto";
+import "basic/pagination.proto";
 
 message Post {
   string id = 1;

@@ -14,6 +14,7 @@ import "meowchat/core_api/comment.proto";
 import "meowchat/core_api/like.proto";
 import "meowchat/core_api/moment.proto";
 import "meowchat/core_api/post.proto";
+import "meowchat/core_api/system.proto";
 
 service sts {
   rpc ApplySignedUrl(ApplySignedUrlReq) returns (ApplySignedUrlResp){
@@ -141,5 +142,67 @@ service post {
   }
   rpc SetOfficial(SetOfficialReq) returns (SetOfficialResp){
     option(http.post) = "/post/set_official";
+  }
+}
+
+service system {
+  // admin
+  rpc GetAdmins (GetAdminsReq) returns (GetAdminsResp){
+    option(http.get) = "/notice/get_admins";
+  }
+  rpc NewAdmin(NewAdminReq) returns (NewAdminResp) {
+    option(http.post) = "/notice/new_admin";
+  }
+  rpc DeleteAdmin(DeleteAdminReq) returns (DeleteAdminResp) {
+    option(http.post) = "/notice/delete_admin";
+  }
+  rpc ListApply(ListApplyReq) returns (ListApplyResp) {
+    option(http.post) = "/notice/list_apply";
+  }
+  rpc HandleApply(HandleApplyReq) returns (HandleApplyResp) {
+    option(http.post) = "/notice/handle_apply";
+  }
+  // news
+  rpc GetNews(GetNewsReq) returns (GetNewsResp) {
+    option(http.get) = "/notice/get_news";
+  }
+  rpc NewNews(NewNewsReq) returns (NewNewsResp) {
+    option(http.post) = "/notice/new_news";
+  }
+  rpc DeleteNews(DeleteNewsReq) returns (DeleteNewsResp) {
+    option(http.post) = "/notice/remove_news";
+  }
+  // system
+  rpc GetNotices(GetNoticesReq) returns (GetNoticesResp) {
+    option(http.get) = "/notice/get_notices";
+  }
+  rpc NewNotice(NewNoticeReq) returns (NewNoticeResp) {
+    option(http.post) = "/notice/new_notice";
+  }
+  rpc DeleteNotice(DeleteNoticeReq) returns (DeleteNoticeResp) {
+    option(http.post) = "/notice/remove_notice";
+  }
+  // community
+  rpc ListCommunity(ListCommunityReq) returns (ListCommunityResp) {
+    option(http.get) = "/community/list_community";
+  }
+  rpc NewCommunity(NewCommunityReq) returns (NewCommunityResp) {
+    option(http.post) = "/community/new_community";
+  }
+  rpc DeleteCommunity(DeleteCommunityReq) returns (DeleteCommunityResp) {
+    option(http.post) = "/community/delete_community";
+  }
+  // role
+  rpc GetUserRoles(GetUserRolesReq) returns (GetUserRolesResp) {
+    option(http.get) = "/role/get_user_roles";
+  }
+  rpc UpdateCommunityAdmin(UpdateCommunityAdminReq) returns (UpdateCommunityAdminResp) {
+    option(http.post) = "/role/update_community_admin";
+  }
+  rpc UpdateSuperAdmin(UpdateSuperAdminReq) returns (UpdateSuperAdminResp) {
+    option(http.post) = "/role/update_super_admin";
+  }
+  rpc GetUserByRole(RetrieveUserPreviewReq) returns (RetrieveUserPreviewResp) {
+    option(http.get) = "/role/get_user_by_role";
   }
 }

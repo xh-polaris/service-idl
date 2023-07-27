@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package meowchat.system;
+
+option go_package = 'meowchat/system';
+
+message Role {
+  string roleType = 1;
+  optional string communityId = 2;
+}

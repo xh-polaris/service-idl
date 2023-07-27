@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package meowchat.basic;
+package basic;
 
-option go_package = "meowchat/basic";
+option go_package = "basic";
 
 message UserMeta {
   string userId = 1;
@@ -39,23 +39,4 @@ message WechatUserMeta {
   string openId = 2;
   string platformId = 3;
   string unionId = 4;
-}
-
-message UserPreview {
-  string id = 1;
-  string nickname = 2;
-  string avatarUrl = 3;
-}
-
-message Role {
-  string roleType = 1;
-  optional string communityId = 2;
-}
-
-message PaginationOptions {
-  optional int64 page = 1;
-  optional int64 limit = 2;
-  optional string lastToken = 3;
-  optional bool backward = 4;
-  optional int64 offset = 5;
 }

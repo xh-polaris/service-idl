@@ -5,8 +5,9 @@ package meowchat.core_api;
 option go_package = "meowchat/core_api";
 
 import "http/http.proto";
+import "basic/pagination.proto";
 
-import "meowchat/basic/basic.proto";
+import "meowchat/user/common.proto";
 
 message Post {
   string id = 1;
@@ -16,7 +17,7 @@ message Post {
   string text = 6;
   string coverUrl = 7;
   repeated string tags = 8;
-  basic.UserPreview user = 9;
+  user.UserPreview user = 9;
   bool isOfficial = 10;
 }
 
