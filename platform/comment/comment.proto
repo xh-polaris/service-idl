@@ -4,7 +4,7 @@ package meowchat.comment;
 
 option go_package = "meowchat/comment";
 
-import "meowchat/comment/common.proto";
+import "platform/comment/common.proto";
 
 // 创建评论
 
