@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package platform.sts;
+
+option go_package = 'platform/sts';
+
+enum Scene {
+  Unknown = 0;
+  Profile = 1;
+  Comment = 2;
+  Forum = 3;
+}

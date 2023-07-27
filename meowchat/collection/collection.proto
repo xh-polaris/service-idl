@@ -4,7 +4,6 @@ package meowchat.collection;
 
 option go_package = "meowchat/collection";
 
-import "base/status.proto";
 import "meowchat/collection/common.proto";
 
 message SearchCatReq {
@@ -17,7 +16,6 @@ message SearchCatReq {
 message SearchCatResp {
   repeated Cat cats = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
 
 message ListCatReq {
@@ -29,7 +27,6 @@ message ListCatReq {
 message ListCatResp {
   repeated Cat cats = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
 
 message RetrieveCatReq {
@@ -38,7 +35,6 @@ message RetrieveCatReq {
 
 message RetrieveCatResp {
   Cat cat = 1;
-  base.Status status = 255;
 }
 
 message CreateCatReq {
@@ -47,7 +43,6 @@ message CreateCatReq {
 
 message CreateCatResp {
   string catId = 1;
-  base.Status status = 255;
 }
 
 message UpdateCatReq {
@@ -55,7 +50,6 @@ message UpdateCatReq {
 }
 
 message UpdateCatResp {
-  base.Status status = 255;
 }
 
 message DeleteCatReq {
@@ -63,7 +57,6 @@ message DeleteCatReq {
 }
 
 message DeleteCatResp {
-  base.Status status = 255;
 }
 
 message CreateImageReq {
@@ -72,7 +65,6 @@ message CreateImageReq {
 
 message CreateImageResp {
   repeated string imageIds = 1;
-  base.Status status = 255;
 }
 
 message DeleteImageReq {
@@ -80,7 +72,6 @@ message DeleteImageReq {
 }
 
 message DeleteImageResp {
-  base.Status status = 255;
 }
 
 message ListImageReq {
@@ -94,10 +85,9 @@ message ListImageReq {
 message ListImageResp {
   repeated Image images = 1;
   int64 total = 2;
-  base.Status status = 255;
 }
 
-service collection {
+service CollectionService {
   rpc SearchCat(SearchCatReq) returns (SearchCatResp);
   rpc ListCat(ListCatReq) returns (ListCatResp);
   rpc RetrieveCat(RetrieveCatReq) returns (RetrieveCatResp);

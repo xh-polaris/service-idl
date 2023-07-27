@@ -4,10 +4,10 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "base/status.proto";
 import "http/http.proto";
+import "basic/pagination.proto";
 
-import "meowchat/basic/basic.proto";
+import "meowchat/user/common.proto";
 
 message Moment {
   string id = 1;
@@ -17,7 +17,7 @@ message Moment {
   string title = 5;
   string text = 6;
   string communityId = 7;
-  basic.UserPreview userId = 8;
+  user.UserPreview userId = 8;
 }
 
 message GetMomentPreviewsReq {
@@ -30,7 +30,6 @@ message GetMomentPreviewsReq {
 message GetMomentPreviewsResp {
   repeated Moment moments = 1;
   int64 total = 2;
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message GetMomentDetailReq {
@@ -39,7 +38,6 @@ message GetMomentDetailReq {
 
 message GetMomentDetailResp {
   Moment moment = 1;
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message DeleteMomentReq {
@@ -47,7 +45,6 @@ message DeleteMomentReq {
 }
 
 message DeleteMomentResp {
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message NewMomentReq {
@@ -61,7 +58,6 @@ message NewMomentReq {
 
 message NewMomentResp {
   string momentId = 1;
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message SearchMomentReq {
@@ -75,5 +71,4 @@ message SearchMomentReq {
 message SearchMomentResp {
   repeated Moment moments = 1;
   int64 total = 2;
-  base.Status status = 255[(http.body) = ",inline"];
 }

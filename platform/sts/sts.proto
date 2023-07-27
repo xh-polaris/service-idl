@@ -4,7 +4,9 @@ package platform.sts;
 
 option go_package = 'platform/sts';
 
-import "base/status.proto";
+import "basic/user.proto";
+
+import "platform/sts/common.proto";
 
 message GenCosStsReq {
   string path = 1;
@@ -16,7 +18,6 @@ message GenCosStsResp {
   string sessionToken = 3;
   int64 expiredTime = 4;
   int64 startTime = 5;
-  base.Status status = 255;
 }
 
 message GenSignedUrlReq {
@@ -28,7 +29,6 @@ message GenSignedUrlReq {
 
 message GenSignedUrlResp {
   string signedUrl = 1;
-  base.Status status = 255;
 }
 
 message DeleteObjectReq {
@@ -36,25 +36,33 @@ message DeleteObjectReq {
 }
 
 message DeleteObjectResp {
-  base.Status status = 255;
 }
 
-//app值为meowchat,old,manager
-message GetAccessTokenReq {
-  string app = 1;
+message TextCheckReq {
+  string text = 1;
+  basic.UserMeta user = 2;
+  Scene scene = 3;
+  optional string title = 4;
 }
 
-message GetAccessTokenResp {
-  string accessToken = 1 ;
-  int64 expiresIn = 2;
-  base.Status status = 255;
+message TextCheckResp {
+  bool pass = 1;
 }
 
+message PhotoCheckReq {
+  repeated string url = 1;
+  basic.UserMeta user = 2;
+}
 
-service sts_rpc {
+message PhotoCheckResp {
+  bool pass = 1;
+}
+
+service StsService {
   rpc genCosSts(GenCosStsReq) returns (GenCosStsResp);
   rpc genSignedUrl(GenSignedUrlReq) returns (GenSignedUrlResp);
   rpc deleteObject(DeleteObjectReq) returns (DeleteObjectResp);
-  rpc GetAccessToken(GetAccessTokenReq) returns (GetAccessTokenResp);
+  rpc textCheck(TextCheckReq) returns (TextCheckResp);
+  rpc photoCheck(PhotoCheckReq) returns (PhotoCheckResp);
 }
 

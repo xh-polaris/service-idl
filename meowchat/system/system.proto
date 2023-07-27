@@ -4,19 +4,13 @@ package meowchat.system;
 
 option go_package = 'meowchat/system';
 
-import "meowchat/basic/basic.proto";
+import "meowchat/system/common.proto";
 
 // ////////////////////////
 // /         公告         /
 // ////////////////////////
 
-message Notice {
-  string id = 1;
-  string communityId = 2;
-  string text = 3;
-  int64 createAt = 4;
-  int64 updateAt = 5;
-}
+
 
 message RetrieveNoticeReq {
   string id = 1;
@@ -67,14 +61,6 @@ message DeleteNoticeResp {
 // ////////////////////////
 // /        轮播图         /
 // ////////////////////////
-
-message News {
-  string id = 1;
-  string communityId = 2;
-  string imageUrl = 3;
-  string linkUrl = 4;
-  string type = 5;
-}
 
 message RetrieveNewsReq {
   string id = 1;
@@ -129,16 +115,6 @@ message DeleteNewsResp {
 // ////////////////////////
 // /        管理员         /
 // ////////////////////////
-
-message Admin {
-  string id = 1;
-  string communityId = 2;
-  string name = 3;
-  string title = 4;
-  string phone = 5;
-  string wechat = 6;
-  string avatarUrl = 7;
-}
 
 message RetrieveAdminReq {
   string id = 1;
@@ -199,24 +175,18 @@ message DeleteAdminResp {
 // /       用户角色        /
 // ////////////////////////
 
-message Role {
-  string type = 1;
-  // 如果是管理员则为非空值
-  string communityId = 2;
-}
-
 message RetrieveUserRoleReq {
   string userId = 1;
 }
 
 message RetrieveUserRoleResp {
-  repeated basic.Role roles = 1;
+  repeated Role roles = 1;
 }
 
 message UpdateUserRoleReq {
   string userId = 1;
   // roles为用户增加/删除角色后所拥有的所有的角色
-  repeated basic.Role roles = 2;
+  repeated Role roles = 2;
 }
 
 message UpdateUserRoleResp {
@@ -229,7 +199,7 @@ message UpdateUserRoleResp {
  */
 message ContainsRoleReq {
   string userId = 1;
-  basic.Role role = 2;
+  Role role = 2;
   // 是否允许超级管理员，如果为true并且用户为超级管理员则不校验role
   bool allowSuperAdmin = 3;
 }
@@ -241,12 +211,6 @@ message ContainsRoleResp {
 // ////////////////////////
 // /         社区          /
 // ////////////////////////
-
-message Community {
-  string id = 1;
-  string name = 2;
-  string parentId = 3;
-}
 
 message RetrieveCommunityReq {
   string id = 1;
@@ -295,7 +259,7 @@ message DeleteCommunityResp {
 
 }
 
-service system_rpc {
+service SystemService {
   // 公告
 
   rpc RetrieveNotice(RetrieveNoticeReq) returns (RetrieveNoticeResp);

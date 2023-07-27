@@ -4,7 +4,6 @@ package meowchat.like;
 
 option go_package = "meowchat/like";
 
-import "base/status.proto";
 
 import "meowchat/like/common.proto";
 
@@ -22,7 +21,6 @@ message DoLikeReq {
 }
 
 message DoLikeResp {
-  base.Status status = 255;
 }
 
 message GetUserLikedReq {
@@ -33,7 +31,6 @@ message GetUserLikedReq {
 
 message GetUserLikedResp {
   bool liked = 1;
-  base.Status status = 255;
 }
 
 message GetTargetLikesReq {
@@ -43,7 +40,6 @@ message GetTargetLikesReq {
 
 message GetTargetLikesResp {
   int64 count = 1;
-  base.Status status = 255;
 }
 
 message GetUserLikesReq {
@@ -53,7 +49,6 @@ message GetUserLikesReq {
 
 message GetUserLikesResp {
   repeated Like likes = 1;
-  base.Status status = 255;
 }
 
 message GetLikedUsersReq {
@@ -63,7 +58,6 @@ message GetLikedUsersReq {
 
 message GetLikedUsersResp {
   repeated string userIds = 1;
-  base.Status status = 255;
 }
 
 // 获取 top k
@@ -72,13 +66,9 @@ message GetTopKReq {
   string type = 2;
   int64 range = 3;
 }
-message ItemScore {
-  string id = 1;
-  int64 score = 2;
-}
+
 message GetTopKResp {
   repeated ItemScore item = 1;
-  base.Status status = 255;
 }
 
 // 增加分数
@@ -87,9 +77,9 @@ message AddScoreReq {
   string id = 2;
   int64 val = 3;
 }
+
 message AddScoreResp {
   int64 val = 1;
-  base.Status status = 255;
 }
 
 message DailyUpdateReq {
@@ -97,7 +87,6 @@ message DailyUpdateReq {
 }
 
 message DailyUpdateResp {
-  base.Status status = 255;
 }
 
 // 获取猫咪人气
@@ -105,14 +94,8 @@ message ListCatPopularityReq {
   repeated string catId = 1;
 }
 
-message CatPop {
-  string catId = 1;
-  int64 popularity = 2;
-}
-
 message ListCatPopularityResp {
   repeated CatPop cats = 1;
-  base.Status status = 255;
 }
 
 // 操作猫咪人气
@@ -120,19 +103,20 @@ message AddCatPopularityReq {
   string catId = 1;
   int64 val = 2;
 }
+
 message AddCatPopularityResp {
-  base.Status status = 255;
 }
+
 // 查看 topk 猫咪
 message ListTopCatReq {
   int64 k = 1;
 }
+
 message ListTopCatResp {
   repeated CatPop cats = 1;
-  base.Status status = 255;
 }
 
-service likerpc {
+service LikeService {
   // 点赞/取消赞
   rpc DoLike(DoLikeReq) returns (DoLikeResp);
   // 获取用户是否点赞
@@ -143,7 +127,6 @@ service likerpc {
   rpc GetUserLikes(GetUserLikesReq) returns (GetUserLikesResp);
   // 查看喜欢某个东西的用户
   rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp);
-
 
   // rankings
 

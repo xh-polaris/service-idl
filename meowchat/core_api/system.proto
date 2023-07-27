@@ -1,0 +1,216 @@
+syntax = "proto3";
+
+package meowchat.core_api;
+
+option go_package = "meowchat/core_api";
+
+import "http/http.proto";
+
+import "meowchat/user/common.proto";
+import "meowchat/system/common.proto";
+
+message News {
+  string id = 1;
+  int64 createAt = 2;
+  string communityId = 3;
+  string imageUrl = 4;
+  string linkUrl = 5;
+  string Type = 6;
+  int64 isPublic = 7;
+}
+
+message Admin {
+  string id = 1;
+  string title = 2;
+  string communityId = 3;
+  string name = 4;
+  string phone = 5;
+  string avatarUrl = 6;
+  string wechat = 7;
+}
+
+message Notice {
+  string id = 1;
+  string text = 2;
+  int64 createAt = 3;
+}
+
+message GetNewsReq {
+  string communityId = 1;
+}
+
+message GetNewsResp {
+  repeated News news = 1;
+}
+
+message GetAdminsReq {
+  string communityId = 1;
+}
+
+message GetAdminsResp {
+
+  repeated Admin Admins = 1;
+}
+
+message DeleteAdminReq {
+  string id = 1;
+}
+
+message DeleteAdminResp {
+
+}
+
+message NewAdminReq {
+  string id = 1;
+  string title = 2;
+  string communityId = 3;
+  string name = 4;
+  string phone = 5;
+  string avatarUrl = 6;
+  string wechat = 7;
+}
+
+message NewAdminResp {
+  string id = 1;
+}
+
+message GetNoticesReq {
+  string communityId = 1;
+}
+
+message GetNoticesResp {
+  repeated Notice notices = 1;
+}
+
+message NewNoticeReq {
+  string id = 1;
+  string communityId = 2;
+  string text = 3;
+}
+
+message NewNoticeResp {
+  string id = 1;
+}
+
+message NewNewsReq {
+  string id = 1;
+  string communityId = 2;
+  string imageUrl = 3;
+  string linkUrl = 4;
+  string Type = 5;
+  int64 isPublic = 6;
+}
+
+message NewNewsResp {
+  string id = 1;
+}
+
+message DeleteNoticeReq {
+  string id = 1;
+}
+
+message DeleteNoticeResp {
+
+}
+
+message DeleteNewsReq {
+  string id = 1;
+}
+
+message DeleteNewsResp {
+
+}
+message ApplyInfo{
+  string applyId = 1;
+  user.UserPreview user = 2;
+
+}
+message CreateApplyReq{
+  string communityId = 1;
+}
+message CreateApplyResp{
+
+}
+message ListApplyReq{
+  string communityId = 1;
+}
+message ListApplyResp{
+
+  repeated ApplyInfo applyInfo = 1;
+}
+message HandleApplyReq{
+  string applyId = 1;
+  bool isRejected = 2;
+}
+message HandleApplyResp{
+
+}
+// Community
+
+message Community {
+  string id = 1;
+  string name = 2;
+  string parentId = 3;
+}
+
+message ListCommunityReq {
+  string parentId = 1;
+}
+
+message ListCommunityResp {
+  repeated Community communities = 1;
+
+}
+
+message NewCommunityReq {
+  string id = 1;
+  string name = 2;
+  string parentId = 3;
+}
+
+message NewCommunityResp {
+  string id = 1;
+}
+
+message DeleteCommunityReq {
+  string id = 1;
+}
+
+message DeleteCommunityResp {
+
+}
+
+message GetUserRolesReq {
+}
+
+message GetUserRolesResp {
+  repeated system.Role roles = 1;
+}
+
+message UpdateCommunityAdminReq {
+  string userId = 1;
+  string communityId = 2;
+  bool isRemove = 3;
+}
+
+message UpdateCommunityAdminResp {
+
+}
+
+message UpdateSuperAdminReq {
+  string userId = 1;
+  bool isRemove = 2;
+}
+
+message UpdateSuperAdminResp {
+
+}
+
+message RetrieveUserPreviewReq {
+  string roleType = 1;
+  string communityId = 2;
+}
+
+message RetrieveUserPreviewResp {
+  repeated user.UserPreview users = 1;
+}

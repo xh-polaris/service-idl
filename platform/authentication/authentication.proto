@@ -4,7 +4,6 @@ package platform.authentication;
 
 option go_package = 'platform/authentication';
 
-import "base/status.proto";
 
 message User {
   string userId = 1;
@@ -22,7 +21,6 @@ message SignInReq {
 
 message SignInResp {
   User user = 1;
-  base.Status status = 255;
 }
 
 message SetPasswordReq {
@@ -31,7 +29,6 @@ message SetPasswordReq {
 }
 
 message SetPasswordResp {
-  base.Status status = 255;
 }
 
 message SendVerifyCodeReq {
@@ -40,10 +37,9 @@ message SendVerifyCodeReq {
 }
 
 message SendVerifyCodeResp {
-  base.Status status = 255;
 }
 
-service Auth {
+service AuthenticationService {
   rpc signIn(SignInReq) returns (SignInResp);
   rpc setPassword(SetPasswordReq) returns (SetPasswordResp);
   rpc sendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp);

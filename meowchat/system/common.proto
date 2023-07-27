@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package meowchat.system;
+
+option go_package = 'meowchat/system';
+
+message Notice {
+  string id = 1;
+  string communityId = 2;
+  string text = 3;
+  int64 createAt = 4;
+  int64 updateAt = 5;
+}
+
+message News {
+  string id = 1;
+  string communityId = 2;
+  string imageUrl = 3;
+  string linkUrl = 4;
+  string type = 5;
+}
+
+message Admin {
+  string id = 1;
+  string communityId = 2;
+  string name = 3;
+  string title = 4;
+  string phone = 5;
+  string wechat = 6;
+  string avatarUrl = 7;
+}
+
+message Community {
+  string id = 1;
+  string name = 2;
+  string parentId = 3;
+}
+
+message Role {
+  string roleType = 1;
+  optional string communityId = 2;
+}

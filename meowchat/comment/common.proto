@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package meowchat.comment;
+
+option go_package = "meowchat/comment";
+
+message Comment {
+  string id = 1;
+  string text = 2;
+  string authorId = 3;
+  string replyTo = 4;
+  string type = 5;
+  string parentId = 6;
+  int64 updateAt = 7;
+  int64 createAt = 8;
+}

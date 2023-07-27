@@ -4,11 +4,10 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "base/status.proto";
 import "http/http.proto";
 
-import "meowchat/basic/basic.proto";
 import "meowchat/like/common.proto";
+import "meowchat/user/common.proto";
 
 message DoLikeReq {
   string targetId = 1;
@@ -16,7 +15,6 @@ message DoLikeReq {
 }
 
 message DoLikeResp {
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message GetUserLikedReq {
@@ -26,7 +24,6 @@ message GetUserLikedReq {
 
 message GetUserLikedResp {
   bool liked = 1;
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message GetLikedCountReq {
@@ -36,7 +33,6 @@ message GetLikedCountReq {
 
 message GetLikedCountResp {
   int64 count = 1;
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message GetUserLikesReq {
@@ -46,7 +42,6 @@ message GetUserLikesReq {
 
 message GetUserLikesResp {
   repeated like.Like likes = 1;
-  base.Status status = 255[(http.body) = ",inline"];
 }
 
 message GetLikedUsersReq {
@@ -55,6 +50,5 @@ message GetLikedUsersReq {
 }
 
 message GetLikedUsersResp {
-  repeated basic.UserPreview users = 1;
-  base.Status status = 255[(http.body) = ",inline"];
+  repeated user.UserPreview users = 1;
 }

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package basic;
+
+option go_package = "basic";
+
+message UserMeta {
+  string userId = 1;
+  int64 appId = 2;
+  string deviceId = 3;
+  string sessionUserId = 4;
+  int64 sessionAppId = 5;
+  string sessionDeviceId = 6;
+  bool isLogin = 7;
+  optional WechatUserMeta wechatUserMeta = 8;
+}
+
+enum DevicePlatform {
+  Android = 0;
+  IOS = 1;
+  Windows = 2;
+  Mac = 3;
+  WechatDevtools = 4;
+}
+
+// 客户端透传
+message Extra {
+  string clientIP = 1;
+  string language = 2;
+  string resolution = 3; // 像素比
+  string devicePlatform = 4; // 设备平台
+  string deviceBrand = 5; // 设备品牌
+  string deviceId = 6;
+  string operateSystem = 7;
+}
+
+message WechatUserMeta {
+  string appId = 1;
+  string openId = 2;
+  string platformId = 3;
+  string unionId = 4;
+}
