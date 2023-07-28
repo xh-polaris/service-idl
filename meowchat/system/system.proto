@@ -93,7 +93,7 @@ message UpdateNewsReq {
   string imageUrl = 2;
   string linkUrl = 3;
   string type = 4;
-  int64 isPublic =5 ;
+  int64 isPublic = 5 ;
 }
 
 message UpdateNewsResp {
@@ -119,19 +119,7 @@ message RetrieveAdminReq {
 message RetrieveAdminResp {
   Admin admin = 1;
 }
-message HandleApplyReq{
-  string applyId=1;
-  bool isRejected=3;
-}
-message HandleApplyResp{
 
-}
-message ListApplyReq{
-  string communityId=1;
-}
-message ListApplyResp{
-  repeated Apply apply=1;
-}
 message ListAdminReq {
   string communityId = 1;
   int64 page = 2; // 分页的当前页，从1开始
@@ -183,6 +171,30 @@ message DeleteAdminResp {
 // /       用户角色        /
 // ////////////////////////
 
+message HandleApplyReq{
+  string applyId = 1;
+  bool isRejected = 2;
+}
+
+message HandleApplyResp{
+}
+
+message ListApplyReq{
+  string communityId = 1;
+}
+
+message ListApplyResp{
+  repeated Apply apply = 1;
+}
+
+message CreateApplyReq{
+  string applicantId = 1;
+  string communityId = 2;
+}
+
+message CreateApplyResp{
+}
+
 message RetrieveUserRoleReq {
   string userId = 1;
 }
@@ -190,13 +202,7 @@ message RetrieveUserRoleReq {
 message RetrieveUserRoleResp {
   repeated Role roles = 1;
 }
-message CreateApplyReq{
-  string applicantId=1;
-  string communityId=2;
-}
-message CreateApplyResp{
 
-}
 message UpdateUserRoleReq {
   string userId = 1;
   // roles为用户增加/删除角色后所拥有的所有的角色
@@ -275,7 +281,7 @@ message DeleteCommunityResp {
 
 message ListUserIdByRoleReq {
   string roleType = 1;
-  string communityId =2;
+  string communityId = 2;
   //如果为roleType为superAdmin则为空值
 }
 

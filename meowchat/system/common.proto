@@ -37,7 +37,7 @@ message Community {
 }
 
 message Role {
-  string roleType = 1;
+  RoleType roleType = 1;
   optional string communityId = 2;
 }
 
@@ -45,4 +45,19 @@ message Apply {
   string applyId = 1;
   string applicantId = 2;
   string communityId = 4;
+}
+
+enum RoleType {
+  TypeUnknown = 0;
+  TypeNormalUser = 1;
+  TypeCommunityAdmin = 2;
+  TypeSuperAdmin = 3;
+  TypeDeveloper = 4;
+}
+
+enum ApplyStatus {
+  StatusUnknown = 0;
+  StatusUnprocessed = 1;
+  StatusAccepted = 2;
+  StatusRejected = 3;
 }
