@@ -107,7 +107,7 @@ message ListCommentByReplyToAndTypeResp {
   int64 total = 2;
 }
 
-service comment {
+service CommentService {
   // 创建
   rpc createComment(CreateCommentReq) returns(CreateCommentResp);
   // 修改
