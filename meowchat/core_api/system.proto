@@ -212,7 +212,7 @@ message UpdateSuperAdminResp {
 
 message RetrieveUserPreviewReq {
   system.RoleType roleType = 1;
-  string communityId = 2;
+  optional string communityId = 2;
 }
 
 message RetrieveUserPreviewResp {
