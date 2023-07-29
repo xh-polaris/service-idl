@@ -280,8 +280,7 @@ message DeleteCommunityResp {
 }
 
 message ListUserIdByRoleReq {
-  string roleType = 1;
-  string communityId = 2;
+  Role role = 1;
   //如果为roleType为superAdmin则为空值
 }
 
