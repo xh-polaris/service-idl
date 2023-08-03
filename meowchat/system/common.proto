@@ -18,6 +18,7 @@ message News {
   string imageUrl = 3;
   string linkUrl = 4;
   string type = 5;
+  int64  isPublic = 6;
 }
 
 message Admin {
