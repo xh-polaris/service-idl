@@ -1,0 +1,237 @@
+syntax = "proto3";
+
+package meowchat.content;
+
+option go_package = "meowchat/content";
+
+import "basic/pagination.proto";
+import "meowchat/content/common.proto";
+
+message SearchCatReq {
+  int64 count = 1; // 获取的数量
+  int64 skip = 2; //跳过前skip个
+  string communityId = 3;
+  string keyword = 4;
+}
+
+message SearchCatResp {
+  repeated Cat cats = 1;
+  int64 total = 2;
+}
+
+message ListCatReq {
+  string communityId = 1;
+  int64 count = 2; // 获取的数量
+  int64 skip = 3;//跳过前skip个
+}
+
+message ListCatResp {
+  repeated Cat cats = 1;
+  int64 total = 2;
+}
+
+message RetrieveCatReq {
+  string catId = 1;
+}
+
+message RetrieveCatResp {
+  Cat cat = 1;
+}
+
+message CreateCatReq {
+  Cat cat = 1;
+}
+
+message CreateCatResp {
+  string catId = 1;
+}
+
+message UpdateCatReq {
+  Cat cat = 1;
+}
+
+message UpdateCatResp {
+}
+
+message DeleteCatReq {
+  string catId = 1;
+}
+
+message DeleteCatResp {
+}
+
+message CreateImageReq {
+  repeated CreateImageElement images = 1;
+}
+
+message CreateImageResp {
+  repeated string imageIds = 1;
+}
+
+message DeleteImageReq {
+  string imageId = 1;
+}
+
+message DeleteImageResp {
+}
+
+message ListImageReq {
+  string catId = 1;
+  optional string prevId = 2;
+  int64 limit = 3;
+  int64 offset = 4;
+  bool backward = 5;
+}
+
+message ListImageResp {
+  repeated Image images = 1;
+  int64 total = 2;
+}
+
+message ListMomentReq {
+  optional SearchOptions searchOptions = 1;
+  optional MomentFilterOptions filterOptions = 2;
+  optional basic.PaginationOptions paginationOptions = 3;
+}
+
+message ListMomentResp {
+  repeated Moment moments = 1;
+  int64 total = 2;
+  string token = 3;
+}
+
+message CountMomentReq {
+  optional SearchOptions searchOptions = 1;
+  optional MomentFilterOptions filterOptions = 2;
+}
+
+message CountMomentResp {
+  int64 total = 1;
+}
+
+message RetrieveMomentReq {
+  string momentId = 1;
+}
+
+message RetrieveMomentResp {
+  Moment moment = 1;
+}
+
+message CreateMomentReq {
+  Moment moment = 1;
+}
+
+message CreateMomentResp {
+  string momentId = 1;
+}
+
+message UpdateMomentReq {
+  Moment moment = 1;
+}
+
+message UpdateMomentResp {
+}
+
+message DeleteMomentReq {
+  string momentId = 1;
+}
+
+message DeleteMomentResp {
+}
+
+// create a post
+message CreatePostReq {
+  string title = 2;
+  string text = 3;
+  string coverUrl = 4;
+  repeated string tags = 5;
+  string userId = 6;
+}
+
+message CreatePostResp {
+  string postId = 1;
+}
+
+// retrieve a post
+message RetrievePostReq {
+  string postId = 1;
+}
+
+message RetrievePostResp {
+  Post post = 1;
+}
+
+//update a post
+message UpdatePostReq {
+  string id = 1;
+  string title = 3;
+  string text = 4;
+  string coverUrl = 5;
+  repeated string tags = 6;
+}
+
+message UpdatePostResp {
+}
+
+// delete a post
+message DeletePostReq {
+  string id = 1;
+}
+
+message DeletePostResp {
+}
+
+// list posts
+message ListPostReq {
+  optional SearchOptions searchOptions = 1;
+  optional PostFilterOptions filterOptions = 2;
+  optional basic.PaginationOptions paginationOptions = 3;
+}
+
+message ListPostResp {
+  repeated Post posts = 1;
+  int64 total = 2;
+  string token = 3;
+}
+
+message CountPostReq {
+  optional SearchOptions searchOptions = 1;
+  optional PostFilterOptions filterOptions = 2;
+}
+
+message CountPostResp {
+  int64 total = 1;
+}
+
+message SetOfficialReq {
+  string postId = 1;
+  bool isRemove = 2;
+}
+
+message SetOfficialResp {
+}
+
+service ContentService {
+  rpc SearchCat(SearchCatReq) returns (SearchCatResp);
+  rpc ListCat(ListCatReq) returns (ListCatResp);
+  rpc RetrieveCat(RetrieveCatReq) returns (RetrieveCatResp);
+  rpc CreateCat(CreateCatReq) returns (CreateCatResp);
+  rpc UpdateCat(UpdateCatReq) returns (UpdateCatResp);
+  rpc DeleteCat(DeleteCatReq) returns (DeleteCatResp);
+  rpc CreateImage(CreateImageReq) returns (CreateImageResp);
+  rpc DeleteImage(DeleteImageReq) returns (DeleteImageResp);
+  rpc ListImage(ListImageReq) returns (ListImageResp);
+  rpc ListMoment(ListMomentReq) returns (ListMomentResp);
+  rpc CountMoment(CountMomentReq) returns (CountMomentResp);
+  rpc RetrieveMoment(RetrieveMomentReq) returns (RetrieveMomentResp);
+  rpc CreateMoment(CreateMomentReq) returns (CreateMomentResp);
+  rpc UpdateMoment(UpdateMomentReq) returns (UpdateMomentResp);
+  rpc DeleteMoment(DeleteMomentReq) returns (DeleteMomentResp);
+  rpc CreatePost(CreatePostReq) returns(CreatePostResp);
+  rpc RetrievePost(RetrievePostReq) returns(RetrievePostResp);
+  rpc UpdatePost(UpdatePostReq) returns(UpdatePostResp);
+  rpc DeletePost(DeletePostReq) returns(DeletePostResp);
+  rpc ListPost(ListPostReq) returns(ListPostResp);
+  rpc CountPost(CountPostReq) returns(CountPostResp);
+  rpc SetOfficial(SetOfficialReq) returns(SetOfficialResp);
+}

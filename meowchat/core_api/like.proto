@@ -6,12 +6,11 @@ option go_package = "meowchat/core_api";
 
 import "http/http.proto";
 
-import "meowchat/like/common.proto";
 import "meowchat/user/common.proto";
 
 message DoLikeReq {
   string targetId = 1;
-  int64 targetType = 2;
+  user.LikeType targetType = 2;
 }
 
 message DoLikeResp {
@@ -19,7 +18,7 @@ message DoLikeResp {
 
 message GetUserLikedReq {
   string targetId = 1;
-  int64 targetType = 2;
+  user.LikeType targetType = 2;
 }
 
 message GetUserLikedResp {
@@ -28,7 +27,7 @@ message GetUserLikedResp {
 
 message GetLikedCountReq {
   string targetId = 1;
-  int64 targetType = 2;
+  user.LikeType targetType = 2;
 }
 
 message GetLikedCountResp {
@@ -37,16 +36,16 @@ message GetLikedCountResp {
 
 message GetUserLikesReq {
   string userId = 1;
-  int64 targetType = 2;
+  user.LikeType targetType = 2;
 }
 
 message GetUserLikesResp {
-  repeated like.Like likes = 1;
+  repeated user.Like likes = 1;
 }
 
 message GetLikedUsersReq {
   string targetId = 1;
-  int64 targetType = 2;
+  user.LikeType targetType = 2;
 }
 
 message GetLikedUsersResp {

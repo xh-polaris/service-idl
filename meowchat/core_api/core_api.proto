@@ -5,7 +5,6 @@ package meowchat.core_api;
 option go_package = "meowchat/core_api";
 
 import "http/http.proto";
-import "basic/user.proto";
 
 import "meowchat/core_api/sts.proto";
 import "meowchat/core_api/user.proto";
@@ -157,12 +156,6 @@ service system {
   rpc DeleteAdmin(DeleteAdminReq) returns (DeleteAdminResp) {
     option(http.post) = "/notice/delete_admin";
   }
-  rpc ListApply(ListApplyReq) returns (ListApplyResp) {
-    option(http.post) = "/notice/list_apply";
-  }
-  rpc HandleApply(HandleApplyReq) returns (HandleApplyResp) {
-    option(http.post) = "/notice/handle_apply";
-  }
   // news
   rpc GetNews(GetNewsReq) returns (GetNewsResp) {
     option(http.get) = "/notice/get_news";
@@ -203,7 +196,16 @@ service system {
   rpc UpdateSuperAdmin(UpdateSuperAdminReq) returns (UpdateSuperAdminResp) {
     option(http.post) = "/role/update_super_admin";
   }
-  rpc GetUserByRole(RetrieveUserPreviewReq) returns (RetrieveUserPreviewResp) {
+  rpc GetUserByRole(GetUserByRoleReq) returns (GetUserByRoleResp) {
     option(http.get) = "/role/get_user_by_role";
+  }
+  rpc ListApply(ListApplyReq) returns (ListApplyResp) {
+    option(http.get) = "/role/list_apply";
+  }
+  rpc HandleApply(HandleApplyReq) returns (HandleApplyResp) {
+    option(http.post) = "/role/handle_apply";
+  }
+  rpc CreateApply(CreateApplyReq) returns (CreateApplyResp) {
+    option(http.post) = "/role/create_apply";
   }
 }

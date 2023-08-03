@@ -48,7 +48,6 @@ message GetAdminsReq {
 }
 
 message GetAdminsResp {
-
   repeated Admin Admins = 1;
 }
 
@@ -118,33 +117,38 @@ message DeleteNewsReq {
 }
 
 message DeleteNewsResp {
-
 }
-message ApplyInfo{
+
+message ApplyInfo {
   string applyId = 1;
   user.UserPreview user = 2;
-
 }
-message CreateApplyReq{
+
+message CreateApplyReq {
   string communityId = 1;
 }
-message CreateApplyResp{
+
+message CreateApplyResp {
 
 }
-message ListApplyReq{
+
+message ListApplyReq {
   string communityId = 1;
 }
-message ListApplyResp{
 
+message ListApplyResp {
   repeated ApplyInfo applyInfo = 1;
 }
-message HandleApplyReq{
+
+message HandleApplyReq {
   string applyId = 1;
   bool isRejected = 2;
 }
-message HandleApplyResp{
+
+message HandleApplyResp {
 
 }
+
 // Community
 
 message Community {
@@ -207,10 +211,19 @@ message UpdateSuperAdminResp {
 }
 
 message RetrieveUserPreviewReq {
-  string roleType = 1;
-  string communityId = 2;
+  system.RoleType roleType = 1;
+  optional string communityId = 2;
 }
 
 message RetrieveUserPreviewResp {
+  repeated user.UserPreview users = 1;
+}
+
+message GetUserByRoleReq {
+  system.RoleType roleType = 1;
+  string communityId = 2;
+}
+
+message GetUserByRoleResp {
   repeated user.UserPreview users = 1;
 }

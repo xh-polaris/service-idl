@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package meowchat.comment;
+package platform.comment;
 
-option go_package = "meowchat/comment";
+option go_package = "platform/comment";
 
 import "platform/comment/common.proto";
 
@@ -107,7 +107,7 @@ message ListCommentByReplyToAndTypeResp {
   int64 total = 2;
 }
 
-service comment {
+service CommentService {
   // 创建
   rpc createComment(CreateCommentReq) returns(CreateCommentResp);
   // 修改
