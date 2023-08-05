@@ -17,7 +17,7 @@ message Moment {
   string title = 5;
   string text = 6;
   string communityId = 7;
-  user.UserPreview userId = 8;
+  user.UserPreview user = 8;
 }
 
 message GetMomentPreviewsReq {
