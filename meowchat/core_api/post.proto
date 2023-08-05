@@ -34,7 +34,7 @@ message SearchOptions {
 }
 
 message GetPostPreviewsReq {
-  basic.PaginationOptions paginationOption = 1[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 1;
   optional bool onlyOfficial = 2;
   optional string onlyUserId = 3;
   optional SearchOptions searchOptions = 4;

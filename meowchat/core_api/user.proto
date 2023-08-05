@@ -23,7 +23,7 @@ message User {
 }
 
 message UserPreviewWithRole {
-  user.UserPreview user = 1[(http.body) = ",inline"];
+  user.UserPreview user = 1;
   repeated system.Role roles = 2;
 }
 
@@ -46,7 +46,7 @@ message UpdateUserInfoResp {
 
 message SearchUserReq {
   string keyword = 1;
-  basic.PaginationOptions paginationOption = 2[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 2;
 }
 
 message SearchUserResp {
@@ -57,7 +57,7 @@ message SearchUserResp {
 
 message SearchUserForAdminReq {
   string keyword = 1;
-  basic.PaginationOptions paginationOption = 2[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 2;
 }
 
 message SearchUserForAdminResp {

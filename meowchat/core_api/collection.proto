@@ -63,7 +63,7 @@ message NewCatResp {
 
 message SearchCatReq {
   string keyword = 1;
-  basic.PaginationOptions paginationOption = 2[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 2;
   string communityId = 3;
 }
 

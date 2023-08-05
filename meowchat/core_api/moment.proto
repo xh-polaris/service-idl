@@ -24,12 +24,13 @@ message GetMomentPreviewsReq {
   optional string communityId = 1;
   optional bool isParent = 2;
   optional string onlyUserId = 3;
-  basic.PaginationOptions paginationOption = 4[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 4;
 }
 
 message GetMomentPreviewsResp {
   repeated Moment moments = 1;
   int64 total = 2;
+  string token = 3;
 }
 
 message GetMomentDetailReq {
@@ -65,7 +66,7 @@ message SearchMomentReq {
   optional bool isParent = 2;
   optional string onlyUserId = 3;
   optional string keyword = 4;
-  basic.PaginationOptions paginationOption = 5[(http.body) = ",inline"];
+  basic.PaginationOptions paginationOption = 5;
 }
 
 message SearchMomentResp {

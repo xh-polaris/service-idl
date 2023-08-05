@@ -7,8 +7,8 @@ option go_package = "meowchat/core_api";
 import "http/http.proto";
 
 message ApplySignedUrlReq {
-  optional string prefix = 1[(http.body) = "prefix"];
-  optional string suffix = 2[(http.body) = "suffix"];
+  optional string prefix = 1;
+  optional string suffix = 2;
 }
 
 message ApplySignedUrlResp {
