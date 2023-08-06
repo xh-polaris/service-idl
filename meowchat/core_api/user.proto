@@ -33,6 +33,7 @@ message GetUserInfoReq {
 
 message GetUserInfoResp {
   User user = 1;
+  bool enableDebug = 2;
 }
 
 message UpdateUserInfoReq {
