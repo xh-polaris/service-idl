@@ -210,6 +210,15 @@ message UpdateSuperAdminResp {
 
 }
 
+message UpdateRoleReq {
+  string userId = 1;
+  repeated system.Role roles = 2;
+}
+
+message UpdateRoleResp {
+
+}
+
 message RetrieveUserPreviewReq {
   system.RoleType roleType = 1;
   optional string communityId = 2;

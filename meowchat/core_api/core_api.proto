@@ -199,6 +199,9 @@ service system {
   rpc GetUserByRole(GetUserByRoleReq) returns (GetUserByRoleResp) {
     option(http.get) = "/role/get_user_by_role";
   }
+  rpc UpdateRole(UpdateRoleReq) returns (UpdateRoleResp) {
+    option(http.post) = "/role/update_role";
+  }
   rpc ListApply(ListApplyReq) returns (ListApplyResp) {
     option(http.get) = "/role/list_apply";
   }
