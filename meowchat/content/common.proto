@@ -55,6 +55,19 @@ message Post {
   bool isOfficial = 10;
 }
 
+message Plan {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string planType = 4;
+  string startTime = 5;
+  string duration = 6;
+  string catId = 7;
+  repeated string initiators = 8;
+  repeated string  imageUrl = 9;
+  int64 createAt = 10;
+}
+
 message SearchField {
   optional string text = 1;
   optional string title = 2;
@@ -76,5 +89,10 @@ message MomentFilterOptions {
 
 message PostFilterOptions {
   optional bool onlyOfficial = 1;
+  optional string onlyUserId = 2;
+}
+
+message PlanFilterOptions {
+  optional string onlyCatId = 1;
   optional string onlyUserId = 2;
 }

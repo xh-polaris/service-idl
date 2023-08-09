@@ -211,6 +211,59 @@ message SetOfficialReq {
 message SetOfficialResp {
 }
 
+message ListPlanReq {
+  optional SearchOptions searchOptions = 1;
+  optional PlanFilterOptions filterOptions = 2;
+  optional basic.PaginationOptions paginationOptions = 3;
+}
+
+message ListPlanResp {
+  repeated Plan plans = 1;
+  int64 total = 2;
+  string token = 3;
+}
+
+message CountPlanReq {
+  optional SearchOptions searchOptions = 1;
+  optional PlanFilterOptions filterOptions = 2;
+}
+
+message CountPlanResp {
+  int64 total = 1;
+}
+
+message RetrievePlanReq {
+  string planId = 1;
+}
+
+message RetrievePlanResp {
+  Plan plan = 1;
+}
+
+message CreatePlanReq {
+  Plan plan = 1;
+}
+
+message CreatePlanResp {
+  string planId = 1;
+}
+
+message UpdatePlanReq {
+  Plan plan = 1;
+}
+
+message UpdatePlanResp {
+}
+
+message DeletePlanReq {
+  string planId = 1;
+}
+
+message DeletePlanResp {
+}
+
+
+
 service ContentService {
   rpc SearchCat(SearchCatReq) returns (SearchCatResp);
   rpc ListCat(ListCatReq) returns (ListCatResp);
@@ -234,4 +287,10 @@ service ContentService {
   rpc ListPost(ListPostReq) returns(ListPostResp);
   rpc CountPost(CountPostReq) returns(CountPostResp);
   rpc SetOfficial(SetOfficialReq) returns(SetOfficialResp);
+  rpc ListPlan(ListPlanReq) returns (ListPlanResp);
+  rpc CountPlan(CountPlanReq) returns (CountPlanResp);
+  rpc RetrievePlan(RetrievePlanReq) returns (RetrievePlanResp);
+  rpc CreatePlan(CreatePlanReq) returns (CreatePlanResp);
+  rpc UpdatePlan(UpdatePlanReq) returns (UpdatePlanResp);
+  rpc DeletePlan(DeletePlanReq) returns (DeletePlanResp);
 }

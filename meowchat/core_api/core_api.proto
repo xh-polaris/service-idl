@@ -15,6 +15,7 @@ import "meowchat/core_api/like.proto";
 import "meowchat/core_api/moment.proto";
 import "meowchat/core_api/post.proto";
 import "meowchat/core_api/system.proto";
+import "meowchat/core_api/plan.proto";
 
 service sts {
   rpc ApplySignedUrl(ApplySignedUrlReq) returns (ApplySignedUrlResp){
@@ -124,6 +125,24 @@ service moment {
   }
   rpc SearchMoment(SearchMomentReq) returns (SearchMomentResp){
     option(http.get) = "/moment/search_moment";
+  }
+}
+
+service plan {
+  rpc GetPlanPreviews(GetPlanPreviewsReq) returns (GetPlanPreviewsResp){
+    option(http.get) = "/plan/get_plan_previews";
+  }
+  rpc GetPlanDetail(GetPlanDetailReq) returns (GetPlanDetailResp){
+    option(http.get) = "/plan/get_plan_detail";
+  }
+  rpc NewPlan(NewPlanReq) returns (NewPlanResp){
+    option(http.post) = "/plan/new_plan";
+  }
+  rpc DeletePlan(DeletePlanReq) returns (DeletePlanResp){
+    option(http.post) = "/plan/delete_plan";
+  }
+  rpc SearchPlan(SearchPlanReq) returns (SearchPlanResp){
+    option(http.get) = "/plan/search_plan";
   }
 }
 
