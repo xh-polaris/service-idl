@@ -8,17 +8,18 @@ import "http/http.proto";
 import "basic/pagination.proto";
 
 import "meowchat/user/common.proto";
+import "meowchat/content/common.proto";
 
 message Plan {
   string id = 1;
   string name = 2;
   string description = 3;
-  string planType = 4;
-  string startTime = 5;
-  string duration = 6;
+  content.PlanType planType = 4;
+  int64  startTime = 5;
+  int64  endTime = 6;
   string catId = 7;
-  repeated user.UserPreview user = 8;
-  repeated string  imageUrl = 9;
+  repeated user.UserPreview users = 8;
+  repeated string imageUrls = 9;
   int64 createAt = 10;
 }
 
@@ -54,11 +55,11 @@ message NewPlanReq {
   optional string id = 1;
   optional string name = 2;
   optional string description = 3;
-  optional string planType = 4;
-  optional string startTime = 5;
-  optional string duration = 6;
+  optional content.PlanType planType = 4;
+  optional int64  startTime = 5;
+  optional int64  endTime = 6;
   optional string catId = 7;
-  repeated string imageUrl = 8;
+  repeated string imageUrls = 8;
 }
 
 message NewPlanResp {

@@ -56,16 +56,16 @@ message Post {
 }
 
 message Plan {
-  string id = 1;
-  string name = 2;
-  string description = 3;
-  string planType = 4;
-  string startTime = 5;
-  string duration = 6;
-  string catId = 7;
-  repeated string initiators = 8;
-  repeated string  imageUrl = 9;
-  int64 createAt = 10;
+  string   id = 1;
+  string   name = 2;
+  string   description = 3;
+  PlanType planType = 4;
+  int64    startTime = 5;
+  int64    endTime = 6;
+  string   catId = 7;
+  repeated string initiatorIds = 8;
+  repeated string imageUrls = 9;
+  int64    createAt = 10;
 }
 
 message SearchField {
@@ -95,4 +95,10 @@ message PostFilterOptions {
 message PlanFilterOptions {
   optional string onlyCatId = 1;
   optional string onlyUserId = 2;
+}
+
+enum PlanType {
+  TypeFeed = 0;
+  TypeCastrate = 1;
+  TypeHeal = 2;
 }
