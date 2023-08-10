@@ -25,7 +25,7 @@ message Plan {
 
 
 message GetPlanPreviewsReq {
-  optional string CatId = 1;
+  optional string catId = 1;
   optional string onlyUserId = 2;
   basic.PaginationOptions paginationOption = 3;
 }
@@ -37,7 +37,7 @@ message GetPlanPreviewsResp {
 }
 
 message GetPlanDetailReq {
-  string PlanId = 1;
+  string planId = 1;
 }
 
 message GetPlanDetailResp {
