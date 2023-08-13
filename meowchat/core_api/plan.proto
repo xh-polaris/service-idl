@@ -21,6 +21,8 @@ message Plan {
   repeated user.UserPreview users = 8;
   repeated string imageUrls = 9;
   int64 createAt = 10;
+  int64 maxFish = 11;
+  int64 nowFish = 12;
 }
 
 
@@ -59,7 +61,8 @@ message NewPlanReq {
   optional int64  startTime = 5;
   optional int64  endTime = 6;
   optional string catId = 7;
-  repeated string imageUrls = 8;
+  optional int64  maxFish = 8;
+  repeated string imageUrls = 9;
 }
 
 message NewPlanResp {
