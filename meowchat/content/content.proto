@@ -262,7 +262,39 @@ message DeletePlanReq {
 message DeletePlanResp {
 }
 
+message DonateFishReq {
+  string planId = 1;
+  string userId = 2;
+  int64  fish = 3;
+}
 
+message DonateFishResp {
+}
+
+message AddUserFishReq {
+  string userId = 1;
+  int64  fish = 2;
+}
+
+message AddUserFishResp {
+}
+
+message ListFishByPlanReq {
+  string planId = 1;
+}
+
+message ListFishByPlanResp {
+  repeated string userIds = 1;
+  map<string,int64> fishMap = 2;
+}
+
+message RetrieveUserFishReq {
+  string userId = 1;
+}
+
+message RetrieveUserFishResp {
+  int64 fish = 1;
+}
 
 service ContentService {
   rpc SearchCat(SearchCatReq) returns (SearchCatResp);
@@ -293,4 +325,8 @@ service ContentService {
   rpc CreatePlan(CreatePlanReq) returns (CreatePlanResp);
   rpc UpdatePlan(UpdatePlanReq) returns (UpdatePlanResp);
   rpc DeletePlan(DeletePlanReq) returns (DeletePlanResp);
+  rpc DonateFish(DonateFishReq) returns (DonateFishResp);
+  rpc AddUserFish(AddUserFishReq) returns (AddUserFishResp);
+  rpc ListFishByPlan(ListFishByPlanReq) returns (ListFishByPlanResp);
+  rpc RetrieveUserFish(RetrieveUserFishReq) returns (RetrieveUserFishResp);
 }

@@ -144,6 +144,15 @@ service plan {
   rpc SearchPlan(SearchPlanReq) returns (SearchPlanResp){
     option(http.get) = "/plan/search_plan";
   }
+  rpc DonateFish(DonateFishReq) returns (DonateFishResp){
+    option(http.get) = "/plan/donate_fish";
+  }
+  rpc GetUserFish(GetUserFishReq) returns (GetUserFishResp){
+    option(http.get) = "/plan/get_user_fish";
+  }
+  rpc ListFishByPlan(ListFishByPlanReq) returns (ListFishByPlanResp){
+    option(http.get) = "/plan/list_fish_by_plan";
+  }
 }
 
 service post {

@@ -77,3 +77,28 @@ message SearchPlanResp {
   repeated Plan plans = 1;
   int64 total = 2;
 }
+
+message DonateFishReq {
+  string planId = 1;
+  int64  fish = 2;
+}
+
+message DonateFishResp {
+}
+
+message GetUserFishReq {
+  optional string userId = 1;
+}
+
+message GetUserFishResp{
+  int64 fish = 1;
+}
+
+message ListFishByPlanReq {
+  string planId = 1;
+}
+
+message ListFishByPlanResp {
+  repeated user.UserPreview users = 1;
+  map<string,int64> fishMap = 2;
+}

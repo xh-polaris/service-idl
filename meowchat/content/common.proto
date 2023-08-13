@@ -66,6 +66,8 @@ message Plan {
   repeated string initiatorIds = 8;
   repeated string imageUrls = 9;
   int64    createAt = 10;
+  int64    maxFish = 11;
+  int64    nowFish = 12;
 }
 
 message SearchField {
