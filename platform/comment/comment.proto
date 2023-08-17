@@ -18,6 +18,7 @@ message CreateCommentReq {
 
 message CreateCommentResp {
   string id = 1;
+  bool isFirst = 2;
 }
 
 // 更新评论

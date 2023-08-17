@@ -25,6 +25,7 @@ message NewCommentReq {
 }
 
 message NewCommentResp {
+  bool isFirst = 1;
 }
 
 message GetCommentsReq {

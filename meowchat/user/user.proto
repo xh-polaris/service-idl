@@ -60,6 +60,7 @@ message DoLikeReq {
 }
 
 message DoLikeResp {
+  bool isFirst = 1;
 }
 
 message GetUserLikedReq {
