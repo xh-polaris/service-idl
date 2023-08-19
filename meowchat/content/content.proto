@@ -123,6 +123,8 @@ message CreateMomentReq {
 
 message CreateMomentResp {
   string momentId = 1;
+  bool getFish = 2;
+  int64 getFishTimes = 3;
 }
 
 message UpdateMomentReq {
@@ -150,6 +152,8 @@ message CreatePostReq {
 
 message CreatePostResp {
   string postId = 1;
+  bool getFish = 2;
+  int64 getFishTimes = 3;
 }
 
 // retrieve a post

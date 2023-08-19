@@ -59,6 +59,8 @@ message NewMomentReq {
 
 message NewMomentResp {
   string momentId = 1;
+  bool getFish = 2;
+  int64 getFishTimes = 3;
 }
 
 message SearchMomentReq {
