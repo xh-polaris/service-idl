@@ -3,8 +3,9 @@ syntax = "proto3";
 package meowchat.user;
 
 option go_package = "meowchat/user";
-
-import "basic/user.proto";
+option java_package = "com.xhpolaris.idlgen.meowchat.user";
+option java_outer_classname = "UserProto";
+option java_multiple_files = true;
 
 import "meowchat/user/common.proto";
 

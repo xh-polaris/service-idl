@@ -3,6 +3,9 @@ syntax = "proto3";
 package meowchat.content;
 
 option go_package = "meowchat/content";
+option java_package = "com.xhpolaris.idlgen.meowchat.content";
+option java_outer_classname = "ContentProto";
+option java_multiple_files = true;
 
 import "basic/pagination.proto";
 import "meowchat/content/common.proto";

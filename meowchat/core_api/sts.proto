@@ -3,6 +3,9 @@ syntax = "proto3";
 package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
+option java_package = "com.xhpolaris.idlgen.meowchat.coreapi";
+option java_outer_classname = "StsProto";
+option java_multiple_files = true;
 
 message ApplySignedUrlReq {
   optional string prefix = 1;

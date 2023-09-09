@@ -3,6 +3,9 @@ syntax = "proto3";
 package platform.sts;
 
 option go_package = 'platform/sts';
+option java_package = "com.xhpolaris.idlgen.platform.sts";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
 
 enum Scene {
   Unknown = 0;

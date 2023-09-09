@@ -3,6 +3,9 @@ syntax = "proto3";
 package platform.comment;
 
 option go_package = "platform/comment";
+option java_package = "com.xhpolaris.idlgen.platform.comment";
+option java_outer_classname = "CommentProto";
+option java_multiple_files = true;
 
 import "platform/comment/common.proto";
 

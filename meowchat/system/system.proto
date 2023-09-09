@@ -3,6 +3,9 @@ syntax = "proto3";
 package meowchat.system;
 
 option go_package = 'meowchat/system';
+option java_package = "com.xhpolaris.idlgen.meowchat.system";
+option java_outer_classname = "SystemProto";
+option java_multiple_files = true;
 
 import "meowchat/system/common.proto";
 

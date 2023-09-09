@@ -3,6 +3,9 @@ syntax = "proto3";
 package platform.sts;
 
 option go_package = 'platform/sts';
+option java_package = "com.xhpolaris.idlgen.platform.sts";
+option java_outer_classname = "StsProto";
+option java_multiple_files = true;
 
 import "basic/user.proto";
 

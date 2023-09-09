@@ -3,6 +3,9 @@ syntax = "proto3";
 package basic;
 
 option go_package = "basic";
+option java_package = "com.xhpolaris.idlgen.basic";
+option java_outer_classname = "PaginationProto";
+option java_multiple_files = true;
 
 message PaginationOptions {
   optional int64 page = 1;
