@@ -4,8 +4,6 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "http/http.proto";
-
 import "meowchat/user/common.proto";
 
 message DoLikeReq {

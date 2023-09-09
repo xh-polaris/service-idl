@@ -4,8 +4,6 @@ package meowchat.core_api;
 
 option go_package = "meowchat/core_api";
 
-import "http/http.proto";
-
 message ApplySignedUrlReq {
   optional string prefix = 1;
   optional string suffix = 2;
