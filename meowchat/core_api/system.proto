@@ -16,7 +16,7 @@ message News {
   string communityId = 3;
   string imageUrl = 4;
   string linkUrl = 5;
-  string Type = 6;
+  string type = 6;
   int64 isPublic = 7;
 }
 
