@@ -11,18 +11,20 @@ import "meowchat/user/common.proto";
 
 message Comment {
   string id = 1;
-  string text = 2;
-  user.UserPreview user = 3;
-  string replyName = 4;
-  int64 comments = 5;
-  int64 updateAt = 6;
-  int64 createAt = 7;
+  string firstLevelId = 2;
+  string text = 3;
+  user.UserPreview user = 4;
+  string replyName = 5;
+  int64 comments = 6;
+  int64 updateAt = 7;
+  int64 createAt = 8;
 }
 
 message NewCommentReq {
   optional string id = 1;
-  string text = 2;
-  string scope = 3;
+  string firstLevelId = 2;
+  string text = 3;
+  string scope = 4;
 }
 
 message NewCommentResp {
