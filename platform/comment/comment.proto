@@ -119,8 +119,8 @@ service CommentService {
   rpc updateComment(UpdateCommentReq) returns(UpdateCommentResp);
   // 删除
   rpc deleteComment(DeleteCommentByIdReq) returns(DeleteCommentByIdResp);
-  // 根据 parentId 查找
-  rpc listCommentByParent(ListCommentByParentOrFirstLevelIdReq) returns(ListCommentByParentOrFirstLevelIdResp);
+  // 根据 parentId 或 FirstLevelId查找
+  rpc listCommentByParentOrFirstLevelId(ListCommentByParentOrFirstLevelIdReq) returns(ListCommentByParentOrFirstLevelIdResp);
   // 根据 parentId 统计
   rpc countCommentByParent(CountCommentByParentReq) returns(CountCommentByParentResp);
   // 根据 id 查找

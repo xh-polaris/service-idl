@@ -9,11 +9,12 @@ option java_multiple_files = true;
 
 message Comment {
   string id = 1;
-  string text = 2;
-  string authorId = 3;
-  string replyTo = 4;
-  string type = 5;
-  string parentId = 6;
-  int64 updateAt = 7;
-  int64 createAt = 8;
+  string firstLevelId=2;
+  string text = 3;
+  string authorId = 4;
+  string replyTo = 5;
+  string type = 6;
+  string parentId = 7;
+  int64 updateAt = 8;
+  int64 createAt = 9;
 }
