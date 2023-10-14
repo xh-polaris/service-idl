@@ -16,12 +16,13 @@ message CatPreview {
   string area = 3;
   string color = 4;
   string avatarUrl = 5;
-  bool isCollected = 6;
+  optional bool isCollected = 6;
 }
 
 message GetCatPreviewsReq {
-  string communityId = 1;
-  int64 page = 2;
+  string keyword = 1;
+  basic.PaginationOptions paginationOption = 2;
+  string communityId = 3;
 }
 
 message GetCatPreviewsResp {

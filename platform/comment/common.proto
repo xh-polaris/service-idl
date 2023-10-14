@@ -13,8 +13,15 @@ message Comment {
   string text = 3;
   string authorId = 4;
   string replyTo = 5;
-  string type = 6;
+  CommentType type = 6;
   string parentId = 7;
   int64 updateAt = 8;
   int64 createAt = 9;
+}
+
+enum CommentType {
+  CommentType_Unknown = 0;
+  CommentType_Comment = 1;
+  CommentType_Post = 2;
+  CommentType_Moment = 3;
 }

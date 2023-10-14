@@ -16,7 +16,7 @@ message CreateCommentReq {
   string firstLevelId = 2;
   string authorId = 3;
   string replyTo = 4;
-  string type = 5;
+  CommentType type = 5;
   string parentId = 6;
 }
 
@@ -47,7 +47,7 @@ message DeleteCommentByIdResp {
 
 
 message ListCommentByParentOrFirstLevelIdReq {
-  string type = 1;
+  CommentType type = 1;
   string Id = 2;
   int64 skip = 3;
   int64 limit = 4;
@@ -62,7 +62,7 @@ message ListCommentByParentOrFirstLevelIdResp {
 
 
 message CountCommentByParentReq {
-  string type = 1;
+  CommentType type = 1;
   string parentId = 2;
 }
 
@@ -88,7 +88,7 @@ message RetrieveCommentByIdResp {
 
 message ListCommentByAuthorIdAndTypeReq {
   string authorId = 1;
-  string type = 2;
+  CommentType type = 2;
   int64 skip = 3;
   int64 limit = 4;
 }
@@ -102,7 +102,7 @@ message ListCommentByAuthorIdAndTypeResp {
 
 message ListCommentByReplyToAndTypeReq {
   string replyTo = 1;
-  string type = 2;
+  CommentType type = 2;
   int64 skip = 3;
   int64 limit = 4;
 }

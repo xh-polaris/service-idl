@@ -21,8 +21,9 @@ message Post {
   repeated string tags = 8;
   user.UserPreview user = 9;
   bool isOfficial = 10;
-  int64 likes = 11;
-  int64 comments = 12;
+  optional int64 likes = 11;
+  optional int64 comments = 12;
+  optional bool isLiked = 13;
 }
 
 // 多选一

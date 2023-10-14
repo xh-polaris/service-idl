@@ -174,7 +174,6 @@ message ListCommunityReq {
 
 message ListCommunityResp {
   repeated Community communities = 1;
-
 }
 
 message NewCommunityReq {

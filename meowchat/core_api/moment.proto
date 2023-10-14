@@ -10,23 +10,28 @@ option java_multiple_files = true;
 import "basic/pagination.proto";
 
 import "meowchat/user/common.proto";
+import "meowchat/core_api/collection.proto";
 
 message Moment {
   string id = 1;
   int64 createAt = 2;
-  string catId = 3;
+  repeated CatPreview cats = 3;
   repeated string photos = 4; // 图片url
   string title = 5;
   string text = 6;
   string communityId = 7;
   user.UserPreview user = 8;
+  optional int64 likeCount = 9;
+  optional int64 commentCount = 10;
+  optional bool isLiked = 11;
 }
 
 message GetMomentPreviewsReq {
   optional string communityId = 1;
   optional bool isParent = 2;
   optional string onlyUserId = 3;
-  basic.PaginationOptions paginationOption = 4;
+  optional string keyword = 4;
+  basic.PaginationOptions paginationOption = 5;
 }
 
 message GetMomentPreviewsResp {

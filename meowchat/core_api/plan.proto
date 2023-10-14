@@ -31,7 +31,8 @@ message Plan {
 message GetPlanPreviewsReq {
   optional string catId = 1;
   optional string onlyUserId = 2;
-  basic.PaginationOptions paginationOption = 3;
+  optional string keyword = 3;
+  basic.PaginationOptions paginationOption = 4;
 }
 
 message GetPlanPreviewsResp {
@@ -69,18 +70,6 @@ message NewPlanReq {
 
 message NewPlanResp {
   string planId = 1;
-}
-
-message SearchPlanReq {
-  optional string catId = 1;
-  optional string onlyUserId = 3;
-  optional string keyword = 4;
-  basic.PaginationOptions paginationOption = 5;
-}
-
-message SearchPlanResp {
-  repeated Plan plans = 1;
-  int64 total = 2;
 }
 
 message DonateFishReq {

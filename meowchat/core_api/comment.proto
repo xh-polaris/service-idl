@@ -7,22 +7,23 @@ option java_package = "com.xhpolaris.idlgen.meowchat.coreapi";
 option java_outer_classname = "CommentProto";
 option java_multiple_files = true;
 
-import "meowchat/user/common.proto";
+import "meowchat/core_api/user.proto";
 
 message Comment {
   string id = 1;
-  string firstLevelId = 2;
+  optional string firstLevelId = 2;
   string text = 3;
-  user.UserPreview user = 4;
-  string replyName = 5;
-  int64 comments = 6;
-  int64 updateAt = 7;
-  int64 createAt = 8;
+  User user = 4;
+  optional User replyUser = 5; // 这条评论回复的用户
+  optional int64 comments = 6;
+  int64 createAt = 7;
+  optional int64 likeCount = 8;
+  optional bool isLiked = 9;
 }
 
 message NewCommentReq {
   optional string id = 1;
-  string firstLevelId = 2;
+  optional string firstLevelId = 2;
   string text = 3;
   string scope = 4;
 }

@@ -9,6 +9,7 @@ option java_multiple_files = true;
 
 import "http/http.proto";
 
+import "meowchat/core_api/agg.proto";
 import "meowchat/core_api/sts.proto";
 import "meowchat/core_api/user.proto";
 import "meowchat/core_api/auth.proto";
@@ -38,9 +39,6 @@ service user {
   }
   rpc SearchUser(SearchUserReq) returns (SearchUserResp){
     option(http.get) = "/user/search_user";
-  }
-  rpc SearchUserForAdmin(SearchUserForAdminReq) returns (SearchUserForAdminResp){
-    option(http.get) = "/user/search_user_for_admin";
   }
 }
 
@@ -144,9 +142,6 @@ service plan {
   rpc DeletePlan(DeletePlanReq) returns (DeletePlanResp){
     option(http.post) = "/plan/delete_plan";
   }
-  rpc SearchPlan(SearchPlanReq) returns (SearchPlanResp){
-    option(http.get) = "/plan/search_plan";
-  }
   rpc DonateFish(DonateFishReq) returns (DonateFishResp){
     option(http.get) = "/plan/donate_fish";
   }
@@ -242,6 +237,7 @@ service system {
   rpc CreateApply(CreateApplyReq) returns (CreateApplyResp) {
     option(http.post) = "/role/create_apply";
   }
+
   //notification
   rpc ListNotification(ListNotificationReq) returns (ListNotificationResp) {
     option(http.get) = "/notification/list_notification";
@@ -252,4 +248,10 @@ service system {
   rpc CountNotification(CountNotificationReq) returns (CountNotificationResp) {
     option(http.get) = "/notification/count_notification";
   }
+
+  rpc Prefetch(PrefetchReq) returns (PrefetchResp) {
+    option(http.post) = "/prefetch";
+  }
+
 }
+
