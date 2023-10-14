@@ -51,6 +51,15 @@ message Apply {
   string communityId = 4;
 }
 
+message Notification {
+  string notificationId = 1;
+  string userId = 2;
+  string parenId = 3;
+  NotificationType type = 4;
+  string text = 5;
+  int64 createAt = 6;
+}
+
 enum RoleType {
   TypeUnknown = 0;
   TypeNormalUser = 1;
@@ -64,4 +73,10 @@ enum ApplyStatus {
   StatusUnprocessed = 1;
   StatusAccepted = 2;
   StatusRejected = 3;
+}
+
+enum NotificationType {
+  TypeContentLike = 0;
+  TypeUserLike = 1;
+  TypeContentComment = 2;
 }

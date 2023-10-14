@@ -7,6 +7,7 @@ option java_package = "com.xhpolaris.idlgen.meowchat.system";
 option java_outer_classname = "SystemProto";
 option java_multiple_files = true;
 
+import "basic/pagination.proto";
 import "meowchat/system/common.proto";
 
 message RetrieveNoticeReq {
@@ -291,6 +292,31 @@ message ListUserIdByRoleResp {
   repeated string userId = 1;
 }
 
+message ListNotificationReq {
+  string userId = 1;
+  optional basic.PaginationOptions paginationOptions = 3;
+}
+
+message ListNotificationResp {
+  repeated Notification notifications = 1;
+  int64 notRead = 2;
+}
+
+message CleanNotificationReq {
+  string userId = 1;
+}
+
+message CleanNotificationResp {
+}
+
+message CountNotificationReq {
+  string userId = 1;
+}
+
+message CountNotificationResp {
+  int64 notificationCount = 1;
+}
+
 service system_rpc {
   // 公告
   rpc RetrieveNotice(RetrieveNoticeReq) returns (RetrieveNoticeResp);
@@ -328,4 +354,9 @@ service system_rpc {
   rpc CreateCommunity(CreateCommunityReq) returns (CreateCommunityResp);
   rpc UpdateCommunity(UpdateCommunityReq) returns (UpdateCommunityResp);
   rpc DeleteCommunity(DeleteCommunityReq) returns (DeleteCommunityResp);
+
+  //通知
+  rpc ListNotification(ListNotificationReq) returns (ListNotificationResp);
+  rpc CleanNotification(CleanNotificationReq) returns (CleanNotificationResp);
+  rpc CountNotification(CountNotificationReq) returns (CountNotificationResp);
 }

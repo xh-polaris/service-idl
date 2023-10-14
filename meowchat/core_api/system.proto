@@ -7,6 +7,7 @@ option java_package = "com.xhpolaris.idlgen.meowchat.coreapi";
 option java_outer_classname = "SystemProto";
 option java_multiple_files = true;
 
+import "basic/pagination.proto";
 import "meowchat/user/common.proto";
 import "meowchat/system/common.proto";
 
@@ -34,6 +35,15 @@ message Notice {
   string id = 1;
   string text = 2;
   int64 createAt = 3;
+}
+
+message Notification {
+  string id = 1;
+  user.UserPreview user = 2;
+  string parentId = 3;
+  system.NotificationType types = 4;
+  string text = 5;
+  int64 createAt = 6;
 }
 
 message GetNewsReq {
@@ -236,4 +246,27 @@ message GetUserByRoleReq {
 
 message GetUserByRoleResp {
   repeated user.UserPreview users = 1;
+}
+
+message ListNotificationReq {
+  optional basic.PaginationOptions paginationOptions = 3;
+}
+
+message ListNotificationResp {
+  repeated Notification notifications = 1;
+  int64 NotRead = 2;
+  int64 total = 3;
+}
+
+message CleanNotificationReq {
+}
+
+message CleanNotificationResp{
+}
+
+message CountNotificationReq {
+}
+
+message CountNotificationResp {
+  int64 NotRead = 1;
 }

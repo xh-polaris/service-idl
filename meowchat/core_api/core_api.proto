@@ -242,4 +242,14 @@ service system {
   rpc CreateApply(CreateApplyReq) returns (CreateApplyResp) {
     option(http.post) = "/role/create_apply";
   }
+  //notification
+  rpc ListNotification(ListNotificationReq) returns (ListNotificationResp) {
+    option(http.get) = "/notification/list_notification";
+  }
+  rpc CleanNotification(CleanNotificationReq) returns (CleanNotificationResp) {
+    option(http.get) = "/notification/clean_notification";
+  }
+  rpc CountNotification(CountNotificationReq) returns (CountNotificationResp) {
+    option(http.get) = "/notification/count_notification";
+  }
 }
