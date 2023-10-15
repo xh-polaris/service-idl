@@ -46,24 +46,23 @@ message DeleteCommentByIdResp {
 // 根据 parentId 查找所有评论
 
 
-message ListCommentByParentOrFirstLevelIdReq {
+message ListCommentByParentReq {
   CommentType type = 1;
   string Id = 2;
   int64 skip = 3;
   int64 limit = 4;
+  optional bool onlyFirstLevel = 5; // 只加载一级评论
 }
 
-message ListCommentByParentOrFirstLevelIdResp {
+message ListCommentByParentResp {
   repeated Comment comments = 1;
   int64 total = 2;
 }
 
-// 根据 parentId 查找所有评论
-
-
 message CountCommentByParentReq {
   CommentType type = 1;
   string parentId = 2;
+  optional bool onlyFirstLevel = 3;
 }
 
 message CountCommentByParentResp {
