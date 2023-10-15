@@ -17,7 +17,7 @@ message Post {
   int64 updateAt = 3;
   string title = 5;
   string text = 6;
-  string coverUrl = 7;
+  optional string coverUrl = 7;
   repeated string tags = 8;
   user.UserPreview user = 9;
   bool isOfficial = 10;
@@ -61,7 +61,7 @@ message NewPostReq {
   optional string id = 1;
   string title = 2;
   string text = 3;
-  string coverUrl = 4;
+  optional string coverUrl = 4;
   repeated string tags = 5;
 }
 

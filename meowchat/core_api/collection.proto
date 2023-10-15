@@ -20,7 +20,7 @@ message CatPreview {
 }
 
 message GetCatPreviewsReq {
-  string keyword = 1;
+  optional string keyword = 1;
   basic.PaginationOptions paginationOption = 2;
   string communityId = 3;
 }

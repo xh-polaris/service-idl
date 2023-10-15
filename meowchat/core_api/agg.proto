@@ -15,22 +15,23 @@ import "meowchat/core_api/moment.proto";
 import "meowchat/core_api/collection.proto";
 
 message PrefetchReq {
-  string Appid = 1; // 微信小程序AppID
-  optional string Token = 2; // UnionID
-  optional string Code = 3; // 登录凭证 code
+  string appid = 1; // 微信小程序AppID
+  optional string token = 2;
+  optional string code = 3; // 登录凭证 code
   int64 timestamp = 4; // 时间戳
-  optional string Path = 5; // 页面路径
-  optional string Query = 6; // 页面参数
-  optional string Scene = 7; // 场景值
+  optional string path = 5; // 页面路径
+  optional string query = 6; // 页面参数
+  optional string scene = 7; // 场景值
 }
 
 // 所有响应都是弱依赖
 message PrefetchResp {
-  optional SignInResp SignInResp = 1;
-  optional GetUserInfoResp GetUserInfoResp = 2;
-  optional ListCommunityResp ListCommunityResp = 3;
-  optional GetPostPreviewsResp FirstPostPreviewsResp = 4;
-  optional GetMomentPreviewsResp FirstMomentPreviewsResp = 5;
-  optional GetCatPreviewsResp FirstCatPreviewsResp = 6;
-  optional GetNewsResp GetNewsResp = 7;
+  optional SignInResp signInResp = 1;
+  optional GetUserInfoResp getUserInfoResp = 2;
+  optional ListCommunityResp listCommunityResp = 3;
+  optional GetPostPreviewsResp firstPostPreviewsResp = 4;
+  optional GetMomentPreviewsResp firstMomentPreviewsResp = 5;
+  optional GetCatPreviewsResp firstCatPreviewsResp = 6;
+  optional GetNewsResp getNewsResp = 7;
+  optional string token = 8; // 直接返回token
 }

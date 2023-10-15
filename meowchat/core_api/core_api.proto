@@ -250,7 +250,7 @@ service system {
   }
 
   rpc Prefetch(PrefetchReq) returns (PrefetchResp) {
-    option(http.post) = "/prefetch";
+    option(http.get) = "/prefetch";
   }
 
 }

@@ -71,7 +71,7 @@ message DeleteAdminResp {
 }
 
 message NewAdminReq {
-  string id = 1;
+  optional string id = 1;
   string title = 2;
   string communityId = 3;
   string name = 4;
@@ -93,7 +93,7 @@ message GetNoticesResp {
 }
 
 message NewNoticeReq {
-  string id = 1;
+  optional string id = 1;
   string communityId = 2;
   string text = 3;
 }
@@ -103,7 +103,7 @@ message NewNoticeResp {
 }
 
 message NewNewsReq {
-  string id = 1;
+  optional string id = 1;
   string communityId = 2;
   string imageUrl = 3;
   string linkUrl = 4;
@@ -165,11 +165,11 @@ message HandleApplyResp {
 message Community {
   string id = 1;
   string name = 2;
-  string parentId = 3;
+  optional string parentId = 3;
 }
 
 message ListCommunityReq {
-  string parentId = 1;
+  optional string parentId = 1;
 }
 
 message ListCommunityResp {
@@ -177,9 +177,9 @@ message ListCommunityResp {
 }
 
 message NewCommunityReq {
-  string id = 1;
+  optional string id = 1;
   string name = 2;
-  string parentId = 3;
+  optional string parentId = 3;
 }
 
 message NewCommunityResp {
