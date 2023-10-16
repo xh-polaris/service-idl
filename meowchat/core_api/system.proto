@@ -269,3 +269,10 @@ message CountNotificationReq {
 message CountNotificationResp {
   int64 NotRead = 1;
 }
+
+message GetMinVersionReq {
+}
+
+message GetMinVersionResp {
+  int64 MinVersion = 1;
+}
