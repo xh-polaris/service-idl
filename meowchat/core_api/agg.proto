@@ -34,4 +34,5 @@ message PrefetchResp {
   optional GetCatPreviewsResp firstCatPreviewsResp = 6;
   optional GetNewsResp getNewsResp = 7;
   optional string token = 8; // 直接返回token
+  int64 timestamp = 9; // 时间戳
 }
