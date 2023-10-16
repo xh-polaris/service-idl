@@ -252,6 +252,8 @@ service system {
   rpc Prefetch(PrefetchReq) returns (PrefetchResp) {
     option(http.get) = "/prefetch";
   }
-
+  rpc GetMinVersion(GetMinVersionReq) returns (GetMinVersionResp) {
+    option(http.get) = "/get_min_version";
+  }
 }
 
