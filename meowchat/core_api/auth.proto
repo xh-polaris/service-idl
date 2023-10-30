@@ -23,6 +23,7 @@ message SignInResp {
   string accessToken = 2;
   int64 accessExpire = 3;
   bool isFirst = 4;
+  int64 getFishNum = 5;
 }
 
 message SetPasswordReq {

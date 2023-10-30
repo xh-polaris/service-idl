@@ -22,7 +22,8 @@ message CreateCommentReq {
 
 message CreateCommentResp {
   string id = 1;
-  bool isFirst = 2;
+  bool  getFish = 2;
+  int64 getFishTimes = 3;
 }
 
 // 更新评论

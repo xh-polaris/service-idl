@@ -13,18 +13,21 @@ import "meowchat/user/common.proto";
 import "meowchat/content/common.proto";
 
 message Plan {
-  string id = 1;
-  string name = 2;
-  string description = 3;
-  content.PlanType planType = 4;
-  int64  startTime = 5;
-  int64  endTime = 6;
-  string catId = 7;
-  repeated user.UserPreview users = 8;
-  repeated string imageUrls = 9;
-  int64 createAt = 10;
-  int64 maxFish = 11;
-  int64 nowFish = 12;
+  string   id = 1;
+  string   name = 2;
+  string   coverUrl = 3;
+  string   description = 4;
+  content.PlanType planType = 5;
+  string   instruction = 6;
+  int64    startTime = 7;
+  int64    endTime = 8;
+  string   catId = 9;
+  user.UserPreview user = 10;
+  repeated string imageUrls = 11;
+  int64    createAt = 12;
+  int64    maxFish = 13;
+  int64    nowFish = 14;
+  string   summary = 15;
 }
 
 
@@ -60,12 +63,15 @@ message NewPlanReq {
   optional string id = 1;
   optional string name = 2;
   optional string description = 3;
-  optional content.PlanType planType = 4;
-  optional int64  startTime = 5;
-  optional int64  endTime = 6;
-  optional string catId = 7;
-  optional int64  maxFish = 8;
-  repeated string imageUrls = 9;
+  string   coverUrl = 4;
+  optional content.PlanType planType = 5;
+  string   instruction = 6;
+  optional int64  startTime = 7;
+  optional int64  endTime = 8;
+  optional string catId = 9;
+  optional int64  maxFish = 10;
+  repeated string imageUrls = 11;
+  string   summary = 12;
 }
 
 message NewPlanResp {
