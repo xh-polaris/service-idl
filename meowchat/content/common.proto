@@ -74,6 +74,7 @@ message Plan {
   int64    maxFish = 13;
   int64    nowFish = 14;
   string   summary = 15;
+  PlanState planState = 16;
 }
 
 message SearchField {
@@ -110,4 +111,10 @@ enum PlanType {
   TypeCastrate = 1;
   TypeHeal = 2;
   TypeOther = 3;
+}
+
+enum PlanState {
+  StateFunding = 0;
+  StateDoing = 1;
+  StateComplete = 2;
 }
