@@ -53,3 +53,11 @@ message SearchUserResp {
   int64 total = 2;
   string token = 3;
 }
+
+message CheckInReq {
+}
+
+message CheckInResp {
+  bool  isFirst = 1;
+  int64 getFishNum = 2;
+}

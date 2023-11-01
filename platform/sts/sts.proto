@@ -73,7 +73,6 @@ message SignInResp {
   string openId = 2;
   string unionId = 3;
   string appId = 4;
-  bool isFirst = 5;
 }
 
 message SetPasswordReq {

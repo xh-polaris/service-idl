@@ -101,11 +101,20 @@ message GetLikedUsersResp {
   repeated string userIds = 1;
 }
 
+message CheckInReq {
+  string userId = 1;
+}
+
+message CheckInResp {
+  bool isFirst = 1;
+}
+
 service UserService {
   rpc GetUser(GetUserReq) returns (GetUserResp);
   rpc GetUserDetail(GetUserDetailReq) returns (GetUserDetailResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
   rpc SearchUser(SearchUserReq) returns (SearchUserResp);
+  rpc CheckIn(CheckInReq) returns (CheckInResp);
   // 点赞/取消赞
   rpc DoLike(DoLikeReq) returns (DoLikeResp);
   // 获取用户是否点赞
