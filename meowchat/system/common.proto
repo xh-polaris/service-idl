@@ -76,7 +76,8 @@ enum ApplyStatus {
 }
 
 enum NotificationType {
-  TypeContentLike = 0;
-  TypeUserLike = 1;
-  TypeContentComment = 2;
+  TypeOther = 0;
+  TypeContentLike = 1;
+  TypeUserLike = 2;
+  TypeContentComment = 3;
 }

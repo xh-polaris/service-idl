@@ -68,13 +68,14 @@ message Plan {
   int64    startTime = 7;
   int64    endTime = 8;
   string   catId = 9;
-  string   initiatorId = 10;
-  repeated string imageUrls = 11;
-  int64    createAt = 12;
-  int64    maxFish = 13;
-  int64    nowFish = 14;
-  string   summary = 15;
-  PlanState planState = 16;
+  string   communityId = 10;
+  string   initiatorId = 11;
+  repeated string imageUrls = 12;
+  int64    createAt = 13;
+  int64    maxFish = 14;
+  int64    nowFish = 15;
+  string   summary = 16;
+  PlanState planState = 17;
 }
 
 message SearchField {
@@ -104,17 +105,20 @@ message PostFilterOptions {
 message PlanFilterOptions {
   optional string onlyCatId = 1;
   optional string onlyUserId = 2;
+  optional string onlyCommunityId = 3;
+  optional bool   includeGlobal = 4;
 }
 
 enum PlanType {
-  TypeFeed = 0;
+  TypeOther = 0;
   TypeCastrate = 1;
   TypeHeal = 2;
-  TypeOther = 3;
+  TypeFeed = 3;
 }
 
 enum PlanState {
-  StateFunding = 0;
-  StateDoing = 1;
-  StateComplete = 2;
+  StateUnknown = 0;
+  StateFunding = 1;
+  StateDoing = 2;
+  StateComplete = 3;
 }

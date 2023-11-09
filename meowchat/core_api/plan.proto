@@ -22,20 +22,23 @@ message Plan {
   int64    startTime = 7;
   int64    endTime = 8;
   string   catId = 9;
-  user.UserPreview user = 10;
-  repeated string imageUrls = 11;
-  int64    createAt = 12;
-  int64    maxFish = 13;
-  int64    nowFish = 14;
-  string   summary = 15;
+  string   communityId = 10;
+  user.UserPreview user = 11;
+  repeated string imageUrls = 12;
+  int64    createAt = 13;
+  int64    maxFish = 14;
+  int64    nowFish = 15;
+  string   summary = 16;
 }
 
 
 message GetPlanPreviewsReq {
   optional string catId = 1;
   optional string onlyUserId = 2;
-  optional string keyword = 3;
-  basic.PaginationOptions paginationOption = 4;
+  optional string onlyCommunityId = 3;
+  optional bool   includeGlobal = 4;
+  optional string keyword = 5;
+  basic.PaginationOptions paginationOption = 6;
 }
 
 message GetPlanPreviewsResp {
@@ -69,10 +72,11 @@ message NewPlanReq {
   optional int64  startTime = 7;
   optional int64  endTime = 8;
   optional string catId = 9;
-  optional int64  maxFish = 10;
-  repeated string imageUrls = 11;
-  optional string   summary = 12;
-  optional content.PlanState planState = 13;
+  optional string communityId = 10;
+  optional int64  maxFish = 11;
+  repeated string imageUrls = 12;
+  optional string   summary = 13;
+  optional content.PlanState planState = 14;
 }
 
 message NewPlanResp {
