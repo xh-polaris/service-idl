@@ -78,6 +78,14 @@ message Plan {
   PlanState planState = 17;
 }
 
+message PlanPreview {
+  string id = 1;
+  string name = 2;
+  string catId = 3;
+  int64  donateNum = 4;
+  int64  donateTime = 5;
+}
+
 message SearchField {
   optional string text = 1;
   optional string title = 2;

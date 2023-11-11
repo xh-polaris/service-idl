@@ -295,6 +295,14 @@ message ListFishByPlanResp {
   map<string,int64> fishMap = 2;
 }
 
+message ListDonateByUserReq {
+  string userId = 1;
+}
+
+message ListDonateByUserResp {
+  repeated PlanPreview planPreviews = 1;
+}
+
 message RetrieveUserFishReq {
   string userId = 1;
 }
@@ -334,6 +342,7 @@ service ContentService {
   rpc DeletePlan(DeletePlanReq) returns (DeletePlanResp);
   rpc DonateFish(DonateFishReq) returns (DonateFishResp);
   rpc AddUserFish(AddUserFishReq) returns (AddUserFishResp);
+  rpc ListDonateByUser(ListDonateByUserReq) returns (ListDonateByUserResp);
   rpc ListFishByPlan(ListFishByPlanReq) returns (ListFishByPlanResp);
   rpc RetrieveUserFish(RetrieveUserFishReq) returns (RetrieveUserFishResp);
 }

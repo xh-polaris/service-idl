@@ -29,8 +29,16 @@ message Plan {
   int64    maxFish = 14;
   int64    nowFish = 15;
   string   summary = 16;
+  string   catName = 17;
 }
 
+message PlanPre {
+  string id = 1;
+  string name = 2;
+  string catName = 3;
+  int64  donateNum = 4;
+  int64  donateTime = 5;
+}
 
 message GetPlanPreviewsReq {
   optional string catId = 1;
@@ -106,4 +114,12 @@ message ListFishByPlanReq {
 message ListFishByPlanResp {
   repeated user.UserPreview users = 1;
   map<string,int64> fishMap = 2;
+}
+
+message GetUserDonateReq {
+  optional string userId = 1;
+}
+
+message GetUserDonateResp {
+  repeated PlanPre planPreviews = 1;
 }
