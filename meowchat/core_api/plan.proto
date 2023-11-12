@@ -109,17 +109,23 @@ message GetUserFishResp{
 
 message ListFishByPlanReq {
   string planId = 1;
+  basic.PaginationOptions paginationOption = 2;
 }
 
 message ListFishByPlanResp {
   repeated user.UserPreview users = 1;
   map<string,int64> fishMap = 2;
+  int64 total = 3;
+  string token = 4;
 }
 
-message GetUserDonateReq {
+message ListDonateByUserReq {
   optional string userId = 1;
+  basic.PaginationOptions paginationOption = 2;
 }
 
-message GetUserDonateResp {
+message ListDonateByUserResp {
   repeated PlanPre planPreviews = 1;
+  int64 total = 2;
+  string token = 3;
 }

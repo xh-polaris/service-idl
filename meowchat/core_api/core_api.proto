@@ -154,6 +154,9 @@ service plan {
   rpc ListFishByPlan(ListFishByPlanReq) returns (ListFishByPlanResp){
     option(http.get) = "/plan/list_fish_by_plan";
   }
+  rpc ListDonateByUser(ListDonateByUserReq) returns (ListDonateByUserResp){
+    option(http.get) = "/plan/list_donate_by_user";
+  }
 }
 
 service post {
