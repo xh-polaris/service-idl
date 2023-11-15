@@ -116,7 +116,6 @@ message ListFishByPlanResp {
   repeated user.UserPreview users = 1;
   map<string,int64> fishMap = 2;
   int64 total = 3;
-  string token = 4;
 }
 
 message ListDonateByUserReq {
@@ -128,4 +127,20 @@ message ListDonateByUserResp {
   repeated PlanPre planPreviews = 1;
   int64 total = 2;
   string token = 3;
+}
+
+message CountDonateByUserReq {
+  optional string userId = 1;
+}
+
+message CountDonateByUserResp {
+  int64 total = 1;
+}
+
+message CountDonateByPlanReq {
+  string planId = 1;
+}
+
+message CountDonateByPlanResp {
+  int64 total = 1;
 }

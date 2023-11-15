@@ -157,6 +157,12 @@ service plan {
   rpc ListDonateByUser(ListDonateByUserReq) returns (ListDonateByUserResp){
     option(http.get) = "/plan/list_donate_by_user";
   }
+  rpc CountDonateByUser(CountDonateByUserReq) returns (CountDonateByUserResp){
+    option(http.get) = "/plan/count_donate_by_user";
+  }
+  rpc CountDonateByPlan(CountDonateByPlanReq) returns (CountDonateByPlanResp){
+    option(http.get) = "/plan/count_donate_by_plan";
+  }
 }
 
 service post {

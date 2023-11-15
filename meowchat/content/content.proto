@@ -295,7 +295,6 @@ message ListFishByPlanResp {
   repeated string userIds = 1;
   map<string,int64> fishMap = 2;
   int64  total = 3;
-  string token = 4;
 }
 
 message ListDonateByUserReq {
@@ -315,6 +314,22 @@ message RetrieveUserFishReq {
 
 message RetrieveUserFishResp {
   int64 fish = 1;
+}
+
+message CountDonateByUserReq {
+  string userId = 1;
+}
+
+message CountDonateByUserResp {
+  int64 total = 1;
+}
+
+message CountDonateByPlanReq {
+  string userId = 1;
+}
+
+message CountDonateByPlanResp {
+  int64 total = 1;
 }
 
 service ContentService {
@@ -351,4 +366,6 @@ service ContentService {
   rpc ListDonateByUser(ListDonateByUserReq) returns (ListDonateByUserResp);
   rpc ListFishByPlan(ListFishByPlanReq) returns (ListFishByPlanResp);
   rpc RetrieveUserFish(RetrieveUserFishReq) returns (RetrieveUserFishResp);
+  rpc CountDonateByUser(CountDonateByUserReq) returns (CountDonateByUserResp);
+  rpc CountDonateByPlan(CountDonateByPlanReq) returns (CountDonateByPlanResp);
 }
