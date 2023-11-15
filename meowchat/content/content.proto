@@ -325,7 +325,7 @@ message CountDonateByUserResp {
 }
 
 message CountDonateByPlanReq {
-  string userId = 1;
+  string planId = 1;
 }
 
 message CountDonateByPlanResp {
