@@ -91,6 +91,16 @@ message SendVerifyCodeReq {
 message SendVerifyCodeResp {
 }
 
+message AddUserAuthReq {
+  string userId = 1;
+  string type = 2;
+  string unionId = 3;
+}
+
+message AddUserAuthResp {
+}
+
+
 service StsService {
   rpc genCosSts(GenCosStsReq) returns (GenCosStsResp);
   rpc genSignedUrl(GenSignedUrlReq) returns (GenSignedUrlResp);
@@ -100,5 +110,6 @@ service StsService {
   rpc signIn(SignInReq) returns (SignInResp);
   rpc setPassword(SetPasswordReq) returns (SetPasswordResp);
   rpc sendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp);
+  rpc AddUserAuth(AddUserAuthReq) returns (AddUserAuthResp);
 }
 
