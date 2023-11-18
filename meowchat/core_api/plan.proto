@@ -30,6 +30,7 @@ message Plan {
   int64    nowFish = 15;
   string   summary = 16;
   string   catName = 17;
+  content.PlanState planState = 18;
 }
 
 message PlanPre {
