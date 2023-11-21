@@ -257,6 +257,13 @@ message ListNotificationResp {
   int64 total = 3;
 }
 
+message ReadNotificationReq {
+  string notificationId = 1;
+}
+
+message ReadNotificationResp {
+}
+
 message CleanNotificationReq {
 }
 

@@ -53,11 +53,12 @@ message Apply {
 
 message Notification {
   string notificationId = 1;
-  string userId = 2;
-  string parenId = 3;
-  NotificationType type = 4;
-  string text = 5;
-  int64 createAt = 6;
+  string TargetUserId = 2;
+  string SourceUserId = 3;
+  string SourceContentId = 4;
+  NotificationType type = 5;
+  string text = 6;
+  int64 createAt = 7;
 }
 
 enum RoleType {
@@ -78,6 +79,6 @@ enum ApplyStatus {
 enum NotificationType {
   TypeOther = 0;
   TypeContentLike = 1;
-  TypeUserLike = 2;
-  TypeContentComment = 3;
+  TypeContentComment = 2;
+  TypeUserLike = 3;
 }

@@ -260,6 +260,9 @@ service system {
   rpc CountNotification(CountNotificationReq) returns (CountNotificationResp) {
     option(http.get) = "/notification/count_notification";
   }
+  rpc ReadNotification(ReadNotificationReq) returns (ReadNotificationResp) {
+    option(http.get) = "/notification/read_notification";
+  }
 
   rpc Prefetch(PrefetchReq) returns (PrefetchResp) {
     option(http.get) = "/prefetch";

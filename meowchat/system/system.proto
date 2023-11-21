@@ -300,6 +300,7 @@ message ListNotificationReq {
 message ListNotificationResp {
   repeated Notification notifications = 1;
   int64 notRead = 2;
+  int64 total = 3;
 }
 
 message CleanNotificationReq {
@@ -307,6 +308,13 @@ message CleanNotificationReq {
 }
 
 message CleanNotificationResp {
+}
+
+message ReadNotificationReq {
+  string notificationId = 1;
+}
+
+message ReadNotificationResp {
 }
 
 message CountNotificationReq {
