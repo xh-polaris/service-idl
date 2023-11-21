@@ -59,6 +59,7 @@ message Notification {
   NotificationType type = 5;
   string text = 6;
   int64 createAt = 7;
+  bool  isRead = 8;
 }
 
 enum RoleType {

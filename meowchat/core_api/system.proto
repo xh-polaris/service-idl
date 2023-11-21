@@ -38,12 +38,13 @@ message Notice {
 }
 
 message Notification {
-  string id = 1;
+  string notificationId = 1;
   user.UserPreview user = 2;
-  string parentId = 3;
+  string SourceContentId = 3;
   system.NotificationType types = 4;
   string text = 5;
   int64 createAt = 6;
+  bool  isRead = 7;
 }
 
 message GetNewsReq {
