@@ -65,6 +65,7 @@ message DoLikeReq {
 
 message DoLikeResp {
   bool isFirst = 1;
+  int64 getFishTimes = 2;
 }
 
 message GetUserLikedReq {
@@ -110,6 +111,7 @@ message CheckInReq {
 
 message CheckInResp {
   bool isFirst = 1;
+  int64 getFishTimes = 2;
 }
 
 service UserService {

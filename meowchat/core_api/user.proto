@@ -59,5 +59,6 @@ message CheckInReq {
 
 message CheckInResp {
   bool  isFirst = 1;
-  int64 getFishNum = 2;
+  int64 getFishTimes = 2;
+  int64 getFishNum = 3;
 }
