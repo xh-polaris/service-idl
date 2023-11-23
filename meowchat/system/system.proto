@@ -367,4 +367,5 @@ service system_rpc {
   rpc ListNotification(ListNotificationReq) returns (ListNotificationResp);
   rpc CleanNotification(CleanNotificationReq) returns (CleanNotificationResp);
   rpc CountNotification(CountNotificationReq) returns (CountNotificationResp);
+  rpc ReadNotification(ReadNotificationReq) returns (ReadNotificationResp);
 }
