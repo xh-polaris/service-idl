@@ -58,6 +58,9 @@ message DoLikeReq {
 
   // 对象所关联的ID，比如评论点赞对应文章ID等
   string associatedId = 4;
+
+  //被点赞用户的ID
+  string likedUserId = 5;
 }
 
 message DoLikeResp {

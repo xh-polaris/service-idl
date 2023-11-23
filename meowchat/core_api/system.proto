@@ -249,7 +249,7 @@ message GetUserByRoleResp {
 }
 
 message ListNotificationReq {
-  optional basic.PaginationOptions paginationOptions = 3;
+  optional basic.PaginationOptions paginationOption = 3;
 }
 
 message ListNotificationResp {

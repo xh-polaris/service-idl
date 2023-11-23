@@ -81,5 +81,6 @@ enum NotificationType {
   TypeOther = 0;
   TypeContentLike = 1;
   TypeContentComment = 2;
-  TypeUserLike = 3;
+  TypeCommentComment = 3;
+  TypeUserLike = 4;
 }
