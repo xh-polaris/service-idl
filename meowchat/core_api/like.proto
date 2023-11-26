@@ -15,7 +15,7 @@ message DoLikeReq {
 }
 
 message DoLikeResp {
-  bool  isFirst = 1;
+  bool  getFish = 1;
   int64 getFishNum = 2;
   int64 getFishTimes = 3;
 }
