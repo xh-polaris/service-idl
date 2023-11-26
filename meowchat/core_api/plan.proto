@@ -39,6 +39,7 @@ message PlanPre {
   string catName = 3;
   int64  donateNum = 4;
   int64  donateTime = 5;
+  string coverUrl = 6;
 }
 
 message GetPlanPreviewsReq {
