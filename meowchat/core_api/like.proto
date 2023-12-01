@@ -8,6 +8,9 @@ option java_outer_classname = "LikeProto";
 option java_multiple_files = true;
 
 import "meowchat/user/common.proto";
+import "meowchat/core_api/moment.proto";
+import "meowchat/core_api/post.proto";
+import "meowchat/core_api/comment.proto";
 
 message DoLikeReq {
   string targetId = 1;
@@ -54,4 +57,16 @@ message GetLikedUsersReq {
 
 message GetLikedUsersResp {
   repeated user.UserPreview users = 1;
+}
+
+message GetUserLikeContentsReq {
+  string userId = 1;
+  user.LikeType targetType = 2;
+}
+
+message GetUserLikeContentsResp {
+  repeated core_api.Moment  moments = 1;
+  repeated user.UserPreview users = 2;
+  repeated core_api.Post    posts = 3;
+  repeated core_api.Comment comments = 4;
 }
