@@ -112,6 +112,9 @@ service like {
   rpc GetUserLikes(GetUserLikesReq) returns (GetUserLikesResp){
     option(http.get) = "/like/get_user_likes";
   }
+  rpc GetUserLikeContents(GetUserLikeContentsReq) returns (GetUserLikeContentsResp){
+    option(http.get) = "/like/get_user_like_contents";
+  }
 }
 
 service moment {
