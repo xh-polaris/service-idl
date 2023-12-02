@@ -7,6 +7,8 @@ option java_package = "com.xhpolaris.idlgen.meowchat.coreapi";
 option java_outer_classname = "LikeProto";
 option java_multiple_files = true;
 
+import "basic/pagination.proto";
+
 import "meowchat/user/common.proto";
 import "meowchat/core_api/moment.proto";
 import "meowchat/core_api/post.proto";
@@ -44,10 +46,13 @@ message GetLikedCountResp {
 message GetUserLikesReq {
   string userId = 1;
   user.LikeType targetType = 2;
+  basic.PaginationOptions paginationOption = 3;
 }
 
 message GetUserLikesResp {
   repeated user.Like likes = 1;
+  int64 total = 2;
+  string token = 3;
 }
 
 message GetLikedUsersReq {
@@ -62,6 +67,7 @@ message GetLikedUsersResp {
 message GetUserLikeContentsReq {
   string userId = 1;
   user.LikeType targetType = 2;
+  basic.PaginationOptions paginationOption = 3;
 }
 
 message GetUserLikeContentsResp {
@@ -69,4 +75,6 @@ message GetUserLikeContentsResp {
   repeated user.UserPreview users = 2;
   repeated core_api.Post    posts = 3;
   repeated core_api.Comment comments = 4;
+  int64 total = 5;
+  string token = 6;
 }
