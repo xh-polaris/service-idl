@@ -29,8 +29,7 @@ message Plan {
   int64    maxFish = 14;
   int64    nowFish = 15;
   string   summary = 16;
-  string   catName = 17;
-  content.PlanState planState = 18;
+  content.PlanState planState = 17;
 }
 
 message GetPlanPreviewsReq {
