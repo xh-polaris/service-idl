@@ -21,7 +21,7 @@ message Plan {
   string   instruction = 6;
   int64    startTime = 7;
   int64    endTime = 8;
-  string   catId = 9;
+  content.Cat cat = 9;
   string   communityId = 10;
   user.UserPreview user = 11;
   repeated string imageUrls = 12;
@@ -31,15 +31,6 @@ message Plan {
   string   summary = 16;
   string   catName = 17;
   content.PlanState planState = 18;
-}
-
-message PlanPre {
-  string id = 1;
-  string name = 2;
-  string catName = 3;
-  int64  donateNum = 4;
-  int64  donateTime = 5;
-  string coverUrl = 6;
 }
 
 message GetPlanPreviewsReq {
@@ -126,7 +117,7 @@ message ListDonateByUserReq {
 }
 
 message ListDonateByUserResp {
-  repeated PlanPre planPreviews = 1;
+  repeated Plan plans = 1;
   int64 total = 2;
   string token = 3;
 }
