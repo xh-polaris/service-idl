@@ -123,7 +123,7 @@ message ListDonateByUserReq {
 }
 
 message ListDonateByUserResp {
-  repeated Donation Donations = 1;
+  repeated Donation donations = 1;
   int64 total = 2;
   string token = 3;
 }
