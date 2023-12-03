@@ -121,6 +121,7 @@ enum PlanType {
   TypeCastrate = 1;
   TypeHeal = 2;
   TypeFeed = 3;
+  TypeSupply = 4;
 }
 
 enum PlanState {
