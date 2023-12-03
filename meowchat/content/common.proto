@@ -82,6 +82,7 @@ message Donation {
   Plan     plan = 1;
   int64    donateTime = 2;
   int64    donateNum = 3;
+  string   donateId = 4;
 }
 
 message SearchField {
