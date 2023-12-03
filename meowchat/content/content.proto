@@ -303,7 +303,7 @@ message ListDonateByUserReq {
 }
 
 message ListDonateByUserResp {
-  repeated Plan plans = 1;
+  repeated Donation donations = 1;
   int64  total = 2;
   string token = 3;
 }

@@ -76,8 +76,12 @@ message Plan {
   int64    nowFish = 15;
   string   summary = 16;
   PlanState planState = 17;
-  int64    donateTime = 18;
-  int64    donateNum = 19;
+}
+
+message Donation {
+  Plan     plan = 1;
+  int64    donateTime = 2;
+  int64    donateNum = 3;
 }
 
 message SearchField {

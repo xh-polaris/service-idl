@@ -30,9 +30,14 @@ message Plan {
   int64    nowFish = 15;
   string   summary = 16;
   content.PlanState planState = 17;
-  int64    donateTime = 18;
-  int64    donateNum = 19;
 }
+
+message Donation {
+  Plan     plan = 1;
+  int64    donateTime = 2;
+  int64    donateNum = 3;
+}
+
 
 message GetPlanPreviewsReq {
   optional string catId = 1;
@@ -118,7 +123,7 @@ message ListDonateByUserReq {
 }
 
 message ListDonateByUserResp {
-  repeated Plan plans = 1;
+  repeated Donation Donations = 1;
   int64 total = 2;
   string token = 3;
 }
