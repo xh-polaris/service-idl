@@ -67,6 +67,7 @@ message DoLikeReq {
 message DoLikeResp {
   bool getFish = 1;
   int64 getFishTimes = 2;
+  bool liked = 3;
 }
 
 message GetUserLikedReq {
