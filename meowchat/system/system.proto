@@ -303,6 +303,13 @@ message ListNotificationResp {
   int64 total = 3;
 }
 
+message AddNotificationReq {
+  Notification notification = 1;
+}
+
+message AddNotificationResp {
+}
+
 message CleanNotificationReq {
   string userId = 1;
 }
@@ -368,4 +375,5 @@ service system_rpc {
   rpc CleanNotification(CleanNotificationReq) returns (CleanNotificationResp);
   rpc CountNotification(CountNotificationReq) returns (CountNotificationResp);
   rpc ReadNotification(ReadNotificationReq) returns (ReadNotificationResp);
+  rpc AddNotification(AddNotificationReq) returns (AddNotificationResp);
 }
