@@ -13,6 +13,7 @@ import "meowchat/user/common.proto";
 import "meowchat/core_api/moment.proto";
 import "meowchat/core_api/post.proto";
 import "meowchat/core_api/comment.proto";
+import "meowchat/core_api/common.proto";
 
 message DoLikeReq {
   string targetId = 1;
@@ -61,7 +62,7 @@ message GetLikedUsersReq {
 }
 
 message GetLikedUsersResp {
-  repeated user.UserPreview users = 1;
+  repeated core_api.User users = 1;
 }
 
 message GetUserLikeContentsReq {
@@ -72,7 +73,7 @@ message GetUserLikeContentsReq {
 
 message GetUserLikeContentsResp {
   repeated core_api.Moment  moments = 1;
-  repeated user.UserPreview users = 2;
+  repeated core_api.User users = 2;
   repeated core_api.Post    posts = 3;
   repeated core_api.Comment comments = 4;
   int64 total = 5;

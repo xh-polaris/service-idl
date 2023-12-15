@@ -10,21 +10,7 @@ option java_multiple_files = true;
 import "basic/pagination.proto";
 
 import "meowchat/user/common.proto";
-import "meowchat/system/common.proto";
-
-message User {
-  string id = 1;
-  string nickname = 2;
-  string avatarUrl = 3;
-  optional string motto = 4;
-  optional int64 follower = 5;
-  optional int64 following = 6;
-  optional int64 article = 7;
-  optional int64 like = 8;
-  optional bool isFollowing = 9;
-  repeated system.Role roles = 10;
-  optional bool enableDebug = 11;
-}
+import "meowchat/core_api/common.proto";
 
 message GetUserInfoReq {
   optional string userId = 1;
