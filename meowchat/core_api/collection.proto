@@ -19,6 +19,14 @@ message CatPreview {
   optional bool isCollected = 6;
 }
 
+message Image {
+  string id = 1;
+  string url = 2;
+  string catId = 3;
+  optional int64 likes = 4;
+  optional bool isLiked = 5;
+}
+
 message GetCatPreviewsReq {
   optional string keyword = 1;
   basic.PaginationOptions paginationOption = 2;
@@ -99,6 +107,6 @@ message GetImageByCatReq {
 }
 
 message GetImageByCatResp {
-  repeated content.Image images = 1;
+  repeated Image images = 1;
   int64 total = 2;
 }
