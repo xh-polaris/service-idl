@@ -20,6 +20,7 @@ import "meowchat/core_api/moment.proto";
 import "meowchat/core_api/post.proto";
 import "meowchat/core_api/system.proto";
 import "meowchat/core_api/plan.proto";
+import "meowchat/core_api/incentive.proto";
 
 service sts {
   rpc ApplySignedUrl(ApplySignedUrlReq) returns (ApplySignedUrlResp){
@@ -39,12 +40,6 @@ service user {
   }
   rpc SearchUser(SearchUserReq) returns (SearchUserResp){
     option(http.get) = "/user/search_user";
-  }
-  rpc CheckIn(CheckInReq) returns (CheckInResp){
-    option(http.get) = "/user/check_in";
-  }
-  rpc GetMission(GetMissionReq) returns (GetMissionResp){
-    option(http.get) = "/user/get_mission";
   }
 }
 
@@ -135,6 +130,15 @@ service moment {
   }
   rpc SearchMoment(SearchMomentReq) returns (SearchMomentResp){
     option(http.get) = "/moment/search_moment";
+  }
+}
+
+service incentive {
+  rpc CheckIn(CheckInReq) returns (CheckInResp){
+    option(http.get) = "/incentive/check_in";
+  }
+  rpc GetMission(GetMissionReq) returns (GetMissionResp){
+    option(http.get) = "/incentive/get_mission";
   }
 }
 

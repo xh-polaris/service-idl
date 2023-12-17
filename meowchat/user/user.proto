@@ -113,30 +113,11 @@ message GetLikedUsersResp {
   int64 total = 3;
 }
 
-message CheckInReq {
-  string userId = 1;
-}
-
-message CheckInResp {
-  bool getFish = 1;
-  int64 getFishTimes = 2;
-}
-
-message GetUserMissionReq {
-  string userId= 1;
-}
-
-message GetUserMissionResp {
-  int64 signInTime = 1;
-  int64 likeTime = 2;
-}
-
 service UserService {
   rpc GetUser(GetUserReq) returns (GetUserResp);
   rpc GetUserDetail(GetUserDetailReq) returns (GetUserDetailResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
   rpc SearchUser(SearchUserReq) returns (SearchUserResp);
-  rpc CheckIn(CheckInReq) returns (CheckInResp);
   // 点赞/取消赞
   rpc DoLike(DoLikeReq) returns (DoLikeResp);
   // 获取用户是否点赞
@@ -147,5 +128,4 @@ service UserService {
   rpc GetUserLikes(GetUserLikesReq) returns (GetUserLikesResp);
   // 查看喜欢某个东西的用户
   rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp);
-  rpc GetUserMission(GetUserMissionReq) returns (GetUserMissionResp);
 }
