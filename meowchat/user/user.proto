@@ -104,10 +104,12 @@ message GetUserLikesResp {
 message GetLikedUsersReq {
   string targetId = 1;
   LikeType type = 2;
+  optional basic.PaginationOptions paginationOptions = 3;
 }
 
 message GetLikedUsersResp {
   repeated string userIds = 1;
+  string token = 2;
 }
 
 message CheckInReq {
