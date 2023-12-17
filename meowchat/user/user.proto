@@ -121,6 +121,15 @@ message CheckInResp {
   int64 getFishTimes = 2;
 }
 
+message GetUserMissionReq {
+  string userId= 1;
+}
+
+message GetUserMissionResp {
+  int64 signInTime = 1;
+  int64 likeTime = 2;
+}
+
 service UserService {
   rpc GetUser(GetUserReq) returns (GetUserResp);
   rpc GetUserDetail(GetUserDetailReq) returns (GetUserDetailResp);
@@ -137,4 +146,5 @@ service UserService {
   rpc GetUserLikes(GetUserLikesReq) returns (GetUserLikesResp);
   // 查看喜欢某个东西的用户
   rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp);
+  rpc GetUserMission(GetUserMissionReq) returns (GetUserMissionResp);
 }

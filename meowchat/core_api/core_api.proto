@@ -40,8 +40,11 @@ service user {
   rpc SearchUser(SearchUserReq) returns (SearchUserResp){
     option(http.get) = "/user/search_user";
   }
-  rpc CheckIn (CheckInReq) returns (CheckInResp){
+  rpc CheckIn(CheckInReq) returns (CheckInResp){
     option(http.get) = "/user/check_in";
+  }
+  rpc GetMission(GetMissionReq) returns (GetMissionResp){
+    option(http.get) = "/user/get_mission";
   }
 }
 

@@ -332,6 +332,14 @@ message CountDonateByPlanResp {
   int64 total = 1;
 }
 
+message GetContentMissionReq {
+  string userId = 1;
+}
+
+message GetContentMissionResp {
+  int64 ContentTime = 1;
+}
+
 service ContentService {
   rpc SearchCat(SearchCatReq) returns (SearchCatResp);
   rpc ListCat(ListCatReq) returns (ListCatResp);
@@ -368,4 +376,5 @@ service ContentService {
   rpc RetrieveUserFish(RetrieveUserFishReq) returns (RetrieveUserFishResp);
   rpc CountDonateByUser(CountDonateByUserReq) returns (CountDonateByUserResp);
   rpc CountDonateByPlan(CountDonateByPlanReq) returns (CountDonateByPlanResp);
+  rpc GetContentMission(GetContentMissionReq) returns (GetContentMissionResp);
 }

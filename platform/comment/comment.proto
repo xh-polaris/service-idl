@@ -112,6 +112,14 @@ message ListCommentByReplyToAndTypeResp {
   int64 total = 2;
 }
 
+message GetCommentMissionReq {
+  string userId = 1;
+}
+
+message GetCommentMissionResp {
+  int64 CommentTime = 1;
+}
+
 service CommentService {
   // 创建
   rpc createComment(CreateCommentReq) returns(CreateCommentResp);
@@ -129,5 +137,5 @@ service CommentService {
   rpc listCommentByAuthorIdAndType(ListCommentByAuthorIdAndTypeReq) returns(ListCommentByAuthorIdAndTypeResp);
   // 根据 replyTo & type 查找
   rpc listCommentByReplyToAndType(ListCommentByReplyToAndTypeReq) returns(ListCommentByReplyToAndTypeResp);
-
+  rpc GetCommentMission(GetCommentMissionReq) returns(GetCommentMissionResp);
 }

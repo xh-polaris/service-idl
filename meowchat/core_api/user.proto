@@ -48,3 +48,17 @@ message CheckInResp {
   int64 getFishTimes = 2;
   int64 getFishNum = 3;
 }
+
+message GetMissionReq {
+}
+
+message GetMissionResp {
+  int64 SignInTime = 1;
+  int64 LikeTime = 2;
+  int64 CommentTime = 3;
+  int64 ContentTime = 4;
+  repeated int64 SignInFishes = 5;
+  repeated int64 LikeFishes = 6;
+  repeated int64 CommentFishes = 7;
+  repeated int64 ContentFishes = 8;
+}
