@@ -7,7 +7,7 @@ name: Trigger Java Code Generate
 
 on:
   push:
-    branches: [ "*" ]
+    branches: [ "main", "dev" ]
 
 jobs:
   update:
