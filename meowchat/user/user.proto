@@ -110,6 +110,7 @@ message GetLikedUsersReq {
 message GetLikedUsersResp {
   repeated string userIds = 1;
   string token = 2;
+  int64 total = 3;
 }
 
 message CheckInReq {
