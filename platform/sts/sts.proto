@@ -100,6 +100,17 @@ message AddUserAuthReq {
 message AddUserAuthResp {
 }
 
+message SendMessageReq {
+  MessageType messageType = 1;
+  string targetUserId = 2;
+  string sourceUserName = 3;
+  string sourceContent = 4;
+  string commentText = 5;
+  int64 createAt = 6;
+}
+
+message SendMessageResp {
+}
 
 service StsService {
   rpc genCosSts(GenCosStsReq) returns (GenCosStsResp);
@@ -111,5 +122,6 @@ service StsService {
   rpc setPassword(SetPasswordReq) returns (SetPasswordResp);
   rpc sendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp);
   rpc AddUserAuth(AddUserAuthReq) returns (AddUserAuthResp);
+  rpc SendMessage(SendMessageReq) returns (SendMessageResp);
 }
 

@@ -13,3 +13,10 @@ enum Scene {
   Comment = 2;
   Forum = 3;
 }
+
+enum MessageType {
+  TypeUnknown = 0;
+  TypeFollowed = 1;
+  TypeLiked = 2;
+  TypeComment = 3;
+}
