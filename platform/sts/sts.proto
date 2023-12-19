@@ -107,6 +107,7 @@ message SendMessageReq {
   string sourceContent = 4;
   string commentText = 5;
   int64 createAt = 6;
+  basic.UserMeta user = 7;
 }
 
 message SendMessageResp {
