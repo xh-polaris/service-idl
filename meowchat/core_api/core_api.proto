@@ -273,6 +273,10 @@ service system {
   rpc ReadNotification(ReadNotificationReq) returns (ReadNotificationResp) {
     option(http.get) = "/notification/read_notification";
   }
+  rpc ReadRangeNotification(ReadRangeNotificationReq) returns (ReadRangeNotificationResp) {
+    option(http.get) = "/notification/read_range_notification";
+  }
+
 
   rpc Prefetch(PrefetchReq) returns (PrefetchResp) {
     option(http.get) = "/prefetch";

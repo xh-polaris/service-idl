@@ -41,10 +41,11 @@ message Notification {
   string notificationId = 1;
   user.UserPreview user = 2;
   string SourceContentId = 3;
-  system.NotificationType types = 4;
-  string text = 5;
-  int64 createAt = 6;
-  bool  isRead = 7;
+  system.NotificationTargetType targetType = 4;
+  system.NotificationType type = 5;
+  string text = 6;
+  int64 createAt = 7;
+  bool  isRead = 8;
 }
 
 message GetNewsReq {
@@ -249,13 +250,24 @@ message GetUserByRoleResp {
 }
 
 message ListNotificationReq {
-  optional basic.PaginationOptions paginationOption = 3;
+  optional system.NotificationType type = 1;
+  optional basic.PaginationOptions paginationOption = 2;
 }
 
 message ListNotificationResp {
   repeated Notification notifications = 1;
   int64 NotRead = 2;
   int64 total = 3;
+  string token = 4;
+}
+
+message ReadRangeNotificationReq {
+  optional system.NotificationType type = 1;
+  optional basic.PaginationOptions paginationOption = 2;
+}
+
+message ReadRangeNotificationResp {
+  int64 NotRead = 1;
 }
 
 message ReadNotificationReq {

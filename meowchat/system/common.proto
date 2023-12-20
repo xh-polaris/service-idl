@@ -56,10 +56,11 @@ message Notification {
   string TargetUserId = 2;
   string SourceUserId = 3;
   string SourceContentId = 4;
-  NotificationType type = 5;
-  string text = 6;
-  int64 createAt = 7;
-  bool  isRead = 8;
+  NotificationTargetType targetType = 5;
+  NotificationType type = 6;
+  string text = 7;
+  int64 createAt = 8;
+  bool  isRead = 9;
 }
 
 enum RoleType {
@@ -77,10 +78,17 @@ enum ApplyStatus {
   StatusRejected = 3;
 }
 
+enum NotificationTargetType {
+  TargetTypeOther = 0;
+  TargetTypePost = 1;
+  TargetTypeMoment = 2;
+  TargetTypeComment = 3;
+  TargetTypeUser = 4;
+}
+
 enum NotificationType {
   TypeOther = 0;
-  TypePost = 1;
-  TypeMoment = 2;
-  TypeComment = 3;
-  TypeUser = 4;
+  TypeFollowed = 1;
+  TypeLiked = 2;
+  TypeCommented = 3;
 }

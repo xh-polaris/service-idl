@@ -294,6 +294,7 @@ message ListUserIdByRoleResp {
 
 message ListNotificationReq {
   string userId = 1;
+  NotificationType type = 2;
   optional basic.PaginationOptions paginationOptions = 3;
 }
 
@@ -301,7 +302,19 @@ message ListNotificationResp {
   repeated Notification notifications = 1;
   int64 notRead = 2;
   int64 total = 3;
+  string token = 4;
 }
+
+message ReadRangeNotificationReq {
+  string userId = 1;
+  NotificationType type = 2;
+  optional basic.PaginationOptions paginationOptions = 3;
+}
+
+message ReadRangeNotificationResp {
+  int64 notRead = 1;
+}
+
 
 message AddNotificationReq {
   Notification notification = 1;
@@ -376,4 +389,5 @@ service system_rpc {
   rpc CountNotification(CountNotificationReq) returns (CountNotificationResp);
   rpc ReadNotification(ReadNotificationReq) returns (ReadNotificationResp);
   rpc AddNotification(AddNotificationReq) returns (AddNotificationResp);
+  rpc ReadRangeNotification(ReadRangeNotificationReq) returns (ReadRangeNotificationResp);
 }
