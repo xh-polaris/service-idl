@@ -59,10 +59,13 @@ message GetUserLikesResp {
 message GetLikedUsersReq {
   string targetId = 1;
   user.LikeType targetType = 2;
+  basic.PaginationOptions paginationOption = 3;
 }
 
 message GetLikedUsersResp {
   repeated core_api.User users = 1;
+  int64 total = 2;
+  string token = 3;
 }
 
 message GetUserLikeContentsReq {
