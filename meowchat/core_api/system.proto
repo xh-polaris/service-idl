@@ -251,7 +251,8 @@ message GetUserByRoleResp {
 
 message ListNotificationReq {
   optional system.NotificationType type = 1;
-  optional basic.PaginationOptions paginationOption = 2;
+  optional system.NotificationTargetType targetType = 2;
+  optional basic.PaginationOptions paginationOption = 3;
 }
 
 message ListNotificationResp {
@@ -263,7 +264,8 @@ message ListNotificationResp {
 
 message ReadRangeNotificationReq {
   optional system.NotificationType type = 1;
-  optional basic.PaginationOptions paginationOption = 2;
+  optional system.NotificationTargetType targetType = 2;
+  optional basic.PaginationOptions paginationOption = 3;
 }
 
 message ReadRangeNotificationResp {
