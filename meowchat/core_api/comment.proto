@@ -27,6 +27,7 @@ message NewCommentReq {
   optional string firstLevelId = 2;
   string text = 3;
   platform.comment.CommentType type = 4;
+  optional string replyToUserId = 5;
 }
 
 message NewCommentResp {
