@@ -287,6 +287,8 @@ message CleanNotificationResp{
 }
 
 message CountNotificationReq {
+  optional system.NotificationType type = 1;
+  optional system.NotificationTargetType targetType = 2;
 }
 
 message CountNotificationResp {

@@ -342,6 +342,8 @@ message ReadNotificationResp {
 
 message CountNotificationReq {
   string userId = 1;
+  optional system.NotificationType type = 2;
+  optional system.NotificationTargetType targetType = 3;
 }
 
 message CountNotificationResp {
