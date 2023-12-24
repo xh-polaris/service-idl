@@ -265,7 +265,8 @@ message ListNotificationResp {
 message ReadRangeNotificationReq {
   optional system.NotificationType type = 1;
   optional system.NotificationTargetType targetType = 2;
-  optional basic.PaginationOptions paginationOption = 3;
+  string firstId = 3;
+  string lastId = 4;
 }
 
 message ReadRangeNotificationResp {

@@ -310,7 +310,8 @@ message ReadRangeNotificationReq {
   optional string userId = 1;
   optional NotificationType type = 2;
   optional NotificationTargetType targetType = 3;
-  optional basic.PaginationOptions paginationOptions = 4;
+  string firstId = 4;
+  string lastId = 5;
 }
 
 message ReadRangeNotificationResp {
