@@ -74,4 +74,4 @@ message GetFollowedResp {
   bool followed = 1;
 }
 
-// TODO 关注取消
+// TODO 关注取消 (重新设计)
