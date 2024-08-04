@@ -46,7 +46,7 @@ message GetLikedUsersResp {
   repeated Like likes = 1;
   int64 total = 2;
   // TODO 用户信息
-  string token = 3;
+  //string token = 3;
 }
 
 // 获取用户点赞过对象请求
@@ -61,7 +61,7 @@ message GetUserLikedResp {
   repeated Like likes = 1;
   int64 total = 2;
   // TODO 用户信息
-  string token = 3;
+ // string token = 3;
 }
 
 // 判断是否点赞过

@@ -21,8 +21,7 @@ message Like {
   string targetId = 2;
   TargetType targetType = 3;
   string userId = 4;
-  // TODO 点赞时间
-
+  int64 createAt = 5;
 }
 
 // 分享
@@ -31,8 +30,7 @@ message Share {
   string targetId = 2;
   TargetType targetType = 3;
   string userId = 4;
-  // TODO 分享时间
-
+  int64 createAt = 5;
 }
 
 // 关注
@@ -41,6 +39,5 @@ message Follow {
   string targetId = 2;
   TargetType targetType = 3;
   string userId = 4;
-  // TODO 关注时间
-
+  int64 createAt = 5;
 }

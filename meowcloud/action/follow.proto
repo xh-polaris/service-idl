@@ -46,7 +46,7 @@ message GetFollowedUsersResp {
   repeated Follow follows = 1;
   int64 total = 2;
   // TODO 用户信息
-  string token = 3;
+  //string token = 3;
 }
 
 // 获取用户关注过对象请求
@@ -61,7 +61,7 @@ message GetUserFollowedResp {
   repeated Follow follows = 1;
   int64 total = 2;
   // TODO 用户信息
-  string token = 3;
+  //string token = 3;
 }
 
 // 判断是否关注过
@@ -71,7 +71,7 @@ message GetFollowedReq {
 }
 
 message GetFollowedResp {
-  bool followd = 1;
+  bool followed = 1;
 }
 
 // TODO 关注取消
