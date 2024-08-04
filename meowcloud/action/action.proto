@@ -1,0 +1,86 @@
+// 该文件定义了用户行为服务
+
+syntax = "proto3";
+
+package meowcloud.action;
+
+option go_package = "meowcloud/action";
+option java_package = "com.xhpolaris.idlgen.meowcloud.action";
+option java_outer_classname = "ActionProto";
+option java_multiple_files = true;
+
+import "http/http.proto";
+
+import "meowcloud/action/like.proto";
+import "meowcloud/action/share.proto";
+import "meowcloud/action/follow.proto";
+import "meowcloud/action/common.proto";
+
+service like {
+  // 点赞
+  rpc DoLike(DoLikeReq) returns (DoLikeResp){
+    option(http.post) = "/like/do_like";
+  }
+  // 获取点赞数
+  rpc GetLikedCount(GetLikedCountReq) returns (GetLikedCountResp){
+    option(http.get) = "/like/get_count";
+  }
+  // 获取点赞对象
+  rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp){
+    option(http.get) = "/like/get_liked_users";
+  }
+  // 获取用户点赞过的对象
+  rpc GetUserLiked(GetUserLikedReq) returns (GetUserLikedResp){
+    option(http.get) = "/like/get_user_liked";
+  }
+  // 判断是否点赞过
+  rpc GetLiked(GetLikedReq) returns (GetLikedResp) {
+    option(http.get) = "/like/get_liked";
+  }
+}
+
+service share {
+  // 分享
+  rpc DoShare(DoShareReq) returns (DoShareResp){
+    option(http.post) = "/like/do_share";
+  }
+  // 获取分享数
+  rpc GetSharedCount(GetSharedCountReq) returns (GetSharedCountResp){
+    option(http.get) = "/share/get_count";
+  }
+  // 获取分享对象
+  rpc GetSharedUsers(GetSharedUsersReq) returns (GetSharedUsersResp){
+    option(http.get) = "/share/get_shared_users";
+  }
+  // 获取用户分享过的对象
+  rpc GetUserShared(GetUserSharedReq) returns (GetUserSharedResp){
+    option(http.get) = "/share/get_user_shared";
+  }
+  // 判断是否分享过
+  rpc GetShared(GetSharedReq) returns (GetSharedResp) {
+    option(http.get) = "/share/get_shared";
+  }
+}
+
+service follow {
+  // 关注
+  rpc DoFollow(DoFollowReq) returns (DoFollowResp){
+    option(http.post) = "/like/do_follow";
+  }
+  // 获取关注数
+  rpc GetFollowedCount(GetFollowedCountReq) returns (GetFollowedCountResp){
+    option(http.get) = "/follow/get_count";
+  }
+  // 获取关注对象
+  rpc GetFollowedUsers(GetFollowedUsersReq) returns (GetFollowedUsersResp){
+    option(http.get) = "/follow/get_followed_users";
+  }
+  // 获取用户关注过的对象
+  rpc GetUserFollowed(GetUserFollowedReq) returns (GetUserFollowedResp){
+    option(http.get) = "/follow/get_user_followed";
+  }
+  // 判断是否关注过
+  rpc GetFollowed(GetFollowedReq) returns (GetFollowedResp) {
+    option(http.get) = "/follow/get_followed";
+  }
+}

@@ -1,0 +1,77 @@
+// 该文件中定义了分享服务需要使用的message
+
+syntax = "proto3";
+
+package meowcloud.action;
+
+option go_package = "meowcloud/action";
+option java_package = "com.xhpolaris.idlgen.meowcloud.action";
+option java_outer_classname = "ShareProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+
+import "meowcloud/action/common.proto";
+
+// 分享请求
+message DoShareReq {
+  string targetId = 1;  // 分享目标id
+  TargetType targetType = 2; // 分享类型(0相片，1相册，2评论)
+}
+
+// 分享响应
+message DoShareResp {
+}
+
+// 获取分享数请求
+message GetSharedCountReq {
+  string targetId = 1;
+  TargetType targetType = 2;
+}
+
+// 获取分享数响应
+message GetSharedCountResp {
+  int64 count = 1;
+}
+
+// 获取分享对象列表
+message GetSharedUsersReq {
+  string targetId = 1;
+  TargetType targetType = 2;
+  basic.PaginationOptions paginationOption = 3;
+}
+
+// 获取分享对象列表响应
+message GetSharedUsersResp {
+  repeated Share shares = 1;
+  int64 total = 2;
+  // TODO 用户信息
+  string token = 3;
+}
+
+// 获取用户分享过对象请求
+message GetUserSharedReq {
+  string userId = 1;
+  TargetType targetType = 2;
+  basic.PaginationOptions paginationOption = 3;
+}
+
+// 获取用户分享过对象响应
+message GetUserSharedResp {
+  repeated Share shares = 1;
+  int64 total = 2;
+  // TODO 用户信息
+  string token = 3;
+}
+
+// 判断是否分享过
+message GetSharedReq {
+  string targetId = 1;
+  TargetType targetType = 2;
+}
+
+message GetSharedResp {
+  bool shared = 1;
+}
+
+// TODO 分享取消
