@@ -27,7 +27,6 @@ message GetUserDetailResp {
 }
 
 message UpdateUserReq {
-  // 如果不更新头像或昵称或其他东西，对应字段留空
   UserDetail user = 1;
 }
 
