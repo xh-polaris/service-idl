@@ -10,6 +10,7 @@ option java_outer_classname = "LikeProto";
 option java_multiple_files = true;
 
 import "basic/pagination.proto";
+import "basic/user.proto";
 
 import "meowcloud/action/common.proto";
 
@@ -17,10 +18,22 @@ import "meowcloud/action/common.proto";
 message DoLikeReq {
   string targetId = 1;  // 点赞目标id
   TargetType targetType = 2; // 点赞类型(0相片，1相册，2评论)
+  basic.UserMeta user = 3;  // 用户信息
 }
 
 // 点赞响应
 message DoLikeResp {
+}
+
+// 取消点赞请求
+message CancelLikeReq {
+  string targetId = 1;  // 点赞目标id
+  TargetType targetType = 2; // 点赞类型(0相片，1相册，2评论)
+  basic.UserMeta user = 3;  // 用户信息
+}
+
+// 取消点赞响应
+message CancelLikeResp {
 }
 
 // 获取点赞数请求
@@ -45,8 +58,6 @@ message GetLikedUsersReq {
 message GetLikedUsersResp {
   repeated Like likes = 1;
   int64 total = 2;
-  // TODO 用户信息
-  //string token = 3;
 }
 
 // 获取用户点赞过对象请求
@@ -60,8 +71,6 @@ message GetUserLikedReq {
 message GetUserLikedResp {
   repeated Like likes = 1;
   int64 total = 2;
-  // TODO 用户信息
- // string token = 3;
 }
 
 // 判断是否点赞过
@@ -73,6 +82,4 @@ message GetLikedReq {
 message GetLikedResp {
   bool liked = 1;
 }
-
-// TODO 点赞取消
 

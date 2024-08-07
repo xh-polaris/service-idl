@@ -22,6 +22,7 @@ message Like {
   TargetType targetType = 3;
   string userId = 4;
   int64 createAt = 5;
+  bool isCancel = 6;
 }
 
 // 分享
@@ -40,4 +41,5 @@ message Follow {
   TargetType targetType = 3;
   string userId = 4;
   int64 createAt = 5;
+  bool isCancel = 6;
 }

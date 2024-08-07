@@ -10,6 +10,7 @@ option java_outer_classname = "FollowProto";
 option java_multiple_files = true;
 
 import "basic/pagination.proto";
+import "basic/user.proto";
 
 import "meowcloud/action/common.proto";
 
@@ -17,10 +18,22 @@ import "meowcloud/action/common.proto";
 message DoFollowReq {
   string targetId = 1;  // 关注目标id
   TargetType targetType = 2; // 关注类型(0相片，1相册，2评论)
+  basic.UserMeta user = 3;  // 用户信息
 }
 
 // 关注响应
 message DoFollowResp {
+}
+
+// 取消关注请求
+message CancelFollowReq {
+  string targetId = 1;  // 关注目标id
+  TargetType targetType = 2; // 关注类型(0相片，1相册，2评论)
+  basic.UserMeta user = 3;  // 用户信息
+}
+
+// 取消关注响应
+message CancelFollowResp {
 }
 
 // 获取关注数请求
@@ -45,8 +58,6 @@ message GetFollowedUsersReq {
 message GetFollowedUsersResp {
   repeated Follow follows = 1;
   int64 total = 2;
-  // TODO 用户信息
-  //string token = 3;
 }
 
 // 获取用户关注过对象请求
@@ -60,8 +71,6 @@ message GetUserFollowedReq {
 message GetUserFollowedResp {
   repeated Follow follows = 1;
   int64 total = 2;
-  // TODO 用户信息
-  //string token = 3;
 }
 
 // 判断是否关注过
@@ -74,4 +83,3 @@ message GetFollowedResp {
   bool followed = 1;
 }
 
-// TODO 关注取消 (重新设计)

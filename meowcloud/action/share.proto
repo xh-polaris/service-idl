@@ -10,6 +10,7 @@ option java_outer_classname = "ShareProto";
 option java_multiple_files = true;
 
 import "basic/pagination.proto";
+import "basic/user.proto";
 
 import "meowcloud/action/common.proto";
 
@@ -17,6 +18,7 @@ import "meowcloud/action/common.proto";
 message DoShareReq {
   string targetId = 1;  // 分享目标id
   TargetType targetType = 2; // 分享类型(0相片，1相册，2评论)
+  basic.UserMeta user = 3;  // 用户信息
 }
 
 // 分享响应
@@ -45,8 +47,6 @@ message GetSharedUsersReq {
 message GetSharedUsersResp {
   repeated Share shares = 1;
   int64 total = 2;
-  // TODO 用户信息
-  //string token = 3;
 }
 
 // 获取用户分享过对象请求
@@ -60,7 +60,6 @@ message GetUserSharedReq {
 message GetUserSharedResp {
   repeated Share shares = 1;
   int64 total = 2;
-  // TODO 用户信息
 }
 
 // 判断是否分享过
@@ -72,5 +71,3 @@ message GetSharedReq {
 message GetSharedResp {
   bool shared = 1;
 }
-
-// TODO 分享取消
