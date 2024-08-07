@@ -56,7 +56,7 @@ message GetFollowedUsersReq {
 
 // 获取关注对象列表响应
 message GetFollowedUsersResp {
-  repeated Follow follows = 1;
+  repeated action.Follow follows = 1;
   int64 total = 2;
 }
 
@@ -69,7 +69,7 @@ message GetUserFollowedReq {
 
 // 获取用户关注过对象响应
 message GetUserFollowedResp {
-  repeated Follow follows = 1;
+  repeated action.Follow follows = 1;
   int64 total = 2;
 }
 

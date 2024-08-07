@@ -15,31 +15,34 @@ enum TargetType {
   USER = 3;
 }
 
-// 点赞
-message Like {
-  string id = 1;
-  string targetId = 2;
-  TargetType targetType = 3;
-  string userId = 4;
-  int64 createAt = 5;
-  bool isCancel = 6;
-}
+message action {
 
-// 分享
-message Share {
-  string id = 1;
-  string targetId = 2;
-  TargetType targetType = 3;
-  string userId = 4;
-  int64 createAt = 5;
-}
+  // 点赞
+  message Like {
+    string id = 1;
+    string targetId = 2;
+    TargetType targetType = 3;
+    string userId = 4;
+    int64 createAt = 5;
+    bool isCancel = 6;
+  }
 
-// 关注
-message Follow {
-  string id = 1;
-  string targetId = 2;
-  TargetType targetType = 3;
-  string userId = 4;
-  int64 createAt = 5;
-  bool isCancel = 6;
+  // 分享
+  message Share {
+    string id = 1;
+    string targetId = 2;
+    TargetType targetType = 3;
+    string userId = 4;
+    int64 createAt = 5;
+  }
+
+  // 关注
+  message Follow {
+    string id = 1;
+    string targetId = 2;
+    TargetType targetType = 3;
+    string userId = 4;
+    int64 createAt = 5;
+    bool isCancel = 6;
+  }
 }

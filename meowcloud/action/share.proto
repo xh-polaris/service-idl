@@ -45,7 +45,7 @@ message GetSharedUsersReq {
 
 // 获取分享对象列表响应
 message GetSharedUsersResp {
-  repeated Share shares = 1;
+  repeated action.Share shares = 1;
   int64 total = 2;
 }
 
@@ -58,7 +58,7 @@ message GetUserSharedReq {
 
 // 获取用户分享过对象响应
 message GetUserSharedResp {
-  repeated Share shares = 1;
+  repeated action.Share shares = 1;
   int64 total = 2;
 }
 
