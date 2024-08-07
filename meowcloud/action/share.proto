@@ -51,7 +51,7 @@ message GetSharedUsersResp {
 
 // 获取用户分享过对象请求
 message GetUserSharedReq {
-  string userId = 1;
+  basic.UserMeta user = 1;
   TargetType targetType = 2;
   basic.PaginationOptions paginationOption = 3;
 }
@@ -66,6 +66,7 @@ message GetUserSharedResp {
 message GetSharedReq {
   string targetId = 1;
   TargetType targetType = 2;
+  basic.UserMeta user = 3;
 }
 
 message GetSharedResp {

@@ -62,7 +62,7 @@ message GetFollowedUsersResp {
 
 // 获取用户关注过对象请求
 message GetUserFollowedReq {
-  string userId = 1;
+  basic.UserMeta user = 1;
   TargetType targetType = 2;
   basic.PaginationOptions paginationOption = 3;
 }
@@ -77,6 +77,7 @@ message GetUserFollowedResp {
 message GetFollowedReq {
   string targetId = 1;
   TargetType targetType = 2;
+  basic.UserMeta user = 3;
 }
 
 message GetFollowedResp {
