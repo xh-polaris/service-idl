@@ -21,6 +21,10 @@ service like {
   rpc DoLike(DoLikeReq) returns (DoLikeResp){
     option(http.post) = "/like/do_like";
   }
+  // 取消点赞
+  rpc CancelLike(CancelFollowReq) returns (CancelFollowResp) {
+    option(http.post) = "/like/cancel_like";
+  }
   // 获取点赞数
   rpc GetLikedCount(GetLikedCountReq) returns (GetLikedCountResp){
     option(http.get) = "/like/get_count";
@@ -42,7 +46,7 @@ service like {
 service share {
   // 分享
   rpc DoShare(DoShareReq) returns (DoShareResp){
-    option(http.post) = "/like/do_share";
+    option(http.post) = "/share/do_share";
   }
   // 获取分享数
   rpc GetSharedCount(GetSharedCountReq) returns (GetSharedCountResp){
@@ -65,7 +69,11 @@ service share {
 service follow {
   // 关注
   rpc DoFollow(DoFollowReq) returns (DoFollowResp){
-    option(http.post) = "/like/do_follow";
+    option(http.post) = "/follow/do_follow";
+  }
+  // 取消关注
+  rpc CancelLike(CancelFollowReq) returns (CancelFollowResp) {
+    option(http.post) = "/follow/cancel_follow";
   }
   // 获取关注数
   rpc GetFollowedCount(GetFollowedCountReq) returns (GetFollowedCountResp){
