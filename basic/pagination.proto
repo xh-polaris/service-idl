@@ -14,3 +14,4 @@ message PaginationOptions {
   optional bool backward = 4;
   optional int64 offset = 5;
 }
+
