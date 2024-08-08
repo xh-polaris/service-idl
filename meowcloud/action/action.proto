@@ -22,7 +22,7 @@ service like {
     option(http.post) = "/like/do_like";
   }
   // 取消点赞
-  rpc CancelLike(CancelFollowReq) returns (CancelFollowResp) {
+  rpc CancelLike(CancelLikeReq) returns (CancelLikeResp) {
     option(http.post) = "/like/cancel_like";
   }
   // 获取点赞数
