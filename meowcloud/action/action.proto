@@ -72,7 +72,7 @@ service follow {
     option(http.post) = "/follow/do_follow";
   }
   // 取消关注
-  rpc CancelLike(CancelFollowReq) returns (CancelFollowResp) {
+  rpc CancelFollow(CancelFollowReq) returns (CancelFollowResp) {
     option(http.post) = "/follow/cancel_follow";
   }
   // 获取关注数
