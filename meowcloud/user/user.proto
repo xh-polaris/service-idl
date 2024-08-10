@@ -15,7 +15,7 @@ message GetUserReq {
 }
 
 message GetUserResp {
-  User user = 1;
+  UserPreview user = 1;
 }
 
 message GetUserDetailReq {
