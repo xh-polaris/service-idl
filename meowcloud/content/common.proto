@@ -8,15 +8,19 @@ option java_outer_classname = "CommonProto";
 option java_multiple_files = true;
 
 enum AlbumVisibility {
-  Unknown = 0;
-  Public = 1;
-  Followers = 2;
-  Private = 3;
+  Public = 0;
+  Followers = 1;
+  Private = 2;
+}
+
+enum AlbumType {
+  Personal = 0;
+  Team = 1;
 }
 
 message CatAlbum {
   string id = 1;
-  string type = 2; 
+  AlbumType type = 2; 
   string creatorId = 3; 
   string albumName = 4;
   AlbumVisibility visibility = 5; 
