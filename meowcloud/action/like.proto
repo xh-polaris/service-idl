@@ -56,7 +56,7 @@ message GetLikedUsersReq {
 
 // 获取点赞对象列表响应
 message GetLikedUsersResp {
-  repeated action.Like likes = 1;
+  repeated Action.Like likes = 1;
   int64 total = 2;
 }
 
@@ -69,7 +69,7 @@ message GetUserLikedReq {
 
 // 获取用户点赞过对象响应
 message GetUserLikedResp {
-  repeated action.Like likes = 1;
+  repeated Action.Like likes = 1;
   int64 total = 2;
 }
 

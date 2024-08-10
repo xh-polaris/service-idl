@@ -15,7 +15,7 @@ enum TargetType {
   USER = 3;
 }
 
-message action {
+message Action {
 
   // 点赞
   message Like {
