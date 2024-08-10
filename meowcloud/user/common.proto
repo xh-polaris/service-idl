@@ -10,10 +10,10 @@ option java_multiple_files = true;
 message UserPreview {
   string id = 1;
   string nickname = 2;
-  string avatarUrl = 3;
+  string avatar = 3;
 }
 
-message UserDetail {
+message User {
   string id = 1;
   string nickname = 2;
   string bio = 3;

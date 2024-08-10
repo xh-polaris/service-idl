@@ -15,7 +15,7 @@ message GetUserReq {
 }
 
 message GetUserResp {
-  UserPreview user = 1;
+  User user = 1;
 }
 
 message GetUserDetailReq {
@@ -23,111 +23,19 @@ message GetUserDetailReq {
 }
 
 message GetUserDetailResp {
-  UserDetail user = 1;
+  User user = 1;
 }
 
 message UpdateUserReq {
   // 如果不更新头像或昵称或其他东西，对应字段留空
-  UserDetail user = 1;
+  User user = 1;
 }
 
 message UpdateUserResp {
-}
-
-message SearchUserReq {
-  string nickname = 1;
-  optional int64 offset = 2;
-  optional int64 limit = 3;
-  optional bool backward = 4;
-  optional string lastToken = 5;
-}
-
-message SearchUserResp {
-  repeated UserPreview users = 1;
-  int64 total = 2;
-  string token = 3;
-}
-
-// 后面没改
-
-message DoLikeReq {
-  string userId = 1;
-
-  // 点赞的目标ID，可以是评论ID，文章ID等
-  string targetId = 2;
-
-  // 点赞的类型，点赞评论、点赞文章等都可以视为点赞的不同类型
-  LikeType type = 3;
-
-  // 对象所关联的ID，比如评论点赞对应文章ID等
-  string associatedId = 4;
-
-  //被点赞用户的ID
-  string likedUserId = 5;
-}
-
-message DoLikeResp {
-  bool getFish = 1;
-  int64 getFishTimes = 2;
-  bool liked = 3;
-}
-
-message GetUserLikedReq {
-  string userId = 1;
-  string targetId = 2;
-  LikeType type = 3;
-}
-
-message GetUserLikedResp {
-  bool liked = 1;
-}
-
-message GetTargetLikesReq {
-  string targetId = 1;
-  LikeType type = 2;
-}
-
-message GetTargetLikesResp {
-  int64 count = 1;
-}
-
-message GetUserLikesReq {
-  string userId = 1;
-  LikeType type = 2;
-  optional basic.PaginationOptions paginationOptions = 3;
-}
-
-message GetUserLikesResp {
-  repeated Like likes = 1;
-  int64 total = 2;
-  string token = 3;
-}
-
-message GetLikedUsersReq {
-  string targetId = 1;
-  LikeType type = 2;
-  optional basic.PaginationOptions paginationOptions = 3;
-}
-
-message GetLikedUsersResp {
-  repeated string userIds = 1;
-  string token = 2;
-  int64 total = 3;
 }
 
 service UserService {
   rpc GetUser(GetUserReq) returns (GetUserResp);
   rpc GetUserDetail(GetUserDetailReq) returns (GetUserDetailResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
-  rpc SearchUser(SearchUserReq) returns (SearchUserResp);
-  // 点赞/取消赞
-  rpc DoLike(DoLikeReq) returns (DoLikeResp);
-  // 获取用户是否点赞
-  rpc GetUserLike(GetUserLikedReq) returns (GetUserLikedResp);
-  // 获取目标点赞数
-  rpc GetTargetLikes(GetTargetLikesReq) returns (GetTargetLikesResp);
-  // 查看用户点赞列表
-  rpc GetUserLikes(GetUserLikesReq) returns (GetUserLikesResp);
-  // 查看喜欢某个东西的用户
-  rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp);
 }
