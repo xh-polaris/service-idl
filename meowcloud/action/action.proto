@@ -16,7 +16,7 @@ import "meowcloud/action/share.proto";
 import "meowcloud/action/follow.proto";
 import "meowcloud/action/common.proto";
 
-service like {
+service ActionService {
   // 点赞
   rpc DoLike(DoLikeReq) returns (DoLikeResp){
     option(http.post) = "/like/do_like";
@@ -41,9 +41,8 @@ service like {
   rpc GetLiked(GetLikedReq) returns (GetLikedResp) {
     option(http.get) = "/like/get_liked";
   }
-}
 
-service share {
+
   // 分享
   rpc DoShare(DoShareReq) returns (DoShareResp){
     option(http.post) = "/share/do_share";
@@ -64,9 +63,8 @@ service share {
   rpc GetShared(GetSharedReq) returns (GetSharedResp) {
     option(http.get) = "/share/get_shared";
   }
-}
 
-service follow {
+
   // 关注
   rpc DoFollow(DoFollowReq) returns (DoFollowResp){
     option(http.post) = "/follow/do_follow";
