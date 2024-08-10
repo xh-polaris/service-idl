@@ -18,7 +18,7 @@ import "meowcloud/action/common.proto";
 message DoLikeReq {
   string targetId = 1;  // 点赞目标id
   TargetType targetType = 2; // 点赞类型(0相片，1相册，2评论)
-  basic.UserMeta user = 3;  // 用户信息
+  basic.UserMeta user = 254;  // 用户信息
 }
 
 // 点赞响应
@@ -29,7 +29,7 @@ message DoLikeResp {
 message CancelLikeReq {
   string targetId = 1;  // 点赞目标id
   TargetType targetType = 2; // 点赞类型(0相片，1相册，2评论)
-  basic.UserMeta user = 3;  // 用户信息
+  basic.UserMeta user = 254;  // 用户信息
 }
 
 // 取消点赞响应
@@ -62,9 +62,9 @@ message GetLikedUsersResp {
 
 // 获取用户点赞过对象请求
 message GetUserLikedReq {
-  basic.UserMeta user = 1;
-  TargetType targetType = 2;
-  basic.PaginationOptions paginationOption = 3;
+  TargetType targetType = 1;
+  basic.PaginationOptions paginationOption = 2;
+  basic.UserMeta user = 254;
 }
 
 // 获取用户点赞过对象响应
@@ -77,7 +77,7 @@ message GetUserLikedResp {
 message GetLikedReq {
   string targetId = 1;
   TargetType targetType = 2;
-  basic.UserMeta user = 3;
+  basic.UserMeta user = 254;
 }
 
 message GetLikedResp {

@@ -18,7 +18,7 @@ import "meowcloud/action/common.proto";
 message DoFollowReq {
   string targetId = 1;  // 关注目标id
   TargetType targetType = 2; // 关注类型(0相片，1相册，2评论)
-  basic.UserMeta user = 3;  // 用户信息
+  basic.UserMeta user = 254;  // 用户信息
 }
 
 // 关注响应
@@ -29,7 +29,7 @@ message DoFollowResp {
 message CancelFollowReq {
   string targetId = 1;  // 关注目标id
   TargetType targetType = 2; // 关注类型(0相片，1相册，2评论)
-  basic.UserMeta user = 3;  // 用户信息
+  basic.UserMeta user = 254;  // 用户信息
 }
 
 // 取消关注响应
@@ -62,9 +62,9 @@ message GetFollowedUsersResp {
 
 // 获取用户关注过对象请求
 message GetUserFollowedReq {
-  basic.UserMeta user = 1;
-  TargetType targetType = 2;
-  basic.PaginationOptions paginationOption = 3;
+  TargetType targetType = 1;
+  basic.PaginationOptions paginationOption = 2;
+  basic.UserMeta user = 254;
 }
 
 // 获取用户关注过对象响应
@@ -77,7 +77,7 @@ message GetUserFollowedResp {
 message GetFollowedReq {
   string targetId = 1;
   TargetType targetType = 2;
-  basic.UserMeta user = 3;
+  basic.UserMeta user = 254;
 }
 
 message GetFollowedResp {

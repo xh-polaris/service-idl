@@ -18,75 +18,41 @@ import "meowcloud/action/common.proto";
 
 service ActionService {
   // 点赞
-  rpc DoLike(DoLikeReq) returns (DoLikeResp){
-    option(http.post) = "/like/do_like";
-  }
+  rpc DoLike(DoLikeReq) returns (DoLikeResp);
   // 取消点赞
-  rpc CancelLike(CancelLikeReq) returns (CancelLikeResp) {
-    option(http.post) = "/like/cancel_like";
-  }
+  rpc CancelLike(CancelLikeReq) returns (CancelLikeResp);
   // 获取点赞数
-  rpc GetLikedCount(GetLikedCountReq) returns (GetLikedCountResp){
-    option(http.get) = "/like/get_count";
-  }
+  rpc GetLikedCount(GetLikedCountReq) returns (GetLikedCountResp);
   // 获取点赞对象
-  rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp){
-    option(http.get) = "/like/get_liked_users";
-  }
+  rpc GetLikedUsers(GetLikedUsersReq) returns (GetLikedUsersResp);
   // 获取用户点赞过的对象
-  rpc GetUserLiked(GetUserLikedReq) returns (GetUserLikedResp){
-    option(http.get) = "/like/get_user_liked";
-  }
+  rpc GetUserLiked(GetUserLikedReq) returns (GetUserLikedResp);
   // 判断是否点赞过
-  rpc GetLiked(GetLikedReq) returns (GetLikedResp) {
-    option(http.get) = "/like/get_liked";
-  }
+  rpc GetLiked(GetLikedReq) returns (GetLikedResp);
 
 
   // 分享
-  rpc DoShare(DoShareReq) returns (DoShareResp){
-    option(http.post) = "/share/do_share";
-  }
+  rpc DoShare(DoShareReq) returns (DoShareResp);
   // 获取分享数
-  rpc GetSharedCount(GetSharedCountReq) returns (GetSharedCountResp){
-    option(http.get) = "/share/get_count";
-  }
+  rpc GetSharedCount(GetSharedCountReq) returns (GetSharedCountResp);
   // 获取分享对象
-  rpc GetSharedUsers(GetSharedUsersReq) returns (GetSharedUsersResp){
-    option(http.get) = "/share/get_shared_users";
-  }
+  rpc GetSharedUsers(GetSharedUsersReq) returns (GetSharedUsersResp);
   // 获取用户分享过的对象
-  rpc GetUserShared(GetUserSharedReq) returns (GetUserSharedResp){
-    option(http.get) = "/share/get_user_shared";
-  }
+  rpc GetUserShared(GetUserSharedReq) returns (GetUserSharedResp);
   // 判断是否分享过
-  rpc GetShared(GetSharedReq) returns (GetSharedResp) {
-    option(http.get) = "/share/get_shared";
-  }
+  rpc GetShared(GetSharedReq) returns (GetSharedResp) ;
 
 
   // 关注
-  rpc DoFollow(DoFollowReq) returns (DoFollowResp){
-    option(http.post) = "/follow/do_follow";
-  }
+  rpc DoFollow(DoFollowReq) returns (DoFollowResp);
   // 取消关注
-  rpc CancelFollow(CancelFollowReq) returns (CancelFollowResp) {
-    option(http.post) = "/follow/cancel_follow";
-  }
+  rpc CancelFollow(CancelFollowReq) returns (CancelFollowResp);
   // 获取关注数
-  rpc GetFollowedCount(GetFollowedCountReq) returns (GetFollowedCountResp){
-    option(http.get) = "/follow/get_count";
-  }
+  rpc GetFollowedCount(GetFollowedCountReq) returns (GetFollowedCountResp);
   // 获取关注对象
-  rpc GetFollowedUsers(GetFollowedUsersReq) returns (GetFollowedUsersResp){
-    option(http.get) = "/follow/get_followed_users";
-  }
+  rpc GetFollowedUsers(GetFollowedUsersReq) returns (GetFollowedUsersResp);
   // 获取用户关注过的对象
-  rpc GetUserFollowed(GetUserFollowedReq) returns (GetUserFollowedResp){
-    option(http.get) = "/follow/get_user_followed";
-  }
+  rpc GetUserFollowed(GetUserFollowedReq) returns (GetUserFollowedResp);
   // 判断是否关注过
-  rpc GetFollowed(GetFollowedReq) returns (GetFollowedResp) {
-    option(http.get) = "/follow/get_followed";
-  }
+  rpc GetFollowed(GetFollowedReq) returns (GetFollowedResp);
 }

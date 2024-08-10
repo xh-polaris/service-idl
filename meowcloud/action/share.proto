@@ -18,7 +18,7 @@ import "meowcloud/action/common.proto";
 message DoShareReq {
   string targetId = 1;  // 分享目标id
   TargetType targetType = 2; // 分享类型(0相片，1相册，2评论)
-  basic.UserMeta user = 3;  // 用户信息
+  basic.UserMeta user = 254;  // 用户信息
 }
 
 // 分享响应
@@ -51,9 +51,9 @@ message GetSharedUsersResp {
 
 // 获取用户分享过对象请求
 message GetUserSharedReq {
-  basic.UserMeta user = 1;
-  TargetType targetType = 2;
-  basic.PaginationOptions paginationOption = 3;
+  TargetType targetType = 1;
+  basic.PaginationOptions paginationOption = 2;
+  basic.UserMeta user = 254;
 }
 
 // 获取用户分享过对象响应
@@ -66,7 +66,7 @@ message GetUserSharedResp {
 message GetSharedReq {
   string targetId = 1;
   TargetType targetType = 2;
-  basic.UserMeta user = 3;
+  basic.UserMeta user = 254;
 }
 
 message GetSharedResp {
