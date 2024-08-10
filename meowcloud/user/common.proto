@@ -15,7 +15,7 @@ message UserPreview {
 
 message UserDetail {
   string id = 1;
-  string username = 2;
+  string nickname = 2;
   string bio = 3;
   string avatar = 4;
   int64 updatedAt = 5;
@@ -47,20 +47,4 @@ message UserDetail {
   StorageInfo storageInfo = 15;
   int32 points = 16;
   repeated string achievements = 17;
-}
-
-message Like {
-  string targetId = 1;
-  string associatedId = 2;
-}
-
-message ItemScore {
-  string id = 1;
-  int64 score = 2;
-}
-
-enum LikeType {
-  Unknown = 0;
-  Cat = 1;
-  Album = 2;
 }
