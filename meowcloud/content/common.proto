@@ -7,12 +7,19 @@ option java_package = "com.xhpolaris.idlgen.meowcloud.content";
 option java_outer_classname = "CommonProto";
 option java_multiple_files = true;
 
+enum AlbumVisibility {
+  Unknown = 0;
+  Public = 1;
+  Followers = 2;
+  Private = 3;
+}
+
 message CatAlbum {
   string id = 1;
   string type = 2; 
   string creatorId = 3; 
   string albumName = 4;
-  string visibility = 5; 
+  AlbumVisibility visibility = 5; 
   int32 totalPhotos = 6; 
   int32 availablePhotos = 7;
   int64 updatedAt = 8;
