@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package meowcloud.action;
+
+option go_package = "meowcloud/action";
+option java_package = "com.xhpolaris.idlgen.meowcloud.action";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+// 目标类型
+enum TargetType {
+  PHOTO = 0;
+  ALBUM = 1;
+  COMMENT = 2;
+  USER = 3;
+}
+
+message Action {
+
+  // 点赞
+  message Like {
+    string id = 1;
+    string targetId = 2;
+    TargetType targetType = 3;
+    string userId = 4;
+    int64 createAt = 5;
+    bool isCancel = 6;
+  }
+
+  // 分享
+  message Share {
+    string id = 1;
+    string targetId = 2;
+    TargetType targetType = 3;
+    string userId = 4;
+    int64 createAt = 5;
+  }
+
+  // 关注
+  message Follow {
+    string id = 1;
+    string targetId = 2;
+    TargetType targetType = 3;
+    string userId = 4;
+    int64 createAt = 5;
+    bool isCancel = 6;
+  }
+}

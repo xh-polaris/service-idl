@@ -1,0 +1,86 @@
+// 该文件中定义了关注服务需要使用的message
+
+syntax = "proto3";
+
+package meowcloud.action;
+
+option go_package = "meowcloud/action";
+option java_package = "com.xhpolaris.idlgen.meowcloud.action";
+option java_outer_classname = "FollowProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+import "basic/user.proto";
+
+import "meowcloud/action/common.proto";
+
+// 关注请求
+message DoFollowReq {
+  string targetId = 1;  // 关注目标id
+  TargetType targetType = 2; // 关注类型(0相片，1相册，2评论)
+  basic.UserMeta user = 254;  // 用户信息
+}
+
+// 关注响应
+message DoFollowResp {
+}
+
+// 取消关注请求
+message CancelFollowReq {
+  string targetId = 1;  // 关注目标id
+  TargetType targetType = 2; // 关注类型(0相片，1相册，2评论)
+  basic.UserMeta user = 254;  // 用户信息
+}
+
+// 取消关注响应
+message CancelFollowResp {
+}
+
+// 获取关注数请求
+message GetFollowedCountReq {
+  string targetId = 1;
+  TargetType targetType = 2;
+}
+
+// 获取关注数响应
+message GetFollowedCountResp {
+  int64 count = 1;
+}
+
+// 获取关注对象列表
+message GetFollowedUsersReq {
+  string targetId = 1;
+  TargetType targetType = 2;
+  basic.PaginationOptions paginationOption = 3;
+}
+
+// 获取关注对象列表响应
+message GetFollowedUsersResp {
+  repeated Action.Follow follows = 1;
+  int64 total = 2;
+}
+
+// 获取用户关注过对象请求
+message GetUserFollowedReq {
+  TargetType targetType = 1;
+  basic.PaginationOptions paginationOption = 2;
+  basic.UserMeta user = 254;
+}
+
+// 获取用户关注过对象响应
+message GetUserFollowedResp {
+  repeated Action.Follow follows = 1;
+  int64 total = 2;
+}
+
+// 判断是否关注过
+message GetFollowedReq {
+  string targetId = 1;
+  TargetType targetType = 2;
+  basic.UserMeta user = 254;
+}
+
+message GetFollowedResp {
+  bool followed = 1;
+}
+
