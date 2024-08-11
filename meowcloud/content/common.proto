@@ -47,8 +47,7 @@ message Photo {
   int64 createdAt = 2;
   int64 updatedAt = 3;
   int64 deletedAt = 4;
-  string catAlbumId = 5;
-  string locationAlbumId = 6;
+  string albumId = 5;
   string ownerId = 7;
   bool isFeatured = 8;
   string location = 9;
