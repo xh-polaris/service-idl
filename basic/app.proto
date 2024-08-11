@@ -11,4 +11,5 @@ enum APP {
   Unknown = 0;
   Meowchat = 1;
   MeowchatManager = 2;
+  Meowcloud = 3;
 }

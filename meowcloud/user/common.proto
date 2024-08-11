@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package meowcloud.user;
+
+option go_package = "meowcloud/user";
+option java_package = "com.xhpolaris.idlgen.meowcloud.user";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+message UserPreview {
+  string id = 1;
+  string nickname = 2;
+  string avatar = 3;
+}
+
+message User {
+  string id = 1;
+  string nickname = 2;
+  string bio = 3;
+  string avatar = 4;
+  int64 updatedAt = 5;
+  int64 createdAt = 6;
+  int64 deletedAt = 7;
+
+  message Membership {
+    string memberId = 1;
+    int32 memberLevel = 2; // 0: 普通用户, 1: 普通会员, 2: 高级会员
+  }
+  Membership membership = 8;
+
+  int32 teamCount = 9;
+  repeated string teamIds = 10;
+
+  int32 myAlbumCount = 11;
+  repeated int32 myAlbumIds = 12;
+  int32 followedAlbumCount = 13;
+  repeated int32 followedAlbumIds = 14;
+
+  message StorageInfo {
+    int32 availablePhotos = 1;
+    int32 usedPhotos = 2;
+    int64 availableMemory = 3;
+    int64 usedMemory = 4;
+    int32 availableAlbums = 5;
+    int32 usedAlbums = 6;
+  }
+  StorageInfo storageInfo = 15;
+  int32 points = 16;
+  repeated string achievements = 17;
+}

@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package meowcloud.content;
+
+option go_package = "meowcloud/content";
+option java_package = "com.xhpolaris.idlgen.meowcloud.content";
+option java_outer_classname = "ContentProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+import "meowcloud/content/common.proto";
+
+message CreateCatAlbumReq {
+  CatAlbum catAlbum = 1;
+}
+
+message CreateCatAlbumResp {
+  CatAlbum catAlbum = 1;
+}
+
+message RetrieveCatAlbumReq {
+  string id = 1;
+}
+
+message RetrieveCatAlbumResp {
+  CatAlbum catAlbum = 1;
+}
+
+message UpdateCatAlbumReq {
+  CatAlbum catAlbum = 1;
+}
+
+message UpdateCatAlbumResp {
+  CatAlbum catAlbum = 1;
+}
+
+message DeleteCatAlbumReq {
+  string id = 1;
+}
+
+message DeleteCatAlbumResp {
+  string message = 1;
+}
+
+message ListCatAlbumReq {
+  optional basic.PaginationOptions paginationOptions = 1;
+}
+
+message ListCatAlbumResp {
+  repeated CatAlbum catAlbums = 1;
+  int64 total = 2;
+}
+
+message CreateLocationAlbumReq {
+  LocationAlbum locationAlbum = 1;
+}
+
+message CreateLocationAlbumResp {
+  LocationAlbum locationAlbum = 1;
+}
+
+message RetrieveLocationAlbumReq {
+  string id = 1;
+}
+
+message RetrieveLocationAlbumResp {
+  LocationAlbum locationAlbum = 1;
+}
+
+message UpdateLocationAlbumReq {
+  LocationAlbum locationAlbum = 1;
+}
+
+message UpdateLocationAlbumResp {
+  LocationAlbum locationAlbum = 1;
+}
+
+message DeleteLocationAlbumReq {
+  string id = 1;
+}
+
+message DeleteLocationAlbumResp {
+}
+
+enum RetrieveLocationAlbumType {
+  ALL = 0;
+  NEARBY = 1;
+  FAVORITE = 2;
+}
+
+message ListLocationAlbumReq {
+  optional basic.PaginationOptions paginationOptions = 1;
+  optional RetrieveLocationAlbumType type = 2;
+}
+
+message ListLocationAlbumResp {
+  repeated LocationAlbum locationAlbums = 1;
+  int64 total = 2;
+}
+
+message CreatePhotoReq {
+  Photo photo = 1;
+}
+
+message CreatePhotoResp {
+  Photo photo = 1;
+}
+
+message RetrievePhotoReq {
+  string id = 1;
+}
+
+message RetrievePhotoResp {
+  Photo photo = 1;
+}
+
+message UpdatePhotoReq {
+  Photo photo = 1;
+}
+
+message UpdatePhotoResp {
+  Photo photo = 1;
+}
+
+message DeletePhotoReq {
+  string id = 1;
+}
+
+message DeletePhotoResp {
+}
+
+message ListPhotoReq {
+  optional basic.PaginationOptions paginationOptions = 1;
+}
+
+message ListPhotoResp {
+  repeated Photo photos = 1;
+  int64 total = 2;
+}
+
+message ListFeaturedPhotoReq {
+  optional basic.PaginationOptions paginationOptions = 1;
+}
+
+message ListFeaturedPhotoResp {
+  repeated Photo photos = 1;
+  int64 total = 2;
+}
+
+service ContentService {
+  rpc CreateCatAlbum(CreateCatAlbumReq) returns (CreateCatAlbumResp);
+  rpc RetrieveCatAlbum(RetrieveCatAlbumReq) returns (RetrieveCatAlbumResp);
+  rpc UpdateCatAlbum(UpdateCatAlbumReq) returns (UpdateCatAlbumResp);
+  rpc DeleteCatAlbum(DeleteCatAlbumReq) returns (DeleteCatAlbumResp);
+  rpc ListCatAlbum(ListCatAlbumReq) returns (ListCatAlbumResp);
+
+  rpc CreateLocationAlbum(CreateLocationAlbumReq) returns (CreateLocationAlbumResp);
+  rpc RetrieveLocationAlbum(RetrieveLocationAlbumReq) returns (RetrieveLocationAlbumResp);
+  rpc UpdateLocationAlbum(UpdateLocationAlbumReq) returns (UpdateLocationAlbumResp);
+  rpc DeleteLocationAlbum(DeleteLocationAlbumReq) returns (DeleteLocationAlbumResp);
+  rpc ListLocationAlbum(ListLocationAlbumReq) returns (ListLocationAlbumResp);
+
+  rpc CreatePhoto(CreatePhotoReq) returns (CreatePhotoResp);
+  rpc RetrievePhoto(RetrievePhotoReq) returns (RetrievePhotoResp);
+  rpc UpdatePhoto(UpdatePhotoReq) returns (UpdatePhotoResp);
+  rpc DeletePhoto(DeletePhotoReq) returns (DeletePhotoResp);
+  rpc ListPhoto(ListPhotoReq) returns (ListPhotoResp);
+  rpc ListFeaturedPhoto(ListFeaturedPhotoReq) returns (ListFeaturedPhotoResp);
+}
