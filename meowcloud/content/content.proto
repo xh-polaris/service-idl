@@ -10,96 +10,165 @@ option java_multiple_files = true;
 import "basic/pagination.proto";
 import "meowcloud/content/common.proto";
 
+// Album related messages
 message CreateAlbumReq {
   Album album = 1;
 }
 
 message CreateAlbumResp {
-  Album album = 1;
-}
-
-message RetrieveAlbumReq {
-  string id = 1;
-}
-
-message RetrieveAlbumResp {
-  Album album = 1;
+  int32 albumId = 1;
 }
 
 message UpdateAlbumReq {
   Album album = 1;
 }
 
-message UpdateAlbumResp {
+message UpdateAlbumResp {}
+
+message GetAlbumReq {
+  int32 id = 1;
+}
+
+message GetAlbumResp {
+  Album album = 1;
+}
+
+message ListAlbumsReq {
+  PaginationOptions pagination = 1;
+}
+
+message ListAlbumsResp {
+  repeated Album albums = 1;
 }
 
 message DeleteAlbumReq {
-  string id = 1;
+  int32 id = 1;
 }
 
-message DeleteAlbumResp {
-}
+message DeleteAlbumResp {}
 
-message ListAlbumReq {
-  optional basic.PaginationOptions paginationOptions = 1;
-}
-
-message ListAlbumResp {
-  repeated Album Albums = 1;
-  int64 total = 2;
-}
-
-message CreatePhotoReq {
+// Photo related messages
+message UploadPhotoReq {
   Photo photo = 1;
 }
 
-message CreatePhotoResp {
-  Photo photo = 1;
-}
-
-message RetrievePhotoReq {
-  string id = 1;
-}
-
-message RetrievePhotoResp {
-  Photo photo = 1;
+message UploadPhotoResp {
+  int32 photoId = 1;
 }
 
 message UpdatePhotoReq {
   Photo photo = 1;
 }
 
-message UpdatePhotoResp {
+message UpdatePhotoResp {}
+
+message GetPhotoReq {
+  int32 id = 1;
+}
+
+message GetPhotoResp {
+  Photo photo = 1;
+}
+
+message ListPhotosReq {
+  PaginationOptions pagination = 1;
+}
+
+message ListPhotosResp {
+  repeated Photo photos = 1;
 }
 
 message DeletePhotoReq {
-  string id = 1;
+  int32 id = 1;
 }
 
-message DeletePhotoResp {
+message DeletePhotoResp {}
+
+// Cat related messages
+message AddCatReq {
+  CatInfo cat = 1;
 }
 
-message ListPhotoReq {
-  string albumId = 1;
-  optional basic.PaginationOptions paginationOptions = 2;
-  optional bool onlyFeatured = 3;
+message AddCatResp {
+  int32 catId = 1;
 }
 
-message ListPhotoResp {
-  repeated Photo photos = 1;
-  int64 total = 2;
+message UpdateCatReq {
+  CatInfo cat = 1;
 }
 
-service ContentService {
+message UpdateCatResp {}
+
+message GetCatReq {
+  int32 id = 1;
+}
+
+message GetCatResp {
+  CatInfo cat = 1;
+}
+
+message DeleteCatReq {
+  int32 id = 1;
+}
+
+message DeleteCatResp {}
+
+// Place related messages
+message AddPlaceReq {
+  PlaceInfo place = 1;
+}
+
+message AddPlaceResp {
+  int32 placeId = 1;
+}
+
+message UpdatePlaceReq {
+  PlaceInfo place = 1;
+}
+
+message UpdatePlaceResp {}
+
+message GetPlaceReq {
+  int32 id = 1;
+}
+
+message GetPlaceResp {
+  PlaceInfo place = 1;
+}
+
+message DeletePlaceReq {
+  int32 id = 1;
+}
+
+message DeletePlaceResp {}
+
+
+service AlbumService {
   rpc CreateAlbum(CreateAlbumReq) returns (CreateAlbumResp);
-  rpc RetrieveAlbum(RetrieveAlbumReq) returns (RetrieveAlbumResp);
   rpc UpdateAlbum(UpdateAlbumReq) returns (UpdateAlbumResp);
+  rpc GetAlbum(GetAlbumReq) returns (GetAlbumResp);
+  rpc ListAlbums(ListAlbumsReq) returns (ListAlbumsResp);
   rpc DeleteAlbum(DeleteAlbumReq) returns (DeleteAlbumResp);
-  rpc ListAlbum(ListAlbumReq) returns (ListAlbumResp);
+}
 
-  rpc CreatePhoto(CreatePhotoReq) returns (CreatePhotoResp);
-  rpc RetrievePhoto(RetrievePhotoReq) returns (RetrievePhotoResp);
+service PhotoService {
+  rpc UploadPhoto(UploadPhotoReq) returns (UploadPhotoResp);
   rpc UpdatePhoto(UpdatePhotoReq) returns (UpdatePhotoResp);
+  rpc GetPhoto(GetPhotoReq) returns (GetPhotoResp);
+  rpc ListPhotos(ListPhotosReq) returns (ListPhotosResp);
   rpc DeletePhoto(DeletePhotoReq) returns (DeletePhotoResp);
-  rpc ListPhoto(ListPhotoReq) returns (ListPhotoResp);
+}
+
+service CatService {
+  rpc AddCat(AddCatReq) returns (AddCatResp);
+  rpc UpdateCat(UpdateCatReq) returns (UpdateCatResp);
+  rpc GetCat(GetCatReq) returns (GetCatResp);
+  rpc DeleteCat(DeleteCatReq) returns (DeleteCatResp);
+}
+
+service PlaceService {
+  rpc AddPlace(AddPlaceReq) returns (AddPlaceResp);
+  rpc UpdatePlace(UpdatePlaceReq) returns (UpdatePlaceResp);
+  rpc GetPlace(GetPlaceReq) returns (GetPlaceResp);
+  rpc DeletePlace(DeletePlaceReq) returns (DeletePlaceResp);
 }

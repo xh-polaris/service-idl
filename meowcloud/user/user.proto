@@ -10,32 +10,21 @@ option java_multiple_files = true;
 import "basic/pagination.proto";
 import "meowcloud/user/common.proto";
 
+message UpdateUserReq {
+  MeowUser user = 1;
+}
+
+message UpdateUserResp {}
+
 message GetUserReq {
-  string userId = 1;
+  string id = 1;
 }
 
 message GetUserResp {
-  UserPreview user = 1;
-}
-
-message GetUserDetailReq {
-  string userId = 1;
-}
-
-message GetUserDetailResp {
-  User user = 1;
-}
-
-message UpdateUserReq {
-  // 如果不更新头像或昵称或其他东西，对应字段留空
-  User user = 1;
-}
-
-message UpdateUserResp {
+  MeowUser user = 1;
 }
 
 service UserService {
-  rpc GetUser(GetUserReq) returns (GetUserResp);
-  rpc GetUserDetail(GetUserDetailReq) returns (GetUserDetailResp);
   rpc UpdateUser(UpdateUserReq) returns (UpdateUserResp);
+  rpc GetUser(GetUserReq) returns (GetUserResp);
 }

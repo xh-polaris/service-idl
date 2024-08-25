@@ -7,52 +7,151 @@ option java_package = "com.xhpolaris.idlgen.meowcloud.content";
 option java_outer_classname = "CommonProto";
 option java_multiple_files = true;
 
-enum AlbumVisibility {
-  Public = 0;
-  Followers = 1;
-  Private = 2;
-}
-
-enum OwnerType {
-  Personal = 0;
-  Team = 1;
+message AlbumInfo {
+    int32 id = 1;
+    int32 catTotal = 2;
+    int32 placeTotal = 3;
+    string createdTime = 4;
+    string updatedTime = 5;
+    string deletedTime = 6;
 }
 
 message Album {
-  string id = 1;
-  OwnerType type = 2; 
-  string creatorId = 3; 
-  string albumName = 4;
-  AlbumVisibility visibility = 5; 
-  int32 totalPhotos = 6; 
-  int32 availablePhotos = 7;
-  int64 updatedAt = 8;
-  int64 deletedAt = 9;
-  int64 createdAt = 10;
-  string createdLocation = 11;
-  double createdLocationLongitude = 12;
-  double createdLocationLatitude = 13;
-
-  message Cat {
-    string coverUrl = 1;
-    string color = 2;
-    string gender = 3;
-    int64 birthDate = 4;
-  }
-  Cat cat = 14;
+    int32 id = 1;
+    int32 albumType = 2;  // 个人相册 or 团队相册
+    int32 albumInfoId = 3;
+    int32 ownerId = 4;  // 拥有者ID
+    bool isPublic = 5;
+    int32 total = 6;
+    int32 usableNum = 7;
+    int32 catInfoId = 8;
+    int32 placeInfoId = 9;
+    string cover = 10;
+    string createdTime = 11;
+    string updatedTime = 12;
+    string deletedTime = 13;
+    string name = 14;
+    string description = 15;
 }
 
 message Photo {
-  string id = 1;
-  int64 createdAt = 2;
-  int64 updatedAt = 3;
-  int64 deletedAt = 4;
-  string albumId = 5;
-  string ownerId = 7;
-  bool isFeatured = 8;
-  string location = 9;
-  double locationLongitude = 10;
-  double locationLatitude = 11;
-  string description = 12;
-  string url = 13;
+    int32 id = 1;
+    int32 photoType = 2;  // 个人 or 团队
+    string uploadId = 3;
+    int32 albumId = 4;
+    int32 catInfoId = 5;
+    int32 placeInfoId = 6;
+    string description = 7;
+    bool isCover = 8;
+    bool isDue = 9;
+    string createdTime = 10;
+    string updatedTime = 11;
+    string deletedTime = 12;
+}
+
+message CatInfo {
+    int32 id = 1;
+    string name = 2;
+    string cover = 3;
+    int32 age = 4;
+    string breed = 5;
+    string area = 6;
+    string content = 7;
+    string createdTime = 8;
+    string updatedTime = 9;
+    string deletedTime = 10;
+}
+
+message PlaceInfo {
+    int32 id = 1;
+    float longitude = 2;
+    float latitude = 3;
+    string city = 4;
+    string createdTime = 5;
+    string updatedTime = 6;
+    string deletedTime = 7;
+}
+
+message MemoryInfo {
+    int32 id = 1;
+    int32 total = 2;
+    repeated int32 used = 3;
+    string createdTime = 4;
+    string updatedTime = 5;
+    string deletedTime = 6;
+}
+
+message PointInfo {
+    int32 id = 1;
+    int32 total = 2;
+    string createdTime = 3;
+    string updatedTime = 4;
+    string deletedTime = 5;
+}
+
+message MemberInfo {
+    int32 id = 1;
+    string createdTime = 2;
+    string updatedTime = 3;
+    string deletedTime = 4;
+}
+
+message AchievementInfo {
+    int32 id = 1;
+    string createdTime = 2;
+    string updatedTime = 3;
+    string deletedTime = 4;
+}
+
+message TeamInfo {
+    int32 id = 1;
+    int32 total = 2;
+    int32 createTotal = 3;
+    int32 joinTotal = 4;
+    string createdTime = 5;
+    string updatedTime = 6;
+    string deletedTime = 7;
+}
+
+message Team {
+    int32 id = 1;
+    string name = 2;
+    string creator = 3;
+    repeated int32 members = 4;
+    int32 teamInfoId = 5;
+    string createdTime = 6;
+    string updatedTime = 7;
+    string deletedTime = 8;
+}
+
+message Like {
+    int32 id = 1;
+    int32 targetType = 2;
+    int32 targetId = 3;
+    int32 userId = 4;
+    bool isCancel = 5;
+    string createdTime = 6;
+    string updatedTime = 7;
+    string deletedTime = 8;
+}
+
+message Follow {
+    int32 id = 1;
+    int32 targetType = 2;
+    int32 targetId = 3;
+    int32 userId = 4;
+    bool isCancel = 5;
+    string createdTime = 6;
+    string updatedTime = 7;
+    string deletedTime = 8;
+}
+
+message Share {
+    int32 id = 1;
+    int32 targetType = 2;
+    int32 targetId = 3;
+    int32 userId = 4;
+    string createdTime = 5;
+    string updatedTime = 6;
+    string deletedTime = 7;
 }
