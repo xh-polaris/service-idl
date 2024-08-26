@@ -14,7 +14,6 @@ import "basic/user.proto";
 // Album related messages
 message CreateAlbumReq {
   content.Album album = 1;
-  basic.UserMeta userMeta = 2;
 }
 
 message CreateAlbumResp {
@@ -52,7 +51,6 @@ message DeleteAlbumResp {}
 // Photo related messages
 message UploadPhotoReq {
   content.Photo photo = 1;
-  basic.UserMeta userMeta = 2;
 }
 
 message UploadPhotoResp {
@@ -90,7 +88,6 @@ message DeletePhotoResp {}
 // Cat related messages
 message AddCatReq {
   content.CatInfo cat = 1;
-  string albumId = 2;
 }
 
 message AddCatResp {
@@ -120,7 +117,6 @@ message DeleteCatResp {}
 // Place related messages
 message AddPlaceReq {
   content.PlaceInfo place = 1;
-  string albumId = 2;
 }
 
 message AddPlaceResp {
@@ -206,6 +202,38 @@ message GetTeamInfoResp {
   content.TeamInfo teamInfo = 1;
 }
 
+message GetMemoryInfoReq {
+  basic.UserMeta userMeta = 1;
+}
+
+message GetMemoryInfoResp {
+  content.MemoryInfo memoryInfo = 1;
+}
+
+message GetPointInfoReq {
+  basic.UserMeta userMeta = 1;
+}
+
+message GetPointInfoResp {
+  content.PointInfo pointInfo = 1;
+}
+
+message GetMemberInfoReq {
+  basic.UserMeta userMeta = 1;
+}
+
+message GetMemberInfoResp {
+  content.MemberInfo memberInfo = 1;
+}
+
+message GetAchievementInfoReq {
+  basic.UserMeta userMeta = 1;
+}
+
+message GetAchievementInfoResp {
+  content.AchievementInfo achievementInfo = 1;
+}
+
 
 service AlbumService {
   rpc CreateAlbum(CreateAlbumReq) returns (CreateAlbumResp);
@@ -246,4 +274,11 @@ service TeamService {
   rpc LeaveTeam(LeaveTeamReq) returns (LeaveTeamResp);
   rpc ListTeam(ListTeamReq) returns (ListTeamResp);
   rpc GetTeamInfo(GetTeamInfoReq) returns (GetTeamInfoResp);
+}
+
+service UserInfoService {
+  rpc GetMemoryInfo(GetMemoryInfoReq) returns (GetMemoryInfoResp);
+  rpc GetPointInfo(GetPointInfoReq) returns (GetPointInfoResp);
+  rpc GetMemberInfo(GetMemberInfoReq) returns (GetMemberInfoResp);
+  rpc GetAchievementInfo(GetAchievementInfoReq) returns (GetAchievementInfoResp);
 }

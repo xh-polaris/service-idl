@@ -14,6 +14,7 @@ message AlbumInfo {
     int64 createdTime = 4;
     int64 updatedTime = 5;
     int64 deletedTime = 6;
+    string userId = 7;
 }
 
 enum AlbumType {
@@ -52,12 +53,11 @@ message Photo {
     int32 catInfoId = 5;
     int32 placeInfoId = 6;
     string description = 7;
-    string coverId = 8;
-    bool isDue = 9;
-    int64 createdTime = 10;
-    int64 updatedTime = 11;
-    int64 deletedTime = 12;
-    string url = 13;
+    bool isDue = 8;
+    int64 createdTime = 9;
+    int64 updatedTime = 10;
+    int64 deletedTime = 11;
+    string url = 12;
 }
 
 message CatInfo {
@@ -71,6 +71,7 @@ message CatInfo {
     int64 createdTime = 8;
     int64 updatedTime = 9;
     int64 deletedTime = 10;
+    string albumId = 11;
 }
 
 message PlaceInfo {
@@ -81,6 +82,7 @@ message PlaceInfo {
     int64 createdTime = 5;
     int64 updatedTime = 6;
     int64 deletedTime = 7;
+    string albumId = 8;
 }
 
 message MemoryInfo {
@@ -98,6 +100,7 @@ message PointInfo {
     int64 createdTime = 3;
     int64 updatedTime = 4;
     int64 deletedTime = 5;
+    string userId = 6;
 }
 
 message MemberInfo {
@@ -106,6 +109,7 @@ message MemberInfo {
     int64 createdTime = 3;
     int64 updatedTime = 4;
     int64 deletedTime = 5;
+    string userId = 6;
 }
 
 message AchievementInfo {
@@ -113,6 +117,7 @@ message AchievementInfo {
     int64 createdTime = 2;
     int64 updatedTime = 3;
     int64 deletedTime = 4;
+    string userId = 5;
 }
 
 message TeamInfo {

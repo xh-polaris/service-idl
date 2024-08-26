@@ -13,14 +13,7 @@ message MeowUser {
   basic.UserMeta userMeta = 1;
   string signature = 2;
   string avatar = 3;
-  int32 memberId = 4;
-  int32 albumInfoId = 5;
-  int32 teamInfoId = 6;
-  int32 memoryInfoId = 7;
-  int32 pointInfoId = 8;
-  int32 achievementInfoId = 9;
-  int64 createdTime = 10;
-  int64 updatedTime = 11;
-  int64 deletedTime = 12;
-  string username = 13;
+  string username = 4;
+  int64 createdTime = 5;
+  int64 updatedTime = 6;
 }
