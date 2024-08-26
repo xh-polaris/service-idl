@@ -9,138 +9,202 @@ option java_multiple_files = true;
 
 import "basic/pagination.proto";
 import "meowcloud/content/common.proto";
+import "basic/user.proto";
 
 // Album related messages
 message CreateAlbumReq {
-  Album album = 1;
+  content.Album album = 1;
+  basic.UserMeta userMeta = 2;
 }
 
 message CreateAlbumResp {
-  int32 albumId = 1;
+  string albumId = 1;
 }
 
 message UpdateAlbumReq {
-  Album album = 1;
+  content.Album album = 1;
 }
 
 message UpdateAlbumResp {}
 
 message GetAlbumReq {
-  int32 id = 1;
+  string id = 1;
 }
 
 message GetAlbumResp {
-  Album album = 1;
+  content.Album album = 1;
 }
 
 message ListAlbumsReq {
-  PaginationOptions pagination = 1;
+  basic.PaginationOptions pagination = 1;
 }
 
 message ListAlbumsResp {
-  repeated Album albums = 1;
+  repeated content.Album albums = 1;
 }
 
 message DeleteAlbumReq {
-  int32 id = 1;
+  string id = 1;
 }
 
 message DeleteAlbumResp {}
 
 // Photo related messages
 message UploadPhotoReq {
-  Photo photo = 1;
+  content.Photo photo = 1;
+  basic.UserMeta userMeta = 2;
 }
 
 message UploadPhotoResp {
-  int32 photoId = 1;
+  string photoId = 1;
 }
 
 message UpdatePhotoReq {
-  Photo photo = 1;
+  content.Photo photo = 1;
 }
 
 message UpdatePhotoResp {}
 
 message GetPhotoReq {
-  int32 id = 1;
+  string id = 1;
 }
 
 message GetPhotoResp {
-  Photo photo = 1;
+  content.Photo photo = 1;
 }
 
 message ListPhotosReq {
-  PaginationOptions pagination = 1;
+  basic.PaginationOptions pagination = 1;
 }
 
 message ListPhotosResp {
-  repeated Photo photos = 1;
+  repeated content.Photo photos = 1;
 }
 
 message DeletePhotoReq {
-  int32 id = 1;
+  string id = 1;
 }
 
 message DeletePhotoResp {}
 
 // Cat related messages
 message AddCatReq {
-  CatInfo cat = 1;
+  content.CatInfo cat = 1;
+  string albumId = 2;
 }
 
 message AddCatResp {
-  int32 catId = 1;
+  string catId = 1;
 }
 
 message UpdateCatReq {
-  CatInfo cat = 1;
+  content.CatInfo cat = 1;
 }
 
 message UpdateCatResp {}
 
 message GetCatReq {
-  int32 id = 1;
+  string albumId = 1;
 }
 
 message GetCatResp {
-  CatInfo cat = 1;
+  content.CatInfo cat = 1;
 }
 
 message DeleteCatReq {
-  int32 id = 1;
+  string id = 1;
 }
 
 message DeleteCatResp {}
 
 // Place related messages
 message AddPlaceReq {
-  PlaceInfo place = 1;
+  content.PlaceInfo place = 1;
+  string albumId = 2;
 }
 
 message AddPlaceResp {
-  int32 placeId = 1;
+  string placeId = 1;
 }
 
 message UpdatePlaceReq {
-  PlaceInfo place = 1;
+  content.PlaceInfo place = 1;
 }
 
 message UpdatePlaceResp {}
 
 message GetPlaceReq {
-  int32 id = 1;
+  string albumId = 1;
 }
 
 message GetPlaceResp {
-  PlaceInfo place = 1;
+  content.PlaceInfo place = 1;
 }
 
 message DeletePlaceReq {
-  int32 id = 1;
+  string id = 1;
 }
 
 message DeletePlaceResp {}
+
+message AddTeamReq {
+  content.Team team = 1;
+  basic.UserMeta userMeta = 2;
+}
+
+message AddTeamResp {
+  string teamId = 1;
+}
+
+message UpdateTeamReq {
+  content.Team team = 1;
+}
+
+message UpdateTeamResp {}
+
+message GetTeamReq {
+  string id = 1;
+}
+
+message GetTeamResp {
+  content.Team team = 1;
+}
+
+message DeleteTeamReq {
+  string id = 1;
+}
+
+message DeleteTeamResp {}
+
+message JoinTeamReq {
+  string teamId = 1;
+  basic.UserMeta userMeta = 2;
+}
+
+message JoinTeamResp {}
+
+message LeaveTeamReq {
+  string teamId = 1;
+  basic.UserMeta userMeta = 2;
+}
+
+message LeaveTeamResp {}
+
+message ListTeamReq {
+  basic.UserMeta userMeta = 1;
+}
+
+message ListTeamResp {
+  repeated content.Team teams = 1;
+}
+
+message GetTeamInfoReq {
+  basic.UserMeta userMeta = 1;
+}
+
+message GetTeamInfoResp {
+  content.TeamInfo teamInfo = 1;
+}
 
 
 service AlbumService {
@@ -171,4 +235,15 @@ service PlaceService {
   rpc UpdatePlace(UpdatePlaceReq) returns (UpdatePlaceResp);
   rpc GetPlace(GetPlaceReq) returns (GetPlaceResp);
   rpc DeletePlace(DeletePlaceReq) returns (DeletePlaceResp);
+}
+
+service TeamService {
+  rpc AddTeam(AddTeamReq) returns (AddTeamResp);
+  rpc UpdateTeam(UpdateTeamReq) returns (UpdateTeamResp);
+  rpc GetTeam(GetTeamReq) returns (GetTeamResp);
+  rpc DeleteTeam(DeleteTeamReq) returns (DeleteTeamResp);
+  rpc JoinTeam(JoinTeamReq) returns (JoinTeamResp);
+  rpc LeaveTeam(LeaveTeamReq) returns (LeaveTeamResp);
+  rpc ListTeam(ListTeamReq) returns (ListTeamResp);
+  rpc GetTeamInfo(GetTeamInfoReq) returns (GetTeamInfoResp);
 }

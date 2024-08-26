@@ -11,7 +11,7 @@ import "basic/pagination.proto";
 import "meowcloud/user/common.proto";
 
 message UpdateUserReq {
-  MeowUser user = 1;
+  user.MeowUser user = 1;
 }
 
 message UpdateUserResp {}
@@ -21,7 +21,7 @@ message GetUserReq {
 }
 
 message GetUserResp {
-  MeowUser user = 1;
+  user.MeowUser user = 1;
 }
 
 service UserService {
