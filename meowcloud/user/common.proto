@@ -19,9 +19,8 @@ message MeowUser {
   int32 memoryInfoId = 7;
   int32 pointInfoId = 8;
   int32 achievementInfoId = 9;
-  string createdTime = 10;
-  string updatedTime = 11;
-  string deletedTime = 12;
-  string id = 13;
-  string username = 14;
+  int64 createdTime = 10;
+  int64 updatedTime = 11;
+  int64 deletedTime = 12;
+  string username = 13;
 }
