@@ -20,6 +20,6 @@ message InsertResp {
   bool done = 1;
 }
 
-service Data {
+service DataService {
   rpc Insert(InsertReq) returns (InsertResp);
 }
