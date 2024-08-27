@@ -7,13 +7,13 @@ option java_package = "com.xhpolaris.idlgen.platform.data";
 option java_outer_classname = "DataProto";
 option java_multiple_files = true;
 
-message document {
+message Document {
   string event_name = 1;
   string tags = 2;
 }
 
 message InsertReq{
-  repeated document documents = 1;
+  repeated Document documents = 1;
 }
 
 message InsertResp {
