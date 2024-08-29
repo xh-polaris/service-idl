@@ -1,18 +1,17 @@
 syntax = "proto3";
 
-package platform.data;
+package platform.core_api;
 
-option go_package = "platform/data";
-option java_package = "com.xhpolaris.idlgen.platform.data";
-option java_outer_classname = "ApiProto";
+option go_package = "platform/core_api";
+option java_package = "com.xhpolaris.idlgen.platform.core_api";
+option java_outer_classname = "CoreApiProto";
 option java_multiple_files = true;
 
-import "google/protobuf/any.proto";
 import "http/http.proto";
 import "platform/api/data.proto";
 
 service PlatformApi {
-  rpc ReportEvent(InsertRequest) returns (InsertResponse) {
+  rpc ReportEvent(ReportEventRequest) returns (ReportEventResponse) {
     option(http.post) = "/platform/report_event";
   }
 }

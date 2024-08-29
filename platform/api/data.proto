@@ -1,27 +1,24 @@
 syntax = "proto3";
 
-package platform.data;
+package platform.core_api;
 
-option go_package = "platform/api";
-option java_package = "com.xhpolaris.idlgen.platform.api";
-option java_outer_classname = "ApiProto";
+option go_package = "platform/core_api";
+option java_package = "com.xhpolaris.idlgen.platform.core_api";
+option java_outer_classname = "CoreApiProto";
 option java_multiple_files = true;
 
-import "google/protobuf/any.proto";
 import "http/http.proto";
 
-
-
-message InsertItem {
+message ReportEventItem {
   string eventName = 1;
-  map<string,google.protobuf.Any> tags = 2;
+  string tags = 2;
 }
 
 
-message InsertRequest {
-  repeated InsertItem data = 1;
+message ReportEventRequest {
+  repeated ReportEventItem data = 1;
 }
 
-message InsertResponse {
+message ReportEventResponse {
   bool done = 1;
 }
