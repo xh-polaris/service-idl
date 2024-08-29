@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package platform.data;
+
+option go_package = "platform/data";
+option java_package = "com.xhpolaris.idlgen.platform.data";
+option java_outer_classname = "ApiProto";
+option java_multiple_files = true;
+
+import "google/protobuf/any.proto";
+import "http/http.proto";
+
+message InsertItem {
+  string eventName = 1;
+  map<string,google.protobuf.Any> tags = 2;
+}
+
+
+message InsertRequest {
+  repeated InsertItem data = 1;
+}
+
+message InsertResponse {
+  bool done = 1;
+}
+
+service DataApi {
+  rpc ReportEvent(InsertRequest) returns (InsertResponse) {
+    option(http.post) = "/platform/report_event";
+  }
+}
