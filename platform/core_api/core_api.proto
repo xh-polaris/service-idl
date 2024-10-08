@@ -8,8 +8,8 @@ option java_outer_classname = "CoreApiProto";
 option java_multiple_files = true;
 
 import "http/http.proto";
-import "platform/api/data.proto";
-import "platform/api/auth.proto";
+import "platform/core_api/data.proto";
+import "platform/core_api/auth.proto";
 
 service data {
   rpc ReportEvent(ReportEventRequest) returns (ReportEventResponse) {
