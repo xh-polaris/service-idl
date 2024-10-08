@@ -19,13 +19,13 @@ service data {
 
 service auth {
   rpc SignIn (SignInReq) returns (SignInResp){
-    option (http.post) = "/auth/sign_in";
+    option (http.post) = "/platform/auth/sign_in";
   }
   rpc SendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp){
-    option (http.post) = "/auth/send_verify_code";
+    option (http.post) = "/platform/auth/send_verify_code";
   }
   rpc SetPassword(SetPasswordReq) returns (SetPasswordResp){
-    option(http.post) = "/auth/set_password";
+    option(http.post) = "/platform/auth/set_password";
   }
 }
 

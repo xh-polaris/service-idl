@@ -7,8 +7,6 @@ option java_package = "com.xhpolaris.idlgen.platform.core_api";
 option java_outer_classname = "CoreApiProto";
 option java_multiple_files = true;
 
-import "http/http.proto";
-
 message ReportEventItem {
   string eventName = 1;
   string tags = 2;
