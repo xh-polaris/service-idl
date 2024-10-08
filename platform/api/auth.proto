@@ -37,4 +37,5 @@ message SendVerifyCodeReq {
 }
 
 message SendVerifyCodeResp {
+
 }
