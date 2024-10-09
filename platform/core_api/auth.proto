@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package platform.core_api;
+
+option go_package = "platform/core_api";
+option java_package = "com.xhpolaris.idlgen.platform.core_api";
+option java_outer_classname = "AuthProto";
+option java_multiple_files = true;
+
+import "basic/app.proto";
+
+message SignInReq {
+  string authType = 1;
+  string authId = 2; // authType为邮件时填邮箱，为电话时填电话号，为微信时填APP_ID
+  optional string password = 3;
+  optional string verifyCode = 4;
+  basic.APP appId = 5;
+  string deviceId = 6;
+}
+
+message SignInResp {
+  string userId = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+message SetPasswordReq {
+  string password = 1;
+}
+
+message SetPasswordResp {
+}
+
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2; // authType为邮件时填邮箱，为电话时填电话号
+}
+
+message SendVerifyCodeResp {
+}

@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package platform.data;
+
+option go_package = "platform/data";
+option java_package = "com.xhpolaris.idlgen.platform.data";
+option java_outer_classname = "DataProto";
+option java_multiple_files = true;
+
+message Document {
+  string event_name = 1;
+  string tags = 2;
+}
+
+message InsertReq{
+  repeated Document documents = 1;
+}
+
+message InsertResp {
+  bool done = 1;
+}
+
+service DataService {
+  rpc Insert(InsertReq) returns (InsertResp);
+}

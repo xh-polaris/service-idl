@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package open_platform.user;
+
+option go_package="open_platform/core_api";
+option java_package = "com.xhpolaris.idlgen.open_platform.core_api";
+option java_outer_classname = "UserProto";
+option java_multiple_files = true;
+
+// 账号密码注册请求
+message PasswordSignUpReq{
+
+}
+
+// 账号密码注册响应
+message PasswordSignUpResp{
+
+}
+
