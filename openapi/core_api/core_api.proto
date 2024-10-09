@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package openapi.core_api;
+
+option go_package = "openapi/core_api";
+option java_package = "com.xhpolaris.idlgen.openapi.coreapi";
+option java_outer_classname = "CoreApiProto";
+option java_multiple_files = true;
+
+import "openapi/user/common.proto";
+
+/*
+ * 用户登录、注册、认证相关
+ */
+
+// 发送验证码，调用platform-core_api的sendVerifyCode，不在此处处理
+// 正常登录也直接使用platform-core_api获取userId即可
+
+// 手机号和验证码注册请求
+message SignUpReq {
+  string authType = 1; // 电话
+  string authId = 2;   // 电话号码或邮箱
+  optional string password = 3;
+  optional string verifyCode = 4;
+  user.Role role = 5;       // 注册的身份
+}
+
+// 手机号和验证码注册响应
+message SignUpResp {
+  string userId = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+/*
+ * key的管理相关
+ */
+
+// 获取keys
+
+// 刷新某个key
+
+// 设置key的host白名单
+
+// TODO 第三方认证
+
+/*
+ * 充值、余额相关
+ */
+
+/*
+ * 数据看板相关
+ */
+
+/*
+ * 接口相关
+ */

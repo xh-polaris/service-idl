@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package openapi.user;
+
+option go_package = "openapi/user";
+option java_package = "com.xhpolaris.idlgen.openapi.user";
+option java_outer_classname = "MoneyProto";
+option java_multiple_files = true;
+
+/*
+ * 此部分为用户充值、余额、余量管理部分
+ */
+
+// TODO 用户充值请求
+
+// TODO 用户充值响应
+
+// 设置用户余额请求
+
+// 设置用户余额响应
