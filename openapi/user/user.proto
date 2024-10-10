@@ -23,6 +23,7 @@ service auth {
   rpc GetKey(GetKeysReq) returns (GetKeysResp);
   rpc UpdateKey(UpdateKeyReq) returns (UpdateKeyResp);
   rpc UpdateHosts(UpdateHostsReq) returns (UpdateHostsResp);
+  rpc RefreshKey(RefreshKeyReq) returns (RefreshKeyResp);
   rpc DeleteKey(DeleteKeyReq) returns (DeleteKeyResp);
 }
 
