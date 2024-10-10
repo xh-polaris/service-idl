@@ -7,6 +7,8 @@ option java_package = "com.xhpolaris.idlgen.openapi.user";
 option java_outer_classname = "MoneyProto";
 option java_multiple_files = true;
 
+import "basic/user.proto";
+
 /*
  * 此部分为用户充值、余额、余量管理部分
  */
@@ -14,6 +16,18 @@ option java_multiple_files = true;
 // TODO 用户充值请求
 
 // TODO 用户充值响应
+
+// 更改用户余额请求
+message SetRemainReq {
+  basic.UserMeta user = 1;
+  int64 increment = 2;
+}
+
+// 更改用户余额响应
+message SetRemainResp {
+  bool done = 1;
+  string msg = 2;
+}
 
 // 设置用户余额请求
 

@@ -30,4 +30,5 @@ service auth {
  * 充值、余额等相关接口
  */
 service money {
+  rpc SetRemain(SetRemainReq) returns (SetRemainResp);
 }

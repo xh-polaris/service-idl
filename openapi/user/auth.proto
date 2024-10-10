@@ -9,6 +9,7 @@ option java_multiple_files = true;
 
 import "openapi/user/common.proto";
 import "basic/pagination.proto";
+import "basic/user.proto";
 
 /*
  * 此部分为用户身份认证相关
@@ -18,13 +19,11 @@ import "basic/pagination.proto";
 
 // TODO 认证响应(第三方，暂缓)
 
+// core api调用platform注册得到basic后再来初始化用户
 // 用户注册请求
 message SignUpReq {
-  string authType = 1;            // PHONE 或 EMAIL
-  string authId = 2;              // 电话号码或邮箱
-  optional string password = 3;   // 密码
-  optional string verifyCode = 4; // 验证码
-  Role role = 5;         // 注册的身份
+  basic.UserMeta user = 1;
+  Role role = 2;         // 注册的身份
 }
 
 // 用户注册响应
@@ -36,12 +35,12 @@ message SignUpResp {
 
 // 获取用户信息请求
 message GetUserInfoReq {
-  string userId = 1;
+  basic.UserMeta user = 1;
 }
 
 // 获取用户信息响应
 message GetUserInfoResp {
-  string userId = 1;
+  basic.UserMeta user = 1;
   string username = 2;
   Role role = 3;
   bool auth = 4;
@@ -51,7 +50,7 @@ message GetUserInfoResp {
 
 // 修改用户信息请求(用户名、状态)
 message SetUserInfoReq {
-  string userId = 1;
+  basic.UserMeta user = 1;
   optional string username = 2;
   optional UserStatus status = 3;
 }
@@ -68,7 +67,7 @@ message SetUserInfoResp {
 
 // 签发一个密钥请求
 message CreateKeyReq {
-  string userId = 1;
+  basic.UserMeta user = 1;
 }
 
 // 签发一个密钥响应
@@ -79,7 +78,7 @@ message CreateKeyResp {
 
 // 获取用户密钥列表请求
 message GetKeysReq {
-  string userId = 1;
+  basic.UserMeta user = 1;
   basic.PaginationOptions paginationOptions = 2;
 }
 
