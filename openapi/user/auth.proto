@@ -116,6 +116,17 @@ message UpdateHostsResp {
   string msg = 2;
 }
 
+// 刷新一个密钥内容请求
+message RefreshKeyReq {
+  string id = 1;
+}
+
+// 刷新一个密钥内容响应
+message RefreshKeyResp {
+  bool done = 1;
+  string msg = 2;
+}
+
 // 删除一个密钥请求
 message DeleteKeyReq {
   string id = 1;
