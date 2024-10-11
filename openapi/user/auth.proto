@@ -68,6 +68,8 @@ message SetUserInfoResp {
 // 签发一个密钥请求
 message CreateKeyReq {
   basic.UserMeta user = 1;
+  string name = 2;
+  repeated string hosts = 3;
 }
 
 // 签发一个密钥响应
