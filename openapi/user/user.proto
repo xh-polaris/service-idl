@@ -13,7 +13,7 @@ import "openapi/user/money.proto";
 /*
  * 用户信息和key相关接口
  */
-service auth {
+service user {
   // 用户信息部分
   rpc SignUp(SignUpReq) returns (SignUpResp);
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp);
@@ -25,11 +25,8 @@ service auth {
   rpc UpdateHosts(UpdateHostsReq) returns (UpdateHostsResp);
   rpc RefreshKey(RefreshKeyReq) returns (RefreshKeyResp);
   rpc DeleteKey(DeleteKeyReq) returns (DeleteKeyResp);
-}
-
-/*
- * 充值、余额等相关接口
- */
-service money {
+  /*
+   * 充值、余额等相关接口
+   */
   rpc SetRemain(SetRemainReq) returns (SetRemainResp);
 }

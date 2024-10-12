@@ -20,7 +20,7 @@ import "basic/user.proto";
 // 更改用户余额请求
 message SetRemainReq {
   basic.UserMeta user = 1;
-  int64 increment = 2;
+  int64 increment = 2;  // 增量，减少则用负数
 }
 
 // 更改用户余额响应
