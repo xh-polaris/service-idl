@@ -28,9 +28,8 @@ message SignUpReq {
 
 // 用户注册响应
 message SignUpResp {
-  string userId = 1;
-  string accessToken = 2;
-  int64 accessExpire = 3;
+  bool done = 1;
+  string msg = 2;
 }
 
 // 获取用户信息请求
