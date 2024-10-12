@@ -40,12 +40,11 @@ message GetUserInfoReq {
 
 // 获取用户信息响应
 message GetUserInfoResp {
-  basic.UserMeta user = 1;
-  string username = 2;
-  Role role = 3;
-  bool auth = 4;
-  string authId = 5;
-  UserStatus status = 6;
+  string username = 1;
+  Role role = 2;
+  bool auth = 3;
+  string authId = 4;
+  UserStatus status = 5;
 }
 
 // 修改用户信息请求(用户名、状态)
@@ -96,7 +95,7 @@ message UpdateKeyReq {
   optional string name = 2;
   optional KeyStatus status = 3;
   optional int64 timestamp = 4;
-  optional int64 expireTime = 5;
+  optional int64 expireTime = 5;  // 应该是增加的时间
 }
 
 // 修改一个密钥相关信息响应
