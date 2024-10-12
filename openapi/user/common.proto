@@ -16,7 +16,8 @@ enum Role {
 enum KeyStatus {
   EFFECT = 0;    // 生效
   FORBIDDEN = 1; // 禁用
-  DELETE = 2;    // 删除
+  OVERDUE = 2;   // 过期
+  DELETE = 3;    // 删除
 }
 
 enum UserStatus {
