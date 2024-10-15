@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package openapi.charge;
+
+option go_package = "openapi/charge";
+option java_package = "com.xhpolaris.idlgen.openapi.charge";
+option java_outer_classname = "ChargeProto";
+option java_multiple_files = true;
+
+import "openapi/charge/interface.proto";
+import "openapi/charge/log.proto";
+
+/*
+ * 接口管理、调用记录、扣费部分
+ */
+service charge {
+  /*
+   * interface.proto
+   * 接口的管理
+   */
+
+  // 基础接口部分
+  rpc CreateBaseInterface(CreateBaseInterfaceReq) returns (CreateBaseInterfaceResp);
+  rpc UpdateBaseInterface(UpdateBaseInterfaceReq) returns (UpdateBaseInterfaceResp);
+  rpc DeleteBaseInterface(DeleteBaseInterfaceReq) returns (DeleteBaseInterfaceResp);
+  rpc GetBaseInterface(GetBaseInterfaceReq) returns (GetBaseInterfaceResp);
+
+  // 完整接口部分
+  rpc CreateFullInterface(CreateFullInterfaceReq) returns (CreateFullInterfaceResp);
+  rpc UpdateFullInterface(UpdateFullInterfaceReq) returns (UpdateFullInterfaceResp);
+  rpc UpdateMargin(UpdateMarginReq) returns (UpdateMarginResp);
+  rpc DeleteFullInterface(DeleteFullInterfaceReq) returns (DeleteFullInterfaceResp);
+  rpc GetFullInterface(GetFullInterfaceReq) returns (GetFullInterfaceResp);
+
+  // 梯度折扣部分
+  rpc CreateGradient(CreateGradientReq) returns (CreateGradientResp);
+  rpc UpdateGradient(UpdateGradientReq) returns (UpdateGradientResp);
+  rpc GetGradient(GetGradientReq) returns (GetGradientResp);
+
+  /*
+   * log.proto
+   * 调用记录的管理
+   */
+
+  // 调用记录部分
+  rpc CreateLog(CreateLogReq) returns (CreateLogResp);
+  rpc GetLogReq(GetLogReq) returns (GetLogResp);
+}
+
