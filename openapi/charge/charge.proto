@@ -44,6 +44,6 @@ service charge {
 
   // 调用记录部分
   rpc CreateLog(CreateLogReq) returns (CreateLogResp);
-  rpc GetLogReq(GetLogReq) returns (GetLogResp);
+  rpc GetLog(GetLogReq) returns (GetLogResp);
 }
 
