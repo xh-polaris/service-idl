@@ -38,5 +38,4 @@ message Key {
   int64 expireTime = 8;  // 到期时间
   int64 createTime = 9;
   int64 updateTime = 10;
-  int64 deleteTime = 11; // 删除时间
 }

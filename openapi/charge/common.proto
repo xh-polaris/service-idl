@@ -56,7 +56,6 @@ message BaseInterface {
   InterfaceStatus status = 9;     // 接口状态
   int64 createTime = 10;
   int64 updateTime = 11;
-  int64 deleteTime = 12;
 }
 
 message FullInterface {
@@ -69,7 +68,6 @@ message FullInterface {
   InterfaceStatus status = 7;    // 接口状态
   int64 createTime = 8;          // 创建时间
   int64 updateTime = 9;          // 更新时间
-  int64 deleteTime = 10;         // 删除时间
 }
 
 message Discount {
@@ -85,7 +83,6 @@ message Gradient {
   InterfaceStatus status = 4;
   int64 createTime = 5;
   int64 updateTime = 6;
-  int64 deleteTime = 7;
 }
 
 message Log {
