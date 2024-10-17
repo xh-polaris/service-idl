@@ -22,7 +22,7 @@ import "basic/user.proto";
 // core api调用platform注册得到basic后再来初始化用户
 // 用户注册请求
 message SignUpReq {
-  basic.UserMeta user = 1;
+  string userId = 1;
   Role role = 2;         // 注册的身份
 }
 
@@ -34,7 +34,7 @@ message SignUpResp {
 
 // 获取用户信息请求
 message GetUserInfoReq {
-  basic.UserMeta user = 1;
+  string userId = 1;
 }
 
 // 获取用户信息响应
@@ -48,7 +48,7 @@ message GetUserInfoResp {
 
 // 修改用户信息请求(用户名、状态)
 message SetUserInfoReq {
-  basic.UserMeta user = 1;
+  string userId = 1;
   optional string username = 2;
   optional UserStatus status = 3;
 }
@@ -65,7 +65,7 @@ message SetUserInfoResp {
 
 // 签发一个密钥请求
 message CreateKeyReq {
-  basic.UserMeta user = 1;
+  string userId = 1;
   string name = 2;
   repeated string hosts = 3;
 }
@@ -78,7 +78,7 @@ message CreateKeyResp {
 
 // 获取用户密钥列表请求
 message GetKeysReq {
-  basic.UserMeta user = 1;
+  string userId = 1;
   basic.PaginationOptions paginationOptions = 2;
 }
 

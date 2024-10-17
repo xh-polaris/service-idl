@@ -131,7 +131,7 @@ message DeleteFullInterfaceResp {
 
 // 获取完整接口列表请求
 message GetFullInterfaceReq {
-  basic.UserMeta user = 1;
+  string userId = 1;
   basic.PaginationOptions paginationOptions = 2;
 }
 
