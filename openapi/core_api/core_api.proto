@@ -7,52 +7,126 @@ option java_package = "com.xhpolaris.idlgen.openapi.coreapi";
 option java_outer_classname = "CoreApiProto";
 option java_multiple_files = true;
 
-import "openapi/user/common.proto";
+import "openapi/core_api/common.proto";
+import "http/http.proto";
 
 /*
- * 用户登录、注册、认证相关
+ * 用户登录、注册、认证、充值相关
  */
+service user {
+  // 发送验证码，调用platform-core_api的sendVerifyCode，不在此处处理
+  // 正常登录也直接使用platform-core_api获取userId即可
 
-// 发送验证码，调用platform-core_api的sendVerifyCode，不在此处处理
-// 正常登录也直接使用platform-core_api获取userId即可
-
-// 手机号和验证码注册请求
-message SignUpReq {
-  string authType = 1; // 电话
-  string authId = 2;   // 电话号码或邮箱
-  optional string password = 3;
-  optional string verifyCode = 4;
-  user.Role role = 5;       // 注册的身份
+  // 手机号注册
+  rpc SignUp(SignUpReq) returns (SignUpResp) {
+    option (http.post) = "/user/sign_up";
+  }
 }
 
-// 手机号和验证码注册响应
-message SignUpResp {
-  string userId = 1;
-  string accessToken = 2;
-  int64 accessExpire = 3;
-
-}
 
 /*
  * key的管理相关
  */
+service key {
+  // 生成一个key
+  rpc GenerateKey(GenerateKeyReq) returns (Response) {
+    option (http.post) = "/key/generate";
+  }
+  // 获取keys
+  rpc GetKeys(GetKeysReq) returns (GetKeysResp) {
+    option (http.get) = "/key/get";
+  }
+  // 修改一个密钥相关信息请求(名字、状态、最近使用时间、到期时间)
+  rpc UpdateKey(UpdateKeyReq) returns (Response) {
+    option (http.post) = "/key/update";
+  }
+  // 刷新某个key
+  rpc RefreshKey(RefreshKeyReq) returns (Response) {
+    option (http.get) = "/key/refresh";
+  }
+  // 设置key的host白名单
+  rpc UpdateHosts(UpdateHostReq) returns (Response) {
+    option (http.post) = "/key/hosts";
+  }
+  // 删除一个key
+  rpc DeleteKey(DeleteKeyReq) returns (Response) {
+    option (http.get) = "/key/delete";
+  }
+}
 
-// 获取keys
-
-// 刷新某个key
-
-// 设置key的host白名单
-
-// TODO 第三方认证
 
 /*
- * 充值、余额、余量相关
+ * 接口管理、余额、余量相关
  */
+service charge {
+  /*
+   * 基础接口管理
+   * (主要提供给管理员使用)
+   */
+  // 创建一个基础接口
+  rpc CreateBaseInterface(CreateBaseInterfaceReq) returns (Response) {
+    option (http.post) = "/base/create";
+  }
+  // 更新一个基础接口
+  rpc UpdateBaseInterface(UpdateBaseInterfaceReq) returns (Response) {
+    option (http.post) = "/base/update";
+  }
+  // 删除一个基础接口
+  rpc DeleteBaseInterface(DeleteBaseInterfaceReq) returns (Response) {
+    option (http.get) = "/base/delete";
+  }
+  // 获取基础接口请求
+  rpc GetBaseInterfaces(GetBaseInterfacesReq) returns (GetBaseInterfacesResp) {
+    option (http.get) = "/base/get";
+  }
 
-/*
- * 数据看板相关
- */
 
-/*
- * 接口相关
- */
+  /*
+   * 完整接口管理
+   * (管理员用于创建价格模板，主要普通用户使用)
+   */
+  // 创建一个完整请求
+  rpc CreateFullInterface(CreateFullInterfaceReq) returns (Response) {
+    option (http.post) = "/full/create";
+  }
+  // 更新完整请求
+  rpc UpdateFullInterface(UpdateFullInterfaceReq) returns (Response) {
+    option (http.post) = "/full/update";
+  }
+  // 更新接口余量
+  rpc UpdateMargin(UpdateMarginReq) returns (Response) {
+    option (http.post) = "/full/margin";
+  }
+  // 删除完整接口
+  rpc DeleteFullInterface(DeleteFullInterfaceReq) returns (Response) {
+    option (http.get) = "/full/delete";
+  }
+  // 获取完整接口列表
+  rpc GetFullInterfaces(GetFullInterfacesReq) returns (GetFullInterfacesResp) {
+    option (http.get) = "/full/get";
+  }
+
+
+  /*
+   * 折扣梯度管理
+   * (主要提供给管理员使用，用户购买余量时也需要看到折扣表)
+   */
+  // 创建一个梯度折扣
+  rpc CreateGradient(CreateGradientReq) returns (Response) {
+    option (http.post) = "/gradient/create";
+  }
+  // 更新一个梯度折扣
+  rpc UpdateGradient(UpdateGradientReq) returns (Response) {
+    option (http.post) = "/gradient/update";
+  }
+  // 获取梯度折扣请求
+  rpc GetGradient(GetGradientReq) returns (GetGradientResp) {
+    option (http.get) = "/gradient/get";
+  }
+}
+
+service call {
+  rpc CallInterface(CallInterfaceReq) returns (CallInterfaceResp) {
+    option (http.post) = "/call/";
+  }
+}

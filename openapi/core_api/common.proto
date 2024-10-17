@@ -1,0 +1,215 @@
+syntax = "proto3";
+
+package openapi.core_api;
+
+option go_package = "openapi/core_api";
+option java_package = "com.xhpolaris.idlgen.openapi.coreapi";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+import "openapi/user/common.proto";
+import "openapi/user/auth.proto";
+import "openapi/charge/common.proto";
+
+/*
+ * 用户登录、注册、认证相关
+ */
+
+// 发送验证码，调用platform-core_api的sendVerifyCode，不在此处处理
+// 正常登录也直接使用platform-core_api获取userId即可
+
+// 手机号和验证码注册请求
+message SignUpReq {
+  string authType = 1;      // 电话
+  string authId = 2;        // 电话号码或邮箱
+  optional string password = 3;
+  optional string verifyCode = 4;
+  user.Role role = 5;       // 注册的身份
+}
+// 手机号和验证码注册响应
+message SignUpResp {
+  string userId = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+// TODO 第三方认证
+
+/*
+ * key的管理相关
+ */
+
+// 生成一个key
+message GenerateKeyReq {
+  string name = 1;
+  repeated string hosts = 2;
+}
+// 获取keys请求
+message GetKeysReq{
+  basic.PaginationOptions paginationOptions = 1;
+}
+// 获取keys响应
+message GetKeysResp {
+  repeated user.Key keys = 1;
+  int64 total = 2;
+}
+// 更新一个key的相关信息
+message UpdateKeyReq {
+  string id = 1;
+  optional string name = 2;
+  optional user.KeyStatus status = 3;
+  optional int64 timestamp = 4;
+  optional int64 expireTime = 5;  // 应该是增加的时间对应的秒级时间戳
+}
+// 刷新某个key
+message RefreshKeyReq {
+  string id = 1;
+}
+// 设置key的host白名单
+message UpdateHostReq {
+  string id = 1;
+  repeated string hosts = 2;
+}
+// 删除一个key
+message DeleteKeyReq {
+  string id = 1;
+}
+
+/*
+ * 接口管理、充值、余额、余量相关
+ */
+
+// 创建基础接口请求
+message CreateBaseInterfaceReq{
+  string name = 1;                         // 接口名
+  string host = 2;                         // 域名
+  string path = 3;                         // 调用路径
+  charge.MethodType method = 4;            // 调用方式
+  charge.PassWayType passWay = 5;          // 传值方式
+  repeated charge.Parameter params = 6;    // 参数列表
+  string content = 7;                      // 接口描述
+}
+// 更新基础接口请求
+message UpdateBaseInterfaceReq {
+  string id = 1;
+  string name = 2;                       // 接口名
+  string host = 3;                       // 域名
+  string path = 4;                       // 调用路径
+  charge.MethodType method = 5;          // 调用方式
+  charge.PassWayType passWay = 6;        // 传值方式
+  repeated charge.Parameter params = 7;  // 参数列表
+  string content = 8;                    // 接口描述
+  charge.InterfaceStatus status = 9;     // 接口状态
+}
+// 删除基础接口请求
+message DeleteBaseInterfaceReq {
+  string id = 1;
+}
+// 获取基础接口列表请求
+message GetBaseInterfacesReq {
+  basic.PaginationOptions paginationOptions = 1;
+}
+// 获取基础接口列表响应
+message GetBaseInterfacesResp {
+  repeated charge.BaseInterface baseInterfaces = 1;
+  int64 total = 2;
+}
+
+
+// 创建完整接口请求
+message CreateFullInterfaceReq {
+  string baseInterfaceId = 1;    // 基础接口id
+  string userId = 2;             // 面向用户id
+  charge.ChargeType chargeType = 3;     // 收费模式
+  int64 price = 4;               // 接口单价
+  int64 margin = 5;              // 接口余量
+}
+// 更新完整接口请求(不包括余量)
+message UpdateFullInterfaceReq {
+  string id = 1;
+  charge.ChargeType chargeType = 2;     // 收费模式
+  int64 price = 3;               // 接口单价
+  charge.InterfaceStatus status = 4;    // 接口状态
+}
+// 更新完整接口余量请求
+message UpdateMarginReq {
+  string id = 1;
+  int64 increment = 2;    // 增量，减少为负数
+}
+// 删除完整接口请求
+message DeleteFullInterfaceReq {
+  string id = 1;
+}
+// 获取完整接口列表请求
+message GetFullInterfacesReq {
+  string userId = 1;
+  basic.PaginationOptions paginationOptions = 2;
+}
+// 获取完整接口响应
+message GetFullInterfacesResp {
+  repeated charge.FullInterface fullInterfaces = 1;
+  int64 total = 2;
+}
+
+
+// 创建梯度折扣请求
+message CreateGradientReq {
+  string baseInterfaceId = 1;
+  repeated charge.Discount discounts = 2;
+}
+// 更新梯度折扣请求
+message UpdateGradientReq {
+  string id = 1;
+  repeated charge.Discount discounts = 2;
+  charge.InterfaceStatus status = 3;
+}
+// 获取梯度折扣请求
+message GetGradientReq {
+  string baseInterfaceId = 1;
+}
+// 获取梯度折扣响应
+message GetGradientResp {
+  charge.Gradient gradient = 1;
+}
+
+
+// 获取调用记录请求
+message GetLogReq {
+  string fullInterfaceId = 1;
+  basic.PaginationOptions paginationOptions = 2;
+}
+// 获取调用记录响应
+message GetLogResp {
+  repeated charge.Log logs = 1;
+  int64 total = 2;
+}
+
+/*
+ * 接口调用部分
+ */
+message CallInterfaceReq {
+  // 需要在header中携带签名来避免篡改
+  string key = 1;
+  string method = 2;
+  string url = 3;
+  string params = 6;        //json表示参数
+  int64 timestamp = 5;
+}
+
+message CallInterfaceResp {
+  string code = 1;
+  string msg = 2;
+  string result = 3;
+}
+
+/*
+ * TODO 数据看板相关
+ */
+
+/*
+ * 通用部分
+ */
+message Response {
+  bool done = 1;
+  string msg = 2;
+}
