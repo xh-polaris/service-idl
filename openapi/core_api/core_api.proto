@@ -21,6 +21,14 @@ service user {
   rpc SignUp(SignUpReq) returns (SignUpResp) {
     option (http.post) = "/user/sign_up";
   }
+  // 获取用户数据
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
+    option (http.get) = "/user/info";
+  }
+  // 更新用户数据
+  rpc SetUserInfo(SetUserInfoReq) returns (Response) {
+    option (http.post) = "/user/info";
+  }
 }
 
 

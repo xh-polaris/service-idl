@@ -33,6 +33,23 @@ message SignUpResp {
   string accessToken = 2;
   int64 accessExpire = 3;
 }
+// 获取用户信息请求
+message GetUserInfoReq {
+}
+// 获取用户信息响应
+message GetUserInfoResp {
+  string username = 1;
+  user.Role role = 2;
+  bool auth = 3;
+  string authId = 4;
+  user.UserStatus status = 5;
+}
+// 设置用户信息请求
+message SetUserInfoReq {
+  string userId = 1;
+  optional string username = 2;
+  optional user.UserStatus status = 3;
+}
 // TODO 第三方认证
 
 /*
