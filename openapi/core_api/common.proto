@@ -46,7 +46,6 @@ message GetUserInfoResp {
 }
 // 设置用户信息请求
 message SetUserInfoReq {
-  string userId = 1;
   optional string username = 2;
   optional user.UserStatus status = 3;
 }
