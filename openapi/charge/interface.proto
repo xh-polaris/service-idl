@@ -141,6 +141,24 @@ message GetFullInterfaceResp {
   int64 total = 2;
 }
 
+// 获取完整接口与基本接口用于校验请求
+message GetFullAndBaseInterfaceForCheckReq {
+  string url = 1;
+  string method = 2;
+  string userId = 3;
+}
+// 获取完整接口与基本接口用于校验响应
+message GetFullAndBaseInterfaceForCheckResp {
+  string id = 1;
+  string baseInterfaceId = 2;
+  int64 baseInterfaceStatus = 3;
+  string userId = 4;
+  int64 chargeType = 5;
+  int64 price = 6;
+  int64 margin = 7;
+  int64 status = 8;
+}
+
 /*
  * 此部分为接口折扣梯度
  */
