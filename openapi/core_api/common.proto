@@ -213,7 +213,7 @@ message CallInterfaceReq {
 }
 
 message CallInterfaceResp {
-  string code = 1;
+  int64 code = 1;
   string msg = 2;
   string result = 3;
 }

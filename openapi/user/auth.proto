@@ -130,9 +130,22 @@ message RefreshKeyResp {
 message DeleteKeyReq {
   string id = 1;
 }
-
 // 删除一个密钥响应
 message DeleteKeyResp {
   bool done = 1;
   string msg = 2;
+}
+
+// 根据密钥内容获取密钥信息，并且进行权限校验
+message GetKeyForCheckReq {
+  string content = 1;      // 密钥内容
+  string host = 2;         // 来源host
+  int64 timestamp = 3;     // 调用时间
+}
+// 校验响应
+message GetKeyForCheckResp {
+  string id = 1;           // 密钥id
+  string userId = 2;       // 用户id
+  string check = 3;        // 校验结果
+  string msg = 4;          // 校验信息反馈
 }

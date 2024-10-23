@@ -25,6 +25,7 @@ service user {
   rpc UpdateHosts(UpdateHostsReq) returns (UpdateHostsResp);
   rpc RefreshKey(RefreshKeyReq) returns (RefreshKeyResp);
   rpc DeleteKey(DeleteKeyReq) returns (DeleteKeyResp);
+  rpc GetKeyForCheck(GetKeyForCheckReq) returns (GetKeyForCheckResp);
   /*
    * 充值、余额等相关接口
    */
