@@ -33,6 +33,19 @@ message SignUpResp {
   string accessToken = 2;
   int64 accessExpire = 3;
 }
+// 登录请求
+message SignInReq {
+  string authType = 1;      // 电话
+  string authId = 2;        // 电话号码或邮箱
+  optional string password = 3;
+  optional string verifyCode = 4;
+}
+// 登录响应
+message SignInResp {
+  string userId = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
 // 获取用户信息请求
 message GetUserInfoReq {
 }
