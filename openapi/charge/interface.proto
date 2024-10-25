@@ -90,6 +90,7 @@ message CreateFullInterfaceReq {
 message CreateFullInterfaceResp {
   bool done = 1;
   string msg = 2;
+  FullInterface inf = 3;
 }
 
 // 更新完整接口请求(不包括余量)

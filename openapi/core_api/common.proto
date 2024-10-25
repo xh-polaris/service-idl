@@ -182,7 +182,8 @@ message GetFullInterfacesResp {
 // 购买完整接口请求
 message BuyFullInterfaceReq {
   string fullInterfaceId = 1;    // 如果之前没有买过则为模板的id，若买过则是用户的id
-  string increment = 2;          // 购买的量
+  int64 increment = 2;          // 购买的量
+  bool discount = 3;             // 是否有折扣
 }
 
 
