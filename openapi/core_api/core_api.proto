@@ -117,6 +117,9 @@ service charge {
   rpc GetFullInterfaces(GetFullInterfacesReq) returns (GetFullInterfacesResp) {
     option (http.get) = "/full/get";
   }
+  rpc BuyFullInterface(BuyFullInterfaceReq) returns (Response) {
+    option (http.post) = "/full/buy";
+  }
 
 
   /*
