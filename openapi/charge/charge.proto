@@ -31,6 +31,7 @@ service charge {
   rpc UpdateMargin(UpdateMarginReq) returns (UpdateMarginResp);
   rpc DeleteFullInterface(DeleteFullInterfaceReq) returns (DeleteFullInterfaceResp);
   rpc GetFullInterface(GetFullInterfaceReq) returns (GetFullInterfaceResp);
+  rpc GetOneFullInterface(GetOneFullInterfaceReq) returns (GetOneFullInterfaceResp);
 
   // 校验用部分
   rpc GetFullAndBaseInterfaceForCheck(GetFullAndBaseInterfaceForCheckReq) returns (GetFullAndBaseInterfaceForCheckResp);

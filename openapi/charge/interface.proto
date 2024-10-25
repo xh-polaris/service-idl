@@ -158,7 +158,14 @@ message GetFullAndBaseInterfaceForCheckResp {
   int64 margin = 7;
   int64 status = 8;
 }
-
+// 获取一个接口请求
+message GetOneFullInterfaceReq {
+  string id = 1;
+}
+// 获取一个接口响应
+message GetOneFullInterfaceResp {
+    FullInterface inf = 1;
+}
 /*
  * 此部分为接口折扣梯度
  */
