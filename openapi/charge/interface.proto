@@ -90,7 +90,7 @@ message CreateFullInterfaceReq {
 message CreateFullInterfaceResp {
   bool done = 1;
   string msg = 2;
-  FullInterface inf = 3;
+  string fullInterfaceId = 3;
 
 }
 
