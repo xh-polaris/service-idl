@@ -78,7 +78,7 @@ message Discount {
 
 message Gradient {
   string id = 1;
-  string baseInterfaceId = 2;
+  string fullInterfaceId = 2;
   repeated Discount discounts = 3;
   InterfaceStatus status = 4;
   int64 createTime = 5;

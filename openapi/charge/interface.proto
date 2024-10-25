@@ -172,7 +172,7 @@ message GetOneFullInterfaceResp {
 
 // 创建梯度折扣请求
 message CreateGradientReq {
-  string baseInterfaceId = 1;
+  string fullInterfaceId = 1;
   repeated Discount discounts = 2;
 }
 
@@ -197,7 +197,7 @@ message UpdateGradientResp {
 
 // 获取梯度折扣请求
 message GetGradientReq {
-  string baseInterfaceId = 1;
+  string fullInterfaceId = 1;
 }
 
 // 获取梯度折扣响应
