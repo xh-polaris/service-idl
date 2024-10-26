@@ -117,6 +117,7 @@ message CreateMarginReq {
 message CreateMarginResp {
   bool done = 1;
   string msg = 2;
+  string marginId = 3;
 }
 
 // 更新接口余量请求

@@ -151,7 +151,6 @@ message CreateFullInterfaceReq {
   string userId = 2;             // 面向用户id
   charge.ChargeType chargeType = 3;     // 收费模式
   int64 price = 4;               // 接口单价
-  int64 margin = 5;              // 接口余量
 }
 // 更新完整接口请求(不包括余量)
 message UpdateFullInterfaceReq {
