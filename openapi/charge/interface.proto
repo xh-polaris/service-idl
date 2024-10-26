@@ -191,8 +191,7 @@ message GetFullAndBaseInterfaceForCheckResp {
   string userId = 4;
   int64 chargeType = 5;
   int64 price = 6;
-  int64 margin = 7;
-  int64 status = 8;
+  int64 status = 7;
 }
 // 获取一个接口请求
 message GetOneFullInterfaceReq {
