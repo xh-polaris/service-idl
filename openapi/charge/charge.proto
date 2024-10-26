@@ -28,10 +28,15 @@ service charge {
   // 完整接口部分
   rpc CreateFullInterface(CreateFullInterfaceReq) returns (CreateFullInterfaceResp);
   rpc UpdateFullInterface(UpdateFullInterfaceReq) returns (UpdateFullInterfaceResp);
-  rpc UpdateMargin(UpdateMarginReq) returns (UpdateMarginResp);
   rpc DeleteFullInterface(DeleteFullInterfaceReq) returns (DeleteFullInterfaceResp);
   rpc GetFullInterface(GetFullInterfaceReq) returns (GetFullInterfaceResp);
   rpc GetOneFullInterface(GetOneFullInterfaceReq) returns (GetOneFullInterfaceResp);
+
+  // 余量管理部分
+  rpc CreateMargin(CreateMarginReq) returns (CreateMarginResp);
+  rpc UpdateMargin(UpdateMarginReq) returns (UpdateMarginResp);
+  rpc GetMargin(GetMarginReq) returns (GetMarginResp);
+  rpc DeleteMargin(DeleteMarginReq) returns (DeleteMarginResp);
 
   // 校验用部分
   rpc GetFullAndBaseInterfaceForCheck(GetFullAndBaseInterfaceForCheckReq) returns (GetFullAndBaseInterfaceForCheckResp);

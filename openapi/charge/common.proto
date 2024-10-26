@@ -64,10 +64,18 @@ message FullInterface {
   string userId = 3;             // 面向用户id
   ChargeType chargeType = 4;     // 收费模式
   int64 price = 5;               // 接口单价
-  int64 margin = 6;              // 接口余量
   InterfaceStatus status = 7;    // 接口状态
   int64 createTime = 8;          // 创建时间
   int64 updateTime = 9;          // 更新时间
+}
+
+message Margin {
+  string id = 1;
+  string userId= 2;
+  string fullInterfaceId = 3;
+  int64 margin = 4;
+  int64 createTime = 5;
+  int64 updateTime = 6;
 }
 
 message Discount {

@@ -83,7 +83,6 @@ message CreateFullInterfaceReq {
   string userId = 2;             // 面向用户id
   ChargeType chargeType = 3;     // 收费模式
   int64 price = 4;               // 接口单价
-  int64 margin = 5;              // 接口余量
 }
 
 // 创建完整接口响应
@@ -91,7 +90,6 @@ message CreateFullInterfaceResp {
   bool done = 1;
   string msg = 2;
   string fullInterfaceId = 3;
-
 }
 
 // 更新完整接口请求(不包括余量)
@@ -108,16 +106,51 @@ message UpdateFullInterfaceResp {
   string msg = 2;
 }
 
-// 更新完整接口余量请求
+// 创建接口余量请求
+message CreateMarginReq {
+  string userId = 1;
+  string fullInterfaceId = 2;
+  int64 margin = 3;
+}
+
+// 创建接口余量响应
+message CreateMarginResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 更新接口余量请求
 message UpdateMarginReq {
   string id = 1;
   int64 increment = 2;    // 增量，减少为负数
 }
 
-// 更新完整接口余量响应
+// 更新接口余量响应
 message UpdateMarginResp {
   bool done = 1;
   string msg = 2;
+}
+
+// 删除接口余量请求
+message DeleteMarginReq {
+  string id = 1;
+}
+
+// 删除接口余量响应
+message DeleteMarginResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取接口余量请求
+message GetMarginReq {
+  string userId = 1;
+  string fullInterfaceId = 2;
+}
+
+// 获取接口余量响应
+message GetMarginResp {
+  Margin margin = 1;
 }
 
 // 删除完整接口请求
@@ -166,7 +199,7 @@ message GetOneFullInterfaceReq {
 }
 // 获取一个接口响应
 message GetOneFullInterfaceResp {
-    FullInterface inf = 1;
+  FullInterface inf = 1;
 }
 /*
  * 此部分为接口折扣梯度
