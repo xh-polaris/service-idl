@@ -16,6 +16,7 @@ import "basic/pagination.proto";
 
 // 创建一个调用记录请求
 message CreateLogReq {
+  string marginId = 1;            // 用户接口余量id
   string fullInterfaceId = 2;     // 被调用的完整接口id
   string userId = 3;              // 调用用户的id
   string keyId = 4;               // 调用key的id
