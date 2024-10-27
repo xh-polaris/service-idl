@@ -182,6 +182,7 @@ message GetFullAndBaseInterfaceForCheckReq {
   string url = 1;
   string method = 2;
   string userId = 3;
+  int64 role = 4;
 }
 // 获取完整接口与基本接口用于校验响应
 message GetFullAndBaseInterfaceForCheckResp {
