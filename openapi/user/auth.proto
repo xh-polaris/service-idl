@@ -147,6 +147,7 @@ message GetKeyForCheckReq {
 message GetKeyForCheckResp {
   string id = 1;           // 密钥id
   string userId = 2;       // 用户id
-  bool check = 3;        // 校验结果
+  bool check = 3;          // 校验结果
   string msg = 4;          // 校验信息反馈
+  Role role = 5;           // 用户身份类型
 }
