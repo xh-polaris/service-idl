@@ -46,7 +46,7 @@ service key {
   }
   // 获取keys
   rpc GetKeys(GetKeysReq) returns (GetKeysResp) {
-    option (http.get) = "/key/get";
+    option (http.post) = "/key/get";
   }
   // 修改一个密钥相关信息请求(名字、状态、最近使用时间、到期时间)
   rpc UpdateKey(UpdateKeyReq) returns (Response) {
