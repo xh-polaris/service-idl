@@ -89,7 +89,7 @@ service charge {
   }
   // 获取基础接口请求
   rpc GetBaseInterfaces(GetBaseInterfacesReq) returns (GetBaseInterfacesResp) {
-    option (http.get) = "/base/get";
+    option (http.post) = "/base/get";
   }
 
 
@@ -115,7 +115,7 @@ service charge {
   }
   // 获取完整接口列表
   rpc GetFullInterfaces(GetFullInterfacesReq) returns (GetFullInterfacesResp) {
-    option (http.get) = "/full/get";
+    option (http.post) = "/full/get";
   }
   rpc BuyFullInterface(BuyFullInterfaceReq) returns (Response) {
     option (http.post) = "/full/buy";
