@@ -225,7 +225,7 @@ message CallInterfaceReq {
   // 需要在header中携带签名来避免篡改
   string key = 1;
   string method = 2;
-  string url = 3;
+  string action = 3;
   string params = 6;        //json表示参数
   int64 timestamp = 5;
 }
