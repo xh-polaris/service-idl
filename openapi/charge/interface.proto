@@ -124,6 +124,7 @@ message CreateMarginResp {
 message UpdateMarginReq {
   string id = 1;
   int64 increment = 2;    // 增量，减少为负数
+  optional string txId = 3;        // 事务id
 }
 
 // 更新接口余量响应
