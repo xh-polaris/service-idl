@@ -39,3 +39,11 @@ message Key {
   int64 createTime = 9;
   int64 updateTime = 10;
 }
+
+message Account {
+  string id = 1;
+  string txId = 2;
+  int64 increment = 3;
+  string userId = 4;
+  int64 createTime = 5;
+}

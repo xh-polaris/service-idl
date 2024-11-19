@@ -43,3 +43,11 @@ message GetLogResp {
   repeated Log logs = 1;
   int64 total = 2;
 }
+
+message GetAccountByTxIdReq {
+  string id = 1;
+}
+
+message GetAccountByTxIdResp {
+  Account account=1;
+}

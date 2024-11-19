@@ -71,7 +71,7 @@ message FullInterface {
 
 message Margin {
   string id = 1;
-  string userId= 2;
+  string userId = 2;
   string fullInterfaceId = 3;
   int64 margin = 4;
   int64 createTime = 5;
@@ -105,3 +105,13 @@ message Log {
   int64 timestamp = 9;            // 调用时间
   int64 createTime = 10;          // 创建时间
 }
+
+message Account {
+  string id = 1;
+  string txId = 2;
+  int64 increment = 3;
+  string marginId = 4;
+  int64 createTime = 5;
+}
+
+

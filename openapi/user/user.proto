@@ -30,4 +30,9 @@ service user {
    * 充值、余额等相关接口
    */
   rpc SetRemain(SetRemainReq) returns (SetRemainResp);
+
+  /*
+   * 流水查询接口
+   */
+  rpc GetAccountByTxId(GetAccountByTxIdReq) returns (GetAccountByTxIdResp);
 }

@@ -54,5 +54,8 @@ service charge {
   // 调用记录部分
   rpc CreateLog(CreateLogReq) returns (CreateLogResp);
   rpc GetLog(GetLogReq) returns (GetLogResp);
+
+  // 流水管理部分
+  rpc GetAccountByTxId(GetAccountByTxIdReq) returns (GetAccountByTxIdResp);
 }
 
