@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package essay.show;
+
+option go_package = "essay/show";
+option java_package = "com.xhpolaris.idlgen.essay.show";
+option java_outer_classname = "ShowProto";
+option java_multiple_files = true;
+
+import "essay/show/common.proto";
+import "http/http.proto";
+
+service show {
+  // 注册
+  rpc SignUp(SignUpReq) returns (SignUpResp) {
+    option (http.post) = "/user/sign_up";
+  }
+  // 文本作文批改
+  rpc EssayEvaluate(EssayEvaluateReq) returns (EssayEvaluateResp) {
+    option (http.post) = "/essay/evaluate";
+  }
+  // 获取批改记录
+  rpc GetEvaluateLogs(GetEssayEvaluateLogsReq) returns (GetEssayEvaluateLogsResp) {
+    option (http.post) = "/essay/logs";
+  }
+}

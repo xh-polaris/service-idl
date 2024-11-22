@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package essay.show;
+
+option go_package = "essay/show";
+option java_package = "com.xhpolaris.idlgen.essay.show";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+
+/*
+ * 用户相关
+ */
+
+// 注册请求
+message SignUpReq {
+  string name = 1;
+  string phone = 2;
+  string password = 3; // 需要MD5加密
+}
+
+// 注册响应
+message SignUpResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+/*
+ * 作文批改相关
+ */
+
+// 批改文本作文的请求
+message  EssayEvaluateReq {
+  string title = 1;
+  string content = 2;
+}
+
+// 批改文本作文的响应
+message EssayEvaluateResp {
+  int64 code = 1;
+  string msg = 2;
+  EvaluateResponse response = 3;
+}
+
+// 获取批改记录请求
+message GetEssayEvaluateLogsReq {
+  basic.PaginationOptions paginationOptions = 1;
+}
+
+// 获取批改记录响应
+message GetEssayEvaluateLogsResp {
+  int64 total = 1;
+  repeated EvaluateResponse responses = 2;
+}
+
+// 响应
+//message Response {
+//  bool done = 1;
+//  string msg = 2;
+//}
+//
+
+// beta接口批改的响应
+message EvaluateResponse {
+  //  message ModelVersion {
+  //    string name = 1;
+  //    string version = 2;
+  //  }
+  //
+  //  message OverallEvaluation {
+  //    int64 topicRelevanceScore = 1;
+  //    string description = 2;
+  //  }
+  //
+  //  message FluencyEvaluation {
+  //    int64 fluencyScore = 1;
+  //    string fluencyDescription = 2;
+  //  }
+  //
+  //  message WordSentenceEvaluation {
+  //    int64 wordSentenceScore = 1;
+  //    string wordSentenceDescription = 2;
+  //    repeated google.protobuf.Any sentenceEvaluations = 3;
+  //  }
+  //
+  //  message ExpressionEvaluation {
+  //    int64 expressionScore = 1;
+  //    string expressDescription = 2;
+  //    repeated google.protobuf.Any expressionEvaluations = 3;
+  //  }
+  //
+  //  message SuggestionEvaluation {
+  //    string suggestionDescription = 1;
+  //  }
+  //
+  //  message ParagraphEvaluations {
+  //    int64 paragraphIndex = 1;
+  //    string content = 2;
+  //  }
+  //
+  //  message AIEvaluation {
+  //    ModelVersion modelVersion = 1;
+  //    OverallEvaluation overallEvaluation = 2;
+  //    FluencyEvaluation fluencyEvaluation = 3;
+  //    WordSentenceEvaluation wordSentenceEvaluation = 4;
+  //    ExpressionEvaluation expressionEvaluation = 5;
+  //    SuggestionEvaluation suggestionEvaluation = 6;
+  //    repeated ParagraphEvaluations paragraphEvaluations = 7;
+  //  }
+  //
+  string title = 1;
+  //  repeated repeated string text = 2;
+  //  AIEvaluation aiEvaluation = 3;
+}
