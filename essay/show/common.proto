@@ -15,9 +15,11 @@ import "basic/pagination.proto";
 
 // 注册请求
 message SignUpReq {
-  string name = 1;
-  string phone = 2;
-  string password = 3; // 需要MD5加密
+  string authId = 1;
+  string authType = 2;
+  string verifyCode = 3;
+  string password = 4; // 需要MD5加密
+  string name = 5;
 }
 
 // 注册响应
@@ -27,21 +29,54 @@ message SignUpResp {
   int64 accessExpire = 3;
 }
 
+// 登录请求
+message SignInReq {
+  string authId = 1;
+  string authType = 2;
+  optional string verifyCode = 3;
+  optional string password = 4;
+}
+
+// 登录响应
+message SignInResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+// 获取用户信息请求
+message GetUserInfoReq {
+}
+
+// 获取用户信息响应
+message GetUserInfoResp {
+  message Payload {
+    string name = 1;
+    int64 count = 2;
+  }
+  int64 code = 1;
+  string msg = 2;
+  Payload payload = 3;
+}
+
+
 /*
  * 作文批改相关
  */
 
-// 批改文本作文的请求
+// 批改作文的请求
 message  EssayEvaluateReq {
   string title = 1;
-  string content = 2;
+  string text = 2;
+  int64 grade = 3;
+  string ocr = 4;
 }
 
-// 批改文本作文的响应
+// 批改作文的响应
 message EssayEvaluateResp {
   int64 code = 1;
   string msg = 2;
-  EvaluateResponse response = 3;
+  string response = 3;
 }
 
 // 获取批改记录请求
@@ -52,7 +87,15 @@ message GetEssayEvaluateLogsReq {
 // 获取批改记录响应
 message GetEssayEvaluateLogsResp {
   int64 total = 1;
-  repeated EvaluateResponse responses = 2;
+  repeated Log logs = 2;
+}
+
+message Log {
+  string id = 1;
+  int64 grade = 2;
+  string ocr = 3;
+  string response = 4;
+  int64 createTime = 5;
 }
 
 // 响应
@@ -62,55 +105,3 @@ message GetEssayEvaluateLogsResp {
 //}
 //
 
-// beta接口批改的响应
-message EvaluateResponse {
-  //  message ModelVersion {
-  //    string name = 1;
-  //    string version = 2;
-  //  }
-  //
-  //  message OverallEvaluation {
-  //    int64 topicRelevanceScore = 1;
-  //    string description = 2;
-  //  }
-  //
-  //  message FluencyEvaluation {
-  //    int64 fluencyScore = 1;
-  //    string fluencyDescription = 2;
-  //  }
-  //
-  //  message WordSentenceEvaluation {
-  //    int64 wordSentenceScore = 1;
-  //    string wordSentenceDescription = 2;
-  //    repeated google.protobuf.Any sentenceEvaluations = 3;
-  //  }
-  //
-  //  message ExpressionEvaluation {
-  //    int64 expressionScore = 1;
-  //    string expressDescription = 2;
-  //    repeated google.protobuf.Any expressionEvaluations = 3;
-  //  }
-  //
-  //  message SuggestionEvaluation {
-  //    string suggestionDescription = 1;
-  //  }
-  //
-  //  message ParagraphEvaluations {
-  //    int64 paragraphIndex = 1;
-  //    string content = 2;
-  //  }
-  //
-  //  message AIEvaluation {
-  //    ModelVersion modelVersion = 1;
-  //    OverallEvaluation overallEvaluation = 2;
-  //    FluencyEvaluation fluencyEvaluation = 3;
-  //    WordSentenceEvaluation wordSentenceEvaluation = 4;
-  //    ExpressionEvaluation expressionEvaluation = 5;
-  //    SuggestionEvaluation suggestionEvaluation = 6;
-  //    repeated ParagraphEvaluations paragraphEvaluations = 7;
-  //  }
-  //
-  string title = 1;
-  //  repeated repeated string text = 2;
-  //  AIEvaluation aiEvaluation = 3;
-}
