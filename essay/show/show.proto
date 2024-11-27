@@ -23,6 +23,7 @@ service show {
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
     option (http.get) = "/user/info";
   }
+
   // 文本作文批改
   rpc EssayEvaluate(EssayEvaluateReq) returns (EssayEvaluateResp) {
     option (http.post) = "/essay/evaluate";
