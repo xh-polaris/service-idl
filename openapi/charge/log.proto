@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package openapi.charge;
+
+option go_package = "openapi/charge";
+option java_package = "com.xhpolaris.idlgen.openapi.charge";
+option java_outer_classname = "LogProto";
+option java_multiple_files = true;
+
+import "openapi/charge/common.proto";
+import "basic/pagination.proto";
+
+/*
+ * 此部分为调用记录管理相关
+ */
+
+// 创建一个调用记录请求
+message CreateLogReq {
+  string marginId = 1;            // 用户接口余量id
+  string fullInterfaceId = 2;     // 被调用的完整接口id
+  string userId = 3;              // 调用用户的id
+  string keyId = 4;               // 调用key的id
+  LogStatus status = 5;           // 调用的状态
+  string info = 6;                // 调用相关信息
+  int64 count = 7;                // 数量(按次则是次数1，按token则是token数)
+  int64 timestamp = 9;            // 调用时间
+}
+
+// 创建一个调用记录响应
+message CreateLogResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取调用记录请求
+message GetLogReq {
+  string fullInterfaceId = 1;
+  basic.PaginationOptions paginationOptions = 2;
+}
+
+// 获取调用记录响应
+message GetLogResp {
+  repeated Log logs = 1;
+  int64 total = 2;
+}
+
+message GetAccountByTxIdReq {
+  string id = 1;
+}
+
+message GetAccountByTxIdResp {
+  Account account=1;
+}

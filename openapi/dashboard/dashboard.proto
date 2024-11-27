@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package openapi.user;
+
+option go_package = "openapi/user";
+option java_package = "com.xhpolaris.idlgen.openapi.user";
+option java_outer_classname = "DashboardProto";
+option java_multiple_files = true;
+
+/*
+ * TODO 此部分为用户的数据看板部分
+ */
+
+// 数据看板部分

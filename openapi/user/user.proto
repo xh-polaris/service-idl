@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package openapi.user;
+
+option go_package = "openapi/user";
+option java_package = "com.xhpolaris.idlgen.openapi.user";
+option java_outer_classname = "UserProto";
+option java_multiple_files = true;
+
+import "openapi/user/auth.proto";
+import "openapi/user/money.proto";
+
+/*
+ * 用户信息和key相关接口
+ */
+service user {
+  // 用户信息部分
+  rpc SignUp(SignUpReq) returns (SignUpResp);
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp);
+  rpc SetUserInfo(SetUserInfoReq) returns (SetUserInfoResp);
+  // 密钥管理部分
+  rpc CreateKey(CreateKeyReq) returns (CreateKeyResp);
+  rpc GetKey(GetKeysReq) returns (GetKeysResp);
+  rpc UpdateKey(UpdateKeyReq) returns (UpdateKeyResp);
+  rpc UpdateHosts(UpdateHostsReq) returns (UpdateHostsResp);
+  rpc RefreshKey(RefreshKeyReq) returns (RefreshKeyResp);
+  rpc DeleteKey(DeleteKeyReq) returns (DeleteKeyResp);
+  rpc GetKeyForCheck(GetKeyForCheckReq) returns (GetKeyForCheckResp);
+  /*
+   * 充值、余额等相关接口
+   */
+  rpc SetRemain(SetRemainReq) returns (SetRemainResp);
+
+  /*
+   * 流水查询接口
+   */
+  rpc GetAccountByTxId(GetAccountByTxIdReq) returns (GetAccountByTxIdResp);
+}

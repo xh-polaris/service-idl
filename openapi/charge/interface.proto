@@ -1,0 +1,243 @@
+syntax = "proto3";
+
+package openapi.charge;
+
+option go_package = "openapi/charge";
+option java_package = "com.xhpolaris.idlgen.openapi.charge";
+option java_outer_classname = "InterfaceProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+import "basic/user.proto";
+import "openapi/charge/common.proto";
+
+/*
+ * 此部分为基础接口相关部分
+ */
+
+// 创建基础接口请求
+message CreateBaseInterfaceReq {
+  string name = 1;                // 接口名
+  string host = 2;                // 域名
+  string path = 3;                // 调用路径
+  MethodType method = 4;          // 调用方式
+  PassWayType passWay = 5;        // 传值方式
+  repeated Parameter params = 6;  // 参数列表
+  string content = 7;             // 接口描述
+}
+
+// 创建基础接口响应
+message CreateBaseInterfaceResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 更新基础接口请求
+message UpdateBaseInterfaceReq {
+  string id = 1;
+  string name = 2;                // 接口名
+  string host = 3;                // 域名
+  string path = 4;                // 调用路径
+  MethodType method = 5;          // 调用方式
+  PassWayType passWay = 6;        // 传值方式
+  repeated Parameter params = 7;  // 参数列表
+  string content = 8;             // 接口描述
+  InterfaceStatus status = 9;     // 接口状态
+}
+
+// 更新基础接口响应
+message UpdateBaseInterfaceResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 删除基础接口请求
+message DeleteBaseInterfaceReq {
+  string id = 1;
+}
+
+// 删除基础接口响应
+message DeleteBaseInterfaceResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取基础接口列表请求
+message GetBaseInterfaceReq {
+  basic.PaginationOptions paginationOptions = 1;
+}
+
+// 获取基础接口列表响应
+message GetBaseInterfaceResp {
+  repeated BaseInterface baseInterfaces = 1;
+  int64 total = 2;
+}
+
+/*
+ * 此部分为完整接口相关部分
+ */
+
+// 创建完整接口请求
+message CreateFullInterfaceReq {
+  string baseInterfaceId = 1;    // 基础接口id
+  string userId = 2;             // 面向用户id
+  ChargeType chargeType = 3;     // 收费模式
+  int64 price = 4;               // 接口单价
+}
+
+// 创建完整接口响应
+message CreateFullInterfaceResp {
+  bool done = 1;
+  string msg = 2;
+  string fullInterfaceId = 3;
+}
+
+// 更新完整接口请求(不包括余量)
+message UpdateFullInterfaceReq {
+  string id = 1;
+  ChargeType chargeType = 2;     // 收费模式
+  int64 price = 3;               // 接口单价
+  InterfaceStatus status = 4;    // 接口状态
+}
+
+// 更新完整接口响应
+message UpdateFullInterfaceResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 创建接口余量请求
+message CreateMarginReq {
+  string userId = 1;
+  string fullInterfaceId = 2;
+  int64 margin = 3;
+}
+
+// 创建接口余量响应
+message CreateMarginResp {
+  bool done = 1;
+  string msg = 2;
+  string marginId = 3;
+}
+
+// 更新接口余量请求
+message UpdateMarginReq {
+  string id = 1;
+  int64 increment = 2;    // 增量，减少为负数
+  optional string txId = 3;        // 事务id
+}
+
+// 更新接口余量响应
+message UpdateMarginResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 删除接口余量请求
+message DeleteMarginReq {
+  string id = 1;
+}
+
+// 删除接口余量响应
+message DeleteMarginResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取接口余量请求
+message GetMarginReq {
+  string userId = 1;
+  string fullInterfaceId = 2;
+}
+
+// 获取接口余量响应
+message GetMarginResp {
+  Margin margin = 1;
+}
+
+// 删除完整接口请求
+message DeleteFullInterfaceReq {
+  string id = 1;
+}
+
+// 删除完整接口列表响应
+message DeleteFullInterfaceResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取完整接口列表请求
+message GetFullInterfaceReq {
+  string userId = 1;
+  basic.PaginationOptions paginationOptions = 2;
+}
+
+// 获取完整接口响应
+message GetFullInterfaceResp {
+  repeated FullInterface fullInterfaces = 1;
+  int64 total = 2;
+}
+
+// 获取完整接口与基本接口用于校验请求
+message GetFullAndBaseInterfaceForCheckReq {
+  string url = 1;
+  string method = 2;
+  string userId = 3;
+  int64 role = 4;
+}
+// 获取完整接口与基本接口用于校验响应
+message GetFullAndBaseInterfaceForCheckResp {
+  string id = 1;
+  string baseInterfaceId = 2;
+  int64 baseInterfaceStatus = 3;
+  string userId = 4;
+  int64 chargeType = 5;
+  int64 price = 6;
+  int64 status = 7;
+}
+// 获取一个接口请求
+message GetOneFullInterfaceReq {
+  string id = 1;
+}
+// 获取一个接口响应
+message GetOneFullInterfaceResp {
+  FullInterface inf = 1;
+}
+/*
+ * 此部分为接口折扣梯度
+ */
+
+// 创建梯度折扣请求
+message CreateGradientReq {
+  string baseInterfaceId = 1;
+  repeated Discount discounts = 2;
+}
+
+// 创建梯度折扣响应
+message CreateGradientResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 更新梯度折扣请求
+message UpdateGradientReq {
+  string id = 1;
+  repeated Discount discounts = 2;
+  InterfaceStatus status = 3;
+}
+
+// 更新梯度折扣响应
+message UpdateGradientResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取梯度折扣请求
+message GetGradientReq {
+  string baseInterfaceId = 1;
+}
+
+// 获取梯度折扣响应
+message GetGradientResp {
+  Gradient gradient = 1;
+}

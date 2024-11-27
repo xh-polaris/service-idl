@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+package openapi.charge;
+
+option go_package = "openapi/charge";
+option java_package = "com.xhpolaris.idlgen.openapi.charge";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+enum MethodType {
+  GET = 0;
+  POST = 1;
+  PUT = 2;
+}
+
+enum PassWayType {
+  QUERY = 0;      // Query Param
+  PATH = 1;       // Path Param
+  BODY = 2;       // Request Body(json)
+  MULTIPART = 3;  // Multipart/form-data
+}
+
+enum InterfaceStatus {
+  ABLE = 0;
+  UNABLE = 1;
+  DELETE = 2;
+}
+
+enum ChargeType {
+  TIMES = 0;    // 按次计费
+  TOKENS = 1;   // 按量计费
+}
+
+enum LogStatus {
+  SUCCESS = 0;            // 成功
+  UNKNOWN_FAIL = 1;       // 未知错误
+  NETWORK_FAIL = 2;       // 网络错误
+  INVALID_PARAMS = 3;     // 参数错误
+  PERMISSION_DENIED = 4;  // 没有对应权限
+}
+
+message Parameter {
+  string name = 1;
+  string type = 2;
+}
+
+message BaseInterface {
+  string id = 1;
+  string name = 2;                // 接口名
+  string host = 3;                // 域名
+  string path = 4;                // 调用路径
+  MethodType method = 5;          // 调用方式
+  PassWayType passWay = 6;        // 传值方式
+  repeated Parameter params = 7;  // 参数列表
+  string content = 8;
+  InterfaceStatus status = 9;     // 接口状态
+  int64 createTime = 10;
+  int64 updateTime = 11;
+}
+
+message FullInterface {
+  string id = 1;
+  string baseInterfaceId = 2;    // 基础接口id
+  string userId = 3;             // 面向用户id
+  ChargeType chargeType = 4;     // 收费模式
+  int64 price = 5;               // 接口单价
+  InterfaceStatus status = 7;    // 接口状态
+  int64 createTime = 8;          // 创建时间
+  int64 updateTime = 9;          // 更新时间
+}
+
+message Margin {
+  string id = 1;
+  string userId = 2;
+  string fullInterfaceId = 3;
+  int64 margin = 4;
+  int64 createTime = 5;
+  int64 updateTime = 6;
+}
+
+message Discount {
+  int64 num = 1;
+  int64 rate = 2;
+  int64 low = 3;
+}
+
+message Gradient {
+  string id = 1;
+  string baseInterfaceId = 2;
+  repeated Discount discounts = 3;
+  InterfaceStatus status = 4;
+  int64 createTime = 5;
+  int64 updateTime = 6;
+}
+
+message Log {
+  string id = 1;                  // 记录id
+  string fullInterfaceId = 2;     // 被调用的完整接口id
+  string userId = 3;              // 调用用户的id
+  string keyId = 4;               // 调用key的id
+  LogStatus status = 5;           // 调用的状态
+  string info = 6;                // 调用相关信息
+  int64 count = 7;                // 数量(按次则是次数1，按token则是token数)
+  int64 value = 8;                // 调用扣费
+  int64 timestamp = 9;            // 调用时间
+  int64 createTime = 10;          // 创建时间
+}
+
+message Account {
+  string id = 1;
+  string txId = 2;
+  int64 increment = 3;
+  string marginId = 4;
+  int64 createTime = 5;
+}
+
+

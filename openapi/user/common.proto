@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package openapi.user;
+
+option go_package = "openapi/user";
+option java_package = "com.xhpolaris.idlgen.openapi.user";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+enum Role {
+  ADMIN = 0;      // 管理员
+  DEVELOPER = 1;  // 开发者
+  ENTERPRISE = 2; // 企业
+}
+
+enum KeyStatus {
+  EFFECT = 0;    // 生效
+  FORBIDDEN = 1; // 禁用
+  OVERDUE = 2;   // 过期
+  DELETE = 3;    // 删除
+}
+
+enum UserStatus {
+  NORMAL = 0;  // 正常
+  RISK = 1;    // 有风险
+  BANNED = 2;  // 封禁
+  DEL = 3;  // 删除
+}
+
+message Key {
+  string id = 1;
+  string userId = 2;
+  string name = 3;
+  string content = 4;
+  KeyStatus status = 5;
+  repeated string hosts = 6;
+  int64 timestamp = 7;
+  int64 expireTime = 8;  // 到期时间
+  int64 createTime = 9;
+  int64 updateTime = 10;
+}
+
+message Account {
+  string id = 1;
+  string txId = 2;
+  int64 increment = 3;
+  string userId = 4;
+  int64 createTime = 5;
+}

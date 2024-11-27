@@ -1,0 +1,161 @@
+syntax = "proto3";
+
+package openapi.user;
+
+option go_package = "openapi/user";
+option java_package = "com.xhpolaris.idlgen.openapi.user";
+option java_outer_classname = "AuthProto";
+option java_multiple_files = true;
+
+import "openapi/user/common.proto";
+import "basic/pagination.proto";
+import "basic/user.proto";
+
+/*
+ * 此部分为用户身份认证相关
+ */
+
+// TODO 认证请求(第三方，暂缓)
+
+// TODO 认证响应(第三方，暂缓)
+
+// core api调用platform注册得到basic后再来初始化用户
+// 用户注册请求
+message SignUpReq {
+  string userId = 1;
+  Role role = 2;         // 注册的身份
+}
+
+// 用户注册响应
+message SignUpResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取用户信息请求
+message GetUserInfoReq {
+  string userId = 1;
+}
+
+// 获取用户信息响应
+message GetUserInfoResp {
+  string userId = 1;
+  string username = 2;
+  Role role = 3;
+  bool auth = 4;
+  string authId = 5;
+  UserStatus status = 6;
+}
+
+// 修改用户信息请求(用户名、状态)
+message SetUserInfoReq {
+  string userId = 1;
+  optional string username = 2;
+  optional UserStatus status = 3;
+}
+
+// 修改用户信息响应
+message SetUserInfoResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+/*
+ * 此部分为密钥管理相关
+ */
+
+// 签发一个密钥请求
+message CreateKeyReq {
+  string userId = 1;
+  string name = 2;
+  repeated string hosts = 3;
+}
+
+// 签发一个密钥响应
+message CreateKeyResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 获取用户密钥列表请求
+message GetKeysReq {
+  string userId = 1;
+  basic.PaginationOptions paginationOptions = 2;
+}
+
+// 获取用户密钥列表响应
+message GetKeysResp {
+  repeated Key keys = 1;
+  int64 total = 2;
+}
+
+// 修改一个密钥相关信息请求(名字、状态、最近使用时间、到期时间)
+message UpdateKeyReq {
+  string id = 1;
+  optional string name = 2;
+  optional KeyStatus status = 3;
+  optional int64 timestamp = 4;
+  optional int64 expireTime = 5;  // 应该是增加的时间
+}
+
+// 修改一个密钥相关信息响应
+message UpdateKeyResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 修改一个密钥的域名白名单请求
+message UpdateHostsReq {
+  string id = 1;
+  repeated string hosts = 2;
+}
+
+// 修改一个密钥的域名白名单响应
+message UpdateHostsResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 刷新一个密钥内容请求
+message RefreshKeyReq {
+  string id = 1;
+}
+
+// 刷新一个密钥内容响应
+message RefreshKeyResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 删除一个密钥请求
+message DeleteKeyReq {
+  string id = 1;
+}
+// 删除一个密钥响应
+message DeleteKeyResp {
+  bool done = 1;
+  string msg = 2;
+}
+
+// 根据密钥内容获取密钥信息，并且进行权限校验
+message GetKeyForCheckReq {
+  string content = 1;      // 密钥内容
+  string host = 2;         // 来源host
+  int64 timestamp = 3;     // 调用时间
+}
+// 校验响应
+message GetKeyForCheckResp {
+  string id = 1;           // 密钥id
+  string userId = 2;       // 用户id
+  bool check = 3;          // 校验结果
+  string msg = 4;          // 校验信息反馈
+  Role role = 5;           // 用户身份类型
+}
+
+message GetAccountByTxIdReq {
+  string id = 1;
+}
+
+message GetAccountByTxIdResp {
+  Account account = 1;
+}
