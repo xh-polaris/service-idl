@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+package alumni.core_api;
+
+option go_package = "alumni/core_api";
+option java_package = "com.xhpolaris.idlgen.alumni.core_api";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+
+/*
+ * 用户相关
+ */
+
+// 注册请求
+message SignUpReq {
+  string authId = 1;
+  string authType = 2;
+  string verifyCode = 3;
+  string password = 4;
+  string name = 5;
+}
+
+// 注册响应
+message SignUpResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+// 登录请求
+message SignInReq {
+  string authId = 1;
+  string authType = 2;
+  optional string verifyCode = 3;
+  optional string password = 4;
+}
+
+// 登录响应
+message SignInResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+// 更新个人信息
+message UpdateUserInfoReq {
+  optional string avatar = 1;
+  optional string name = 2;
+  optional int64 gender = 3;
+  optional int64 birthday = 4;
+  optional string phone = 5;
+  optional string wxId = 6;
+  optional string hometown = 7;
+}
+
+// 修改教育经历
+message UpdateEducationReq{
+  int64 type = 1;  // 0为家乡，1为在沪
+  repeated Education educations = 2;
+}
+
+// 修改工作经历
+message UpdateEmploymentReq {
+  repeated Employment employments = 1;
+}
+
+// 获取用户信息请求
+message GetUserInfoReq {
+}
+
+// 获取用户信息响应
+message GetUserInfoResp {
+  string avatar = 1;
+  string name = 2;
+  int64 gender = 3;
+  int64 birthday = 4;
+  string phone = 5;
+  string wxId = 6;
+  string hometown = 7;
+  repeated Education hometownEducations = 8;
+  repeated Education shanghaiEducations = 9;
+  repeated Employment employments = 10;
+}
+
+/*
+ * 活动相关
+ */
+
+// 创建活动请求
+message CreateActivityReq {
+  string cover = 1;
+  string name = 2;
+  string location = 3;
+  string exactLocation = 4;  // json字符串
+  string sponsor = 5;
+  int64 start = 6;  // 开始时间
+  int64 registerStart = 7;
+  int64 registerEnd = 8;
+  string description = 9;
+  string contact = 10;
+  optional int64 limit = 11;
+}
+
+// 更新活动请求
+message UpdateActivityReq {
+  string id = 1;
+  optional string cover = 2;
+  optional string name = 3;
+  optional string location = 4;
+  optional string exactLocation = 5;  // json字符串
+  optional string sponsor = 6;
+  optional int64 start = 7;  // 开始时间
+  optional int64 registerStart = 8;
+  optional int64 registerEnd = 9;
+  optional string description = 10;
+  optional string contact = 11;
+  optional int64 limit = 12;
+  optional int64 status = 13;
+}
+
+// 获取活动列表
+message GetActivitiesReq {
+  basic.PaginationOptions paginationOptions = 1;
+}
+
+message GetActivitiesResp {
+  int64 total = 1;
+  repeated Activity activities = 2;
+}
+
+// 获取活动详情
+message GetActivityReq {
+  string id = 1;
+}
+
+message GetActivityResp {
+  Activity activity = 1;
+}
+
+// 报名活动
+message RegisterActivityReq {
+  message RegisterItem {
+    string name = 1;
+    string phone = 2;
+  }
+  string activityId = 1;
+  repeated RegisterItem items = 2;
+}
+
+// 活动签到
+message CheckInReq {
+  string activityId = 1;
+  string phone = 2;
+}
+
+// 教育经历
+message Education {
+  string phase = 1;
+  string school = 2;
+  int64 year = 3;
+}
+
+// 工作经历
+message Employment{
+  string organization = 1;
+  string position = 2;
+  string industry = 3;
+  int64 entry = 4;
+  int64 departure = 5;
+}
+
+// 活动
+message Activity {
+  string id = 1;
+  string cover = 2;
+  string name = 3;
+  string location = 4;
+  string exactLocation = 5;  // json字符串
+  string sponsor = 6;
+  int64 start = 7;  // 开始时间
+  int64 registerStart = 8;
+  int64 registerEnd = 9;
+  string description = 10;
+  string contact = 11;
+  int64 limit = 12;
+  int64 status = 13;
+}
+
+// 通用响应
+message Response {
+  int64 code = 1;
+  string msg = 2;
+}

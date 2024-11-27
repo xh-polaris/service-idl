@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package alumni.core_api;
+
+option go_package = "alumni/core_api";
+option java_package = "com.xhpolaris.idlgen.alumni.core_api";
+option java_outer_classname = "CoreApiProto";
+option java_multiple_files = true;
+
+import "http/http.proto";
+import "alumni/core_api/common.proto";
+
+service core_api {
+  /*
+   * 用户相关
+   */
+
+  // 注册
+  rpc SignUp(SignUpReq) returns (SignUpResp) {
+    option(http.post) = "/user/sign_up";
+  }
+  // 登录
+  rpc SignIn(SignInReq) returns (SignInResp) {
+    option(http.post) = "/user/sign_in";
+  }
+  // 更新用户信息
+  rpc UpdateUserInfo(UpdateUserInfoReq) returns (Response) {
+    option(http.post) = "/user/update_info";
+  }
+  // 更新教育经历
+  rpc UpdateEducation(UpdateEducationReq) returns (Response) {
+    option(http.post) = "/user/update_edu";
+  }
+  // 更新工作经历
+  rpc UpdateEmployment(UpdateEmploymentReq) returns (Response) {
+    option(http.post) = "/user/update_employment";
+  }
+  // 获取用户信息
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
+    option(http.get) = "/user/info";
+  }
+
+  /*
+   * 活动相关
+   */
+  // 创建活动
+  rpc CreateActivity(CreateActivityReq) returns (Response) {
+    option(http.post) = "/activity/create";
+  }
+  // 更新活动
+  rpc UpdateActivity(UpdateActivityReq) returns (Response) {
+    option(http.post) = "/activity/update";
+  }
+  // 获取活动列表
+  rpc GetActivities(GetActivitiesReq) returns (GetActivitiesResp) {
+    option(http.post) = "/activity/get_many";
+  }
+  // 获取活动详情
+  rpc GetActivity(GetActivityReq) returns (GetActivityResp) {
+    option(http.post) = "/activity/get";
+  }
+  // 报名
+  rpc RegisterActivity(RegisterActivityReq) returns (Response) {
+    option(http.post) = "/activity/register";
+  }
+  // 签到
+  rpc CheckIn(CheckInReq) returns (Response) {
+    option(http.post) = "/activity/check_in";
+  }
+}
