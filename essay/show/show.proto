@@ -15,6 +15,15 @@ service show {
   rpc SignUp(SignUpReq) returns (SignUpResp) {
     option (http.post) = "/user/sign_up";
   }
+  // 登录
+  rpc SignIn(SignInReq) returns (SignInResp) {
+    option (http.post) = "/user/sign_in";
+  }
+  // 获取用户信息接口
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
+    option (http.get) = "/user/info";
+  }
+
   // 文本作文批改
   rpc EssayEvaluate(EssayEvaluateReq) returns (EssayEvaluateResp) {
     option (http.post) = "/essay/evaluate";
