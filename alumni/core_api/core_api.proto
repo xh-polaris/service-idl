@@ -67,4 +67,8 @@ service core_api {
   rpc CheckIn(CheckInReq) returns (Response) {
     option(http.post) = "/activity/check_in";
   }
+  // 获取报名签到详情
+  rpc GetRegisters(GetRegistersReq) returns (GetRegisterResp) {
+    option(http.post) = "/activity/get_register";
+  }
 }

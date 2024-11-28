@@ -59,6 +59,10 @@ message GetUserInfoResp {
   Payload payload = 3;
 }
 
+// 更新用户信息
+message UpdateUserInfoReq {
+  string username = 1;
+}
 
 /*
  * 作文批改相关
@@ -98,9 +102,7 @@ message Log {
   int64 createTime = 5;
 }
 
-// 响应
-//message Response {
-//  bool done = 1;
-//  string msg = 2;
-//}
-//
+message Response {
+  int64 code = 1;
+  string msg = 2;
+}
