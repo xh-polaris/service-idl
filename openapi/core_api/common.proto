@@ -182,7 +182,7 @@ message GetFullInterfacesResp {
 message BuyFullInterfaceReq {
   string fullInterfaceId = 1;    // 如果之前没有买过则为模板的id，若买过则是用户的id
   int64 increment = 2;          // 购买的量
-  bool discount = 3;             // 是否有折扣
+  //  bool discount = 3;           // 是否有折扣不应该是前端的参数，而是下游服务根据数据库判断
 }
 
 
@@ -204,6 +204,16 @@ message GetGradientReq {
 // 获取梯度折扣响应
 message GetGradientResp {
   charge.Gradient gradient = 1;
+}
+message GetAmountReq {
+  int64 increment = 1;
+  string baseInfId = 2;
+}
+// 计算价格响应
+message GetAmountResp {
+  int64 rate = 1;          // 折扣程度
+  int64 originAmount = 2;  // 原始价格
+  int64 amount = 3;        // 折后价格
 }
 
 

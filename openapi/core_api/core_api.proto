@@ -138,6 +138,9 @@ service charge {
   rpc GetGradient(GetGradientReq) returns (GetGradientResp) {
     option (http.get) = "/gradient/get";
   }
+  rpc GetAmount(GetAmountReq) returns (GetAmountResp) {
+    option (http.post) = "/gradient/amount";
+  }
 }
 
 service call {

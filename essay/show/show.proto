@@ -31,4 +31,12 @@ service show {
   rpc GetEvaluateLogs(GetEssayEvaluateLogsReq) returns (GetEssayEvaluateLogsResp) {
     option (http.post) = "/essay/logs";
   }
+  // 获取ocr
+  rpc OCR(OCRReq) returns (OCRResp) {
+    option (http.post) = "/sts/ocr";
+  }
+  // 获取加签后url
+  rpc ApplySignedUrl(ApplySignedUrlReq) returns (ApplySignedUrlResp) {
+    option (http.post) = "/sts/apply";
+  }
 }

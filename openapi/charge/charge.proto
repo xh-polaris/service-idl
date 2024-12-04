@@ -45,6 +45,7 @@ service charge {
   rpc CreateGradient(CreateGradientReq) returns (CreateGradientResp);
   rpc UpdateGradient(UpdateGradientReq) returns (UpdateGradientResp);
   rpc GetGradient(GetGradientReq) returns (GetGradientResp);
+  rpc GetAmount(GetAmountReq) returns (GetAmountResp);
 
   /*
    * log.proto
