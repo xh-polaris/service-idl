@@ -212,8 +212,8 @@ message GetAmountReq {
 // 计算价格响应
 message GetAmountResp {
   int64 rate = 1;          // 折扣程度
-  int64 originAmount = 2;  // 原始价格
-  int64 amount = 3;        // 折后价格
+  int64 originAmount = 2;  // 原始价格，如果要扣除则一律给出负数
+  int64 amount = 3;        // 折后价格，如果要扣除则一律给出负数
 }
 
 
