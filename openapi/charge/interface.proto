@@ -245,7 +245,7 @@ message GetGradientResp {
 // 计算价格请求
 message GetAmountReq {
   int64 increment = 1;
-  string baseInfId = 2;
+  string fullInfId = 2;
 }
 
 // 计算价格响应
