@@ -39,4 +39,8 @@ service show {
   rpc ApplySignedUrl(ApplySignedUrlReq) returns (ApplySignedUrlResp) {
     option (http.post) = "/sts/apply";
   }
+  // 发送验证码
+  rpc SendVerifyCode(SendVerifyCodeReq) returns (Response) {
+    option (http.post) = "/sts/send_verify_code";
+  }
 }

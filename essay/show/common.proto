@@ -128,3 +128,10 @@ message Response {
   int64 code = 1;
   string msg = 2;
 }
+
+// 发送验证码请求
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2;
+  int64 type = 3;
+}
