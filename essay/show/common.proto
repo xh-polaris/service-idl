@@ -64,7 +64,21 @@ message GetUserInfoResp {
 
 // 更新用户信息
 message UpdateUserInfoReq {
-  string username = 1;
+  string name = 1;
+}
+
+// 修改密码请求
+message UpdatePasswordReq {
+  string verifyCode = 1;
+  string password = 2;
+}
+
+// 修改密码相应
+message UpdatePasswordResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+  string name = 4;
 }
 
 /*
