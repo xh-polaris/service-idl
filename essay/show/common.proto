@@ -141,6 +141,7 @@ message OCRResp {
 }
 
 // 响应
+
 message Response {
   int64 code = 1;
   string msg = 2;
@@ -152,3 +153,4 @@ message SendVerifyCodeReq {
   string authId = 2;
   int64 type = 3;
 }
+

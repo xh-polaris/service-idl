@@ -137,6 +137,7 @@ message GetActivityReq {
 
 message GetActivityResp {
   Activity activity = 1;
+  int64 numbers = 2;
 }
 
 // 报名活动
@@ -153,6 +154,19 @@ message RegisterActivityReq {
 message CheckInReq {
   string activityId = 1;
   string phone = 2;
+  string name = 3;
+}
+
+// 获取活动签到情况
+message GetRegistersReq {
+  string activityId = 1;
+}
+
+// 获取活动详情响应
+message GetRegisterResp {
+  int64 total = 1;
+  int64 checked = 2;
+  repeated Register registers = 3;
 }
 
 // 教育经历
@@ -188,8 +202,38 @@ message Activity {
   int64 status = 13;
 }
 
+// 报名情况
+message Register {
+  string id = 1;
+  string activityId = 2;
+  string name = 3;
+  string phone = 4;
+  bool checkIn = 5;
+  int64 createTime = 6;
+  int64 updateTime = 7;
+}
+
 // 通用响应
 message Response {
   int64 code = 1;
   string msg = 2;
+}
+
+
+// 发送验证码请求
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2;
+  int64 type = 3;
+}
+
+// 获取加签后url
+message ApplySignedUrlReq {
+  optional string prefix = 1;
+  optional string suffix = 2;
+}
+
+message ApplySignedUrlResp {
+  string url = 1;
+  string sessionToken = 2;
 }
