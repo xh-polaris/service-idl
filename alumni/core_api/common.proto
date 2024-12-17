@@ -11,6 +11,7 @@ import "basic/pagination.proto";
 
 /*
  * 用户相关
+ * 
  */
 
 // 注册请求
