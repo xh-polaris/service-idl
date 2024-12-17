@@ -218,3 +218,22 @@ message Response {
   int64 code = 1;
   string msg = 2;
 }
+
+
+// 发送验证码请求
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2;
+  int64 type = 3;
+}
+
+// 获取加签后url
+message ApplySignedUrlReq {
+  optional string prefix = 1;
+  optional string suffix = 2;
+}
+
+message ApplySignedUrlResp {
+  string url = 1;
+  string sessionToken = 2;
+}
