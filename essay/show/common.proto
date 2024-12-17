@@ -27,6 +27,7 @@ message SignUpResp {
   string id = 1;
   string accessToken = 2;
   int64 accessExpire = 3;
+  string name = 4;
 }
 
 // 登录请求
@@ -42,6 +43,7 @@ message SignInResp {
   string id = 1;
   string accessToken = 2;
   int64 accessExpire = 3;
+  string name = 4;
 }
 
 // 获取用户信息请求
@@ -53,6 +55,7 @@ message GetUserInfoResp {
   message Payload {
     string name = 1;
     int64 count = 2;
+    string phone = 3;
   }
   int64 code = 1;
   string msg = 2;
@@ -61,7 +64,21 @@ message GetUserInfoResp {
 
 // 更新用户信息
 message UpdateUserInfoReq {
-  string username = 1;
+  string name = 1;
+}
+
+// 修改密码请求
+message UpdatePasswordReq {
+  string verifyCode = 1;
+  string password = 2;
+}
+
+// 修改密码相应
+message UpdatePasswordResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+  string name = 4;
 }
 
 /*
@@ -73,7 +90,7 @@ message  EssayEvaluateReq {
   string title = 1;
   string text = 2;
   int64 grade = 3;
-  string ocr = 4;
+  repeated string ocr = 4;
 }
 
 // 批改作文的响应
@@ -97,12 +114,43 @@ message GetEssayEvaluateLogsResp {
 message Log {
   string id = 1;
   int64 grade = 2;
-  string ocr = 3;
+  repeated string ocr = 3;
   string response = 4;
   int64 createTime = 5;
 }
+
+// 获取加签后url
+message ApplySignedUrlReq {
+  optional string prefix = 1;
+  optional string suffix = 2;
+}
+
+message ApplySignedUrlResp {
+  string url = 1;
+  string sessionToken = 2;
+}
+
+// 调用OCR接口
+message OCRReq {
+  repeated string ocr = 1;
+}
+
+message OCRResp {
+  string title = 1;
+  string text = 2;
+}
+
+// 响应
 
 message Response {
   int64 code = 1;
   string msg = 2;
 }
+
+// 发送验证码请求
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2;
+  int64 type = 3;
+}
+

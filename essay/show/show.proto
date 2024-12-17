@@ -23,9 +23,15 @@ service show {
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
     option (http.get) = "/user/info";
   }
+
+  // 更新用户密码
+  rpc UpdatePassword(UpdatePasswordReq) returns (UpdatePasswordReq) {
+    option(http.post) = "/user/update_password";
+  }
   // 更新用户信息
   rpc UpdateUserInfo(UpdateUserInfoReq) returns (Response) {
-    option (http.post) = "/user/update";
+    option(http.post) = "/user/update";
+
   }
   // 文本作文批改
   rpc EssayEvaluate(EssayEvaluateReq) returns (EssayEvaluateResp) {
@@ -34,5 +40,17 @@ service show {
   // 获取批改记录
   rpc GetEvaluateLogs(GetEssayEvaluateLogsReq) returns (GetEssayEvaluateLogsResp) {
     option (http.post) = "/essay/logs";
+  }
+  // 获取ocr
+  rpc OCR(OCRReq) returns (OCRResp) {
+    option (http.post) = "/sts/ocr";
+  }
+  // 获取加签后url
+  rpc ApplySignedUrl(ApplySignedUrlReq) returns (ApplySignedUrlResp) {
+    option (http.post) = "/sts/apply";
+  }
+  // 发送验证码
+  rpc SendVerifyCode(SendVerifyCodeReq) returns (Response) {
+    option (http.post) = "/sts/send_verify_code";
   }
 }

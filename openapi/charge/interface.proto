@@ -241,3 +241,16 @@ message GetGradientReq {
 message GetGradientResp {
   Gradient gradient = 1;
 }
+
+// 计算价格请求
+message GetAmountReq {
+  int64 increment = 1;
+  string fullInfId = 2;
+}
+
+// 计算价格响应
+message GetAmountResp {
+  int64 rate = 1;          // 折扣程度
+  int64 originAmount = 2;  // 原始价格
+  int64 amount = 3;        // 折后价格
+}
