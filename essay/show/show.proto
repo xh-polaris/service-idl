@@ -23,6 +23,10 @@ service show {
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
     option (http.get) = "/user/info";
   }
+  // 更新用户信息
+  rpc UpdateUserInfo(UpdateUserInfoReq) returns (Response) {
+    option (http.post) = "/user/update";
+  }
   // 文本作文批改
   rpc EssayEvaluate(EssayEvaluateReq) returns (EssayEvaluateResp) {
     option (http.post) = "/essay/evaluate";
