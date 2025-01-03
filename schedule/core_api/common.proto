@@ -1,0 +1,129 @@
+syntax = "proto3";
+
+package schedule.core_api;
+
+option go_package = "schedule/core_api";
+option java_package = "com.xhpolaris.idlgen.schedule.core_api";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+
+/*
+ * 用户相关
+ */
+
+// 注册请求
+message SignUpReq {
+  string authId = 1;
+  string authType = 2;
+  string verifyCode = 3;
+  string password = 4;  // 为空则不设置密码
+}
+
+// 注册响应
+message SignUpResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+// 登录请求
+message SignInReq {
+  string authId = 1;
+  string authType = 2;
+  optional string verifyCode = 3;
+  optional string password = 4;
+}
+
+// 登录响应
+message SignInResp {
+  string id = 1;
+  string accessToken = 2;
+  int64 accessExpire = 3;
+}
+
+/*
+ * 日程相关
+ */
+
+// 创建日程请求
+message CreateScheduleReq {
+  string group = 1;
+  string title = 2;
+  string description = 3;
+  int64 progress = 4;
+  int64 priority = 5;
+  int64 top = 6;
+  int64 ddl = 7;
+}
+
+// 创建日程响应
+message CreateScheduleResp {
+  int64 code = 1;
+  string msg = 2;
+  Schedule schedule = 3;
+}
+
+// 原话创建日程请求
+message CreateScheduleFromOriginReq {
+  string origin = 1; // 原话
+}
+
+// 原话创建日程响应
+message CreateScheduleFromOriginResp {
+  int64 code = 1;
+  string msg = 2;
+  repeated Schedule schedules = 3;
+}
+
+// 批量创建日程
+message CreateSchedulesReq {
+  repeated Schedule schedules = 1;
+}
+
+// 批量创建日程响应
+message CreateSchedulesResp {
+  int64 code = 1;
+  string msg = 2;
+}
+
+// 更新日程请求
+message UpdateScheduleReq {
+  Schedule schedule = 1;
+}
+
+// 更新日程响应
+message UpdateScheduleResp {
+  int64 code = 1;
+  string msg = 2;
+  Schedule schedule = 3;
+}
+
+// 获取日程列表
+message GetSchedulesReq {
+  basic.PaginationOptions paginationOptions = 1;
+}
+
+// 获取日程列表响应
+message GetSchedulesResp {
+  int64 total = 1;
+  repeated Schedule schedules = 2;
+}
+
+// 日程对象
+message Schedule {
+  string id = 1;
+  string userId = 2;
+  string group = 3;
+  string origin = 4;
+  string title = 5;
+  string description = 6;
+  int64 done = 7;
+  int64 progress = 8;
+  int64 priority = 9;
+  int64 top = 10;
+  int64 ddl = 11;
+  int64 createTime = 12;
+  int64 updateTime = 13;
+}
