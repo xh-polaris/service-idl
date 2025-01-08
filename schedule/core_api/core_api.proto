@@ -23,6 +23,10 @@ service core_api {
   rpc SignIn(SignInReq) returns (SignInResp) {
     option(http.post) = "/user/sign_in";
   }
+  // 发送验证码
+  rpc SendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp) {
+    option (http.post) = "/user/send_verify_code";
+  }
   // 创建日程
   rpc CreateSchedule(CreateScheduleReq) returns (CreateScheduleResp){
     option(http.post) = "/schedule/create";
@@ -41,6 +45,6 @@ service core_api {
   }
   // 获取日程列表
   rpc GetSchedules(GetSchedulesReq) returns (GetSchedulesResp) {
-    option(http.options) = "/schedule/list";
+    option(http.post) = "/schedule/list";
   }
 }

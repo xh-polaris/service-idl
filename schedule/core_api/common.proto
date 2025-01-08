@@ -42,6 +42,18 @@ message SignInResp {
   string accessToken = 2;
   int64 accessExpire = 3;
 }
+// 发送验证码请求
+message SendVerifyCodeReq {
+  string authType = 1;
+  string authId = 2;
+  int64 type = 3;
+}
+
+// 发送验证码响应
+message SendVerifyCodeResp {
+  int64 code = 1;
+  string msg = 2;
+}
 
 /*
  * 日程相关

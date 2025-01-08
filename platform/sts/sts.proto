@@ -73,6 +73,7 @@ message SignInResp {
   string openId = 2;
   string unionId = 3;
   string appId = 4;
+  optional string options = 5;  // 可选参数
 }
 
 message SetPasswordReq {
