@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package schedule.core_api;
+
+option go_package = "schedule/core_api";
+option java_package = "com.xhpolaris.idlgen.schedule.core_api";
+option java_outer_classname = "CoreApiProto";
+option java_multiple_files = true;
+
+import "http/http.proto";
+import "schedule/core_api/common.proto";
+
+service core_api {
+  /*
+   * 用户相关
+   */
+
+  // 注册
+  rpc SignUp(SignUpReq) returns (SignUpResp) {
+    option(http.post) = "/user/sign_up";
+  }
+  // 登录
+  rpc SignIn(SignInReq) returns (SignInResp) {
+    option(http.post) = "/user/sign_in";
+  }
+  // 发送验证码
+  rpc SendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp) {
+    option (http.post) = "/user/send_verify_code";
+  }
+  // 创建日程
+  rpc CreateSchedule(CreateScheduleReq) returns (CreateScheduleResp){
+    option(http.post) = "/schedule/create";
+  }
+  // 原话创建日程
+  rpc CreateScheduleFromOrigin(CreateScheduleFromOriginReq) returns (CreateScheduleFromOriginResp) {
+    option(http.post) = "/schedule/create_ori";
+  }
+  // 批量创建
+  rpc CreateSchedules(CreateSchedulesReq) returns(CreateSchedulesResp) {
+    option(http.post) = "/schedule/create_list";
+  }
+  // 更新日程
+  rpc UpdateSchedule(UpdateScheduleReq) returns (UpdateScheduleResp) {
+    option(http.post) = "/schedule/update";
+  }
+  // 获取日程列表
+  rpc GetSchedules(GetSchedulesReq) returns (GetSchedulesResp) {
+    option(http.post) = "/schedule/list";
+  }
+}
