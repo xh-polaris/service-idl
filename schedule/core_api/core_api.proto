@@ -27,6 +27,14 @@ service core_api {
   rpc SendVerifyCode(SendVerifyCodeReq) returns (SendVerifyCodeResp) {
     option (http.post) = "/user/send_verify_code";
   }
+  // 获取用户信息
+  rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
+    option (http.get) = "/user/get_info";
+  }
+  // 更新用户信息
+  rpc UpdateUserInfo(UpdateUserInfoReq) returns (UpdateUserInfoResp) {
+    option (http.post) = "user/update_info";
+  }
   // 创建日程
   rpc CreateSchedule(CreateScheduleReq) returns (CreateScheduleResp){
     option(http.post) = "/schedule/create";
@@ -46,5 +54,9 @@ service core_api {
   // 获取日程列表
   rpc GetSchedules(GetSchedulesReq) returns (GetSchedulesResp) {
     option(http.post) = "/schedule/list";
+  }
+  // 删除日程
+  rpc DeleteSchedule(DeleteScheduleReq) returns (DeleteScheduleResp) {
+    option(http.get) = "/schedule/delete";
   }
 }

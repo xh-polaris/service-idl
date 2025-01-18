@@ -55,6 +55,27 @@ message SendVerifyCodeResp {
   string msg = 2;
 }
 
+// 获取用户信息请求
+message GetUserInfoReq {
+}
+
+// 获取用户信息响应
+message GetUserInfoResp {
+  string name = 1;
+  string phone = 2;
+}
+
+// 修改用户信息请求
+message UpdateUserInfoReq {
+  string name = 1;
+}
+
+// 修改用户信息响应
+message UpdateUserInfoResp {
+  int64 code = 1;
+  string msg = 2;
+}
+
 /*
  * 日程相关
  */
@@ -121,6 +142,17 @@ message GetSchedulesReq {
 message GetSchedulesResp {
   int64 total = 1;
   repeated Schedule schedules = 2;
+}
+
+// 删除日程
+message DeleteScheduleReq {
+  string id = 1;
+}
+
+// 删除日程响应
+message DeleteScheduleResp {
+  int64 code = 1;
+  string msg = 2;
 }
 
 // 日程对象
