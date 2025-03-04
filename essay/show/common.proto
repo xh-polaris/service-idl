@@ -65,6 +65,8 @@ message GetUserInfoResp {
 // 更新用户信息
 message UpdateUserInfoReq {
   string name = 1;
+  string school = 2;
+  int64 grade = 3;
 }
 
 // 修改密码请求
@@ -152,5 +154,124 @@ message SendVerifyCodeReq {
   string authType = 1;
   string authId = 2;
   int64 type = 3;
+}
+
+/*
+ * 生成题目相关
+ */
+
+// 生成一组练习
+message CreateExerciseReq {
+  string logId = 1;
+}
+
+message CreateExerciseResp {
+  int64 code = 1;
+  string msg = 2;
+  Exercise exercise = 3;
+}
+
+// 获取简要的练习记录
+message ListSimpleExercisesReq {
+  string logId = 1;
+  basic.PaginationOptions paginationOptions = 2;
+}
+
+message ListSimpleExercisesResp {
+  message Record {
+    string id = 1;         // 题目id
+    int64 score = 2;        // 得分
+  }
+  message SimpleExercise {
+    string id = 1;               // 练习id
+    int64 totalScore = 2;       // 总得分
+    repeated Record records = 3; // 题目id及其对应得分
+    int64 finishTime = 4;        // 完成时间
+    int64 like = 5;              // 是否评价
+  }
+  int64 code = 1;
+  string msg = 2;
+  repeated SimpleExercise exercises = 3;
+  int64 total = 4;
+}
+
+// 获取练习详情
+message GetExerciseReq {
+  string id = 1;
+}
+
+message GetExerciseResp {
+  int64 code = 1;
+  string msg = 2;
+  Exercise exercise = 3;
+}
+
+// 提交一次作答
+message DoExerciseReq {
+  message Record {
+    string id = 1;
+    string option = 2;
+  }
+  string id = 1;
+  repeated Record records = 2;
+}
+
+message DoExerciseResp {
+  int64 code = 1;
+  string msg = 2;
+  Records records = 3;
+}
+
+
+// Exercise 代表一次练习记录
+message Exercise {
+  string id = 1; // 练习 ID
+  string userId = 2; // 归属用户 ID
+  string logId = 3; // 批改记录 ID
+  Question question = 4; // 题目内容
+  History history = 5; // 用户做题记录
+  int64 like = 6; // 点赞状态，-1: 不喜欢, 1: 喜欢
+  int64 createTime = 7; // 创建时间
+  int64 updateTime = 8; // 更新时间
+  int64 status = 10; // 练习状态
+}
+
+// Question 代表一组题目
+message Question {
+  repeated ChoiceQuestion choiceQuestions = 1; // 选择题列表
+}
+
+// ChoiceQuestion 代表一道完整的选择题
+message ChoiceQuestion {
+  string id = 1; // 题目 ID
+  string question = 2; // 问题描述
+  string explanation = 3; // 题目解答
+  repeated Option options = 4; // 题目选项
+}
+
+// Option 代表选择题中的一个选项
+message Option {
+  string option = 1; // 选项，如 'A'
+  string content = 2; // 选项内容
+  int64 score = 3; // 选项得分
+}
+
+// History 代表一组题目的总记录
+message History {
+  repeated Records records = 1; // 记录列表
+}
+
+// Records 代表用户做题的一组记录
+message Records {
+  repeated Record records = 1; // 作答记录
+  int64 score = 2; // 总得分
+  int64 createTime = 3; // 提交时间
+}
+
+// Record 代表用户做的一道题的记录
+message Record {
+  string id = 1; // 题目 ID
+  string option = 2; // 用户选择的选项
+  int64 score = 3; // 得分
 }
 

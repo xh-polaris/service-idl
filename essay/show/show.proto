@@ -54,3 +54,22 @@ service show {
     option (http.post) = "/sts/send_verify_code";
   }
 }
+
+service exercise {
+  // 生成练习
+  rpc CreateExercise(CreateExerciseReq) returns (CreateExerciseResp) {
+    option (http.post) = "/exercise/create";
+  }
+  // 获取简要练习列表
+  rpc ListSimpleExercises(ListSimpleExercisesReq) returns (ListSimpleExercisesResp) {
+    option (http.post) = "/exercise/simple/list";
+  }
+  // 获取练习详情
+  rpc GetExercise(GetExerciseReq) returns (GetExerciseResp) {
+    option (http.post) = "/exercise/get";
+  }
+  // 提交一次练习
+  rpc DoExercise(DoExerciseReq) returns (DoExerciseResp) {
+    option (http.post) = "/exercise/do";
+  }
+}
