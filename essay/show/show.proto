@@ -37,6 +37,10 @@ service show {
   rpc EssayEvaluate(EssayEvaluateReq) returns (EssayEvaluateResp) {
     option (http.post) = "/essay/evaluate";
   }
+  // 点赞或点踩
+  rpc LikeEvaluate(LikeEvaluateReq) returns (Response) {
+    option (http.post) = "/essay/like";
+  }
   // 获取批改记录
   rpc GetEvaluateLogs(GetEssayEvaluateLogsReq) returns (GetEssayEvaluateLogsResp) {
     option (http.post) = "/essay/logs";
@@ -71,5 +75,9 @@ service exercise {
   // 提交一次练习
   rpc DoExercise(DoExerciseReq) returns (DoExerciseResp) {
     option (http.post) = "/exercise/do";
+  }
+  // 点赞或点踩
+  rpc LikeExercise(LikeExerciseReq) returns (Response) {
+    option (http.post) = "/exercise/like";
   }
 }

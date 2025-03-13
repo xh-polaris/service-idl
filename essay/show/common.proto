@@ -103,6 +103,12 @@ message EssayEvaluateResp {
   string id = 4;
 }
 
+// 点赞或点踩一个题目
+message LikeEvaluateReq {
+  string id = 1;
+  int64 like = 2;
+}
+
 // 获取批改记录请求
 message GetEssayEvaluateLogsReq {
   basic.PaginationOptions paginationOptions = 1;
@@ -221,6 +227,12 @@ message DoExerciseResp {
   int64 code = 1;
   string msg = 2;
   Records records = 3;
+}
+
+// 点赞或点踩一套题目
+message LikeExerciseReq {
+  string id = 1;
+  int64 like = 2;
 }
 
 
