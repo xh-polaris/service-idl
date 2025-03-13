@@ -100,6 +100,7 @@ message EssayEvaluateResp {
   int64 code = 1;
   string msg = 2;
   string response = 3;
+  string id = 4;
 }
 
 // 获取批改记录请求
