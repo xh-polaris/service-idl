@@ -23,7 +23,6 @@ service show {
   rpc GetUserInfo(GetUserInfoReq) returns (GetUserInfoResp) {
     option (http.get) = "/user/info";
   }
-
   // 更新用户密码
   rpc UpdatePassword(UpdatePasswordReq) returns (UpdatePasswordReq) {
     option(http.post) = "/user/update_password";
@@ -31,8 +30,12 @@ service show {
   // 更新用户信息
   rpc UpdateUserInfo(UpdateUserInfoReq) returns (Response) {
     option(http.post) = "/user/update";
-
   }
+  // 签到
+  rpc DailyAttend(DailyAttendReq) returns(Response)  {
+    option(http.get) = "/user/daily_attend";
+  }
+
   // 文本作文批改
   rpc EssayEvaluate(EssayEvaluateReq) returns (EssayEvaluateResp) {
     option (http.post) = "/essay/evaluate";
