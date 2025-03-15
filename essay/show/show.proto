@@ -32,8 +32,20 @@ service show {
     option(http.post) = "/user/update";
   }
   // 签到
-  rpc DailyAttend(DailyAttendReq) returns(Response)  {
+  rpc DailyAttend(DailyAttendReq) returns (Response)  {
     option(http.get) = "/user/daily_attend";
+  }
+  // 获取签到状态
+  rpc GetDailyAttend(GetDailyAttendReq) returns (GetDailyAttendResp) {
+    option(http.get) = "/user/daily_attend/get";
+  }
+  // 获取邀请码
+  rpc GetInvitationCode(GetInvitationCodeReq) returns (GetInvitationCodeResp) {
+    option(http.get) = "/user/invitation/code";
+  }
+  // 填写邀请码
+  rpc FillInvitationCode(FillInvitationCodeReq) returns (Response) {
+    option(http.post) = "/user/invitation/fill";
   }
 
   // 文本作文批改

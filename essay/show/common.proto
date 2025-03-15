@@ -82,9 +82,37 @@ message UpdatePasswordResp {
   int64 accessExpire = 3;
   string name = 4;
 }
+
 // 每日签到
 message DailyAttendReq {
 
+}
+
+// 获取每日签到状态
+message GetDailyAttendReq {
+
+}
+
+message GetDailyAttendResp {
+  int64 code = 1;
+  string msg = 2;
+  int64 attend = 3;
+}
+
+// 获取邀请码
+message GetInvitationCodeReq {
+
+}
+
+message GetInvitationCodeResp {
+  int64 code = 1;
+  string msg = 2;
+  string invitationCode = 3;
+}
+
+// 填写邀请码
+message FillInvitationCodeReq {
+  string invitationCode = 1;
 }
 
 /*
