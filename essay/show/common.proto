@@ -123,8 +123,9 @@ message FillInvitationCodeReq {
 message  EssayEvaluateReq {
   string title = 1;
   string text = 2;
-  int64 grade = 3;
-  repeated string ocr = 4;
+  optional int64 grade = 3;
+  optional string essayType = 4;
+  repeated string ocr = 5;
 }
 
 // 批改作文的响应
@@ -175,6 +176,7 @@ message ApplySignedUrlResp {
 // 调用OCR接口
 message OCRReq {
   repeated string ocr = 1;
+  optional string leftType = 2;
 }
 
 message OCRResp {
