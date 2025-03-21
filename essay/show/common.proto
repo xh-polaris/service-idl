@@ -90,13 +90,16 @@ message DailyAttendReq {
 
 // 获取每日签到状态
 message GetDailyAttendReq {
-
+  int32 year = 1;     // 年
+  int32 month = 2;    // 月
 }
 
 message GetDailyAttendResp {
   int64 code = 1;
   string msg = 2;
-  int64 attend = 3;
+  int64 attend = 3;  // 今日是否签到
+  int64 total = 4;   // 打卡总天数
+  repeated int64 history = 5; // 指定月份的签到历史
 }
 
 // 获取邀请码
