@@ -72,6 +72,10 @@ service show {
   rpc SendVerifyCode(SendVerifyCodeReq) returns (Response) {
     option (http.post) = "/sts/send_verify_code";
   }
+  // 提交反馈
+  rpc SubmitFeedback(SubmitFeedbackReq) returns (Response) {
+    option (http.post) = "/feedback/submit";
+  }
 }
 
 service exercise {
