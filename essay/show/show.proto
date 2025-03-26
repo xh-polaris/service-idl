@@ -76,6 +76,10 @@ service show {
   rpc SubmitFeedback(SubmitFeedbackReq) returns (Response) {
     option (http.post) = "/feedback/submit";
   }
+  // 查询反馈
+  rpc ListFeedback(ListFeedbackReq) returns (ListFeedbackResp) {
+    option (http.get) = "/feedback/list";
+  }
 }
 
 service exercise {
