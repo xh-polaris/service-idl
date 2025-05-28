@@ -44,6 +44,7 @@ message SignInResp {
   string accessToken = 2;
   int64 accessExpire = 3;
   string name = 4;
+  string avatar = 5;
 }
 
 // 获取用户信息请求
@@ -56,6 +57,7 @@ message GetUserInfoResp {
     string name = 1;
     int64 count = 2;
     string phone = 3;
+    string avatar = 4;
   }
   int64 code = 1;
   string msg = 2;
@@ -67,6 +69,7 @@ message UpdateUserInfoReq {
   string name = 1;
   string school = 2;
   int64 grade = 3;
+  string avatar = 4;
 }
 
 // 修改密码请求
