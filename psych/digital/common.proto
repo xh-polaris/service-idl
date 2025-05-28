@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package psych.digital;
+
+option go_package = "psych/digital";
+option java_package = "com.xhpolaris.idlgen.psych.digital";
+option java_outer_classname = "CommonProto";
+option java_multiple_files = true;
+
+import "basic/pagination.proto";
+
+// 分页获取历史记录
+message ListHistoryReq {
+  basic.PaginationOptions paginationOptions = 1;
+}
+
+message ListHistoryResp {
+  repeated History histories = 1;
+  int64 total = 2;
+}
+
+// History 聊天记录与报表
+message History  {
+  string id = 1;
+  string name = 2;
+  string class = 3;
+  repeated Dialog dialogs = 4;
+  Report report = 5;
+  int64 startTime = 6;
+  int64 endTime = 7;
+}
+
+// Dialog 对话记录
+message Dialog{
+  string role = 1;
+  string content = 2;
+}
+
+// Report 分析报告
+message  Report{
+  repeated string keywords = 1;
+  repeated string type = 2;
+  string content = 3;
+  string grade = 4;
+  repeated string suggestion = 5;
+}

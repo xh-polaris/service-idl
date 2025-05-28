@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package psych.digital;
+
+option go_package = "psych/digital";
+option java_package = "com.xhpolaris.idlgen.psych.digital";
+option java_outer_classname = "DigitalProto";
+option java_multiple_files = true;
+
+import "psych/digital/common.proto";
+import "http/http.proto";
+
+service history {
+  rpc ListHistory(ListHistoryReq) returns (ListHistoryResp) {
+    option(http.get) = "/chat/history/list";
+  }
+}
+
