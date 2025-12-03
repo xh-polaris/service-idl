@@ -161,6 +161,7 @@ message CheckInReq {
 // 获取活动签到情况
 message GetRegistersReq {
   string activityId = 1;
+  optional string userId = 2;
 }
 
 // 获取活动详情响应
